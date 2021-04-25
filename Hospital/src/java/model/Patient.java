@@ -11,46 +11,34 @@ package model;
  * @author PC
  */
 public class Patient {
-    private int sno;
-    private String nic;
+    private int pid;
+
     private String fname;
     private String lname;
     private String email;
-    private String docotorName;
+
     private String bloodGroup;
     private String gender;
     private String dob;
-    private String deceased;
     private String address;
     private int mobileNo;
+    private String pec;
     
-     public String getNic() {
-        return nic;
-    }
 
     /**
      * @param fname the fname to set
      */
-    public void setSno(int sno) {
-        this.sno = sno;
+    public void setPid(int pid) {
+        this.pid = pid;
     }
     
    
     
-     public int getSno() {
-        return sno;
+     public int getPid() {
+        return pid;
     }
 
-    /**
-     * @param fname the fname to set
-     */
-    public void setNic(String nic) {
-        this.nic = nic;
-    }
-
-    /**
-     * @return the fname
-     */
+    
     public String getFname() {
         return fname;
     }
@@ -93,16 +81,6 @@ public class Patient {
     /**
      * @return the docotorName
      */
-    public String getDocotorName() {
-        return docotorName;
-    }
-
-    /**
-     * @param docotorName the docotorName to set
-     */
-    public void setDocotorName(String docotorName) {
-        this.docotorName = docotorName;
-    }
 
     /**
      * @return the bloodGroup
@@ -149,16 +127,7 @@ public class Patient {
     /**
      * @return the deceased
      */
-    public String getDeceased() {
-        return deceased;
-    }
 
-    /**
-     * @param deceased the deceased to set
-     */
-    public void setDeceased(String deceased) {
-        this.deceased = deceased;
-    }
 
     /**
      * @return the address
@@ -186,6 +155,20 @@ public class Patient {
      */
     public void setMobileNo(int mobileNo) {
         this.mobileNo = mobileNo;
+    }
+
+    /**
+     * @return the pec
+     */
+    public String getPec() {
+        return pec;
+    }
+
+    /**
+     * @param pec the pec to set
+     */
+    public void setPec(String pec) {
+        this.pec = pec;
     }
     
     

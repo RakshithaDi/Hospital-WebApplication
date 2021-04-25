@@ -11,84 +11,68 @@ package model;
  * @author PC
  */
 public class Appointments {
-    private int sno;
-    private String fname;
-    private String lname;
-    private String docname;
-    private int mobileno;
+    private int aptid;
+    private int lineno;
+    private int pid;
+    private int docid;
+    
     private String date;
-    private String time;
-    private String deceased;
-    private String address;
+    private String pharmacy;
 
     /**
-     * @return the sno
+     * @return the aptid
      */
-    public int getSno() {
-        return sno;
+    public int getAptid() {
+        return aptid;
     }
 
     /**
-     * @param sno the sno to set
+     * @param aptid the aptid to set
      */
-    public void setSno(int sno) {
-        this.sno = sno;
+    public void setAptid(int aptid) {
+        this.aptid = aptid;
     }
 
     /**
-     * @return the fname
+     * @return the lineno
      */
-    public String getFname() {
-        return fname;
+    public int getLineno() {
+        return lineno;
     }
 
     /**
-     * @param fname the fname to set
+     * @param lineno the lineno to set
      */
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setLineno(int lineno) {
+        this.lineno = lineno;
     }
 
     /**
-     * @return the lname
+     * @return the pid
      */
-    public String getLname() {
-        return lname;
+    public int getPid() {
+        return pid;
     }
 
     /**
-     * @param lname the lname to set
+     * @param pid the pid to set
      */
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setPid(int pid) {
+        this.pid = pid;
     }
 
     /**
-     * @return the docname
+     * @return the docid
      */
-    public String getDocname() {
-        return docname;
+    public int getDocid() {
+        return docid;
     }
 
     /**
-     * @param docname the docname to set
+     * @param docid the docid to set
      */
-    public void setDocname(String docname) {
-        this.docname = docname;
-    }
-
-    /**
-     * @return the mobileno
-     */
-    public int getMobileno() {
-        return mobileno;
-    }
-
-    /**
-     * @param mobileno the mobileno to set
-     */
-    public void setMobileno(int mobileno) {
-        this.mobileno = mobileno;
+    public void setDocid(int docid) {
+        this.docid = docid;
     }
 
     /**
@@ -106,47 +90,18 @@ public class Appointments {
     }
 
     /**
-     * @return the time
+     * @return the pharmacy
      */
-    public String getTime() {
-        return time;
+    public String getPharmacy() {
+        return pharmacy;
     }
 
     /**
-     * @param time the time to set
+     * @param pharmacy the pharmacy to set
      */
-    public void setTime(String time) {
-        this.time = time;
+    public void setPharmacy(String pharmacy) {
+        this.pharmacy = pharmacy;
     }
-
-    /**
-     * @return the deceased
-     */
-    public String getDeceased() {
-        return deceased;
-    }
-
-    /**
-     * @param deceased the deceased to set
-     */
-    public void setDeceased(String deceased) {
-        this.deceased = deceased;
-    }
-
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
    
     
 }
