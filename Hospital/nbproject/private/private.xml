@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/github/JavaProject2/Hospital/web/Appointment.jsp</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/PatientListDB.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/controller/ViewDiagnosis.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/web/Patient_List.jsp</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/Patient.java</file>
+            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/Prescription.java</file>
+            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/DBConnection.java</file>
+            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/appointments.html</file>
+            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/appointment.jsp</file>
+            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/newjsp.jsp</file>
             <file>file:/D:/github/JavaProject2/Hospital/src/java/model/Appointments.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/web/Appointment_List.jsp</file>
         </group>
     </open-files>
 </project-private>

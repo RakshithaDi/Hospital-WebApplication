@@ -8,6 +8,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import model.DBConnection;
  *
  * @author PC
  */
-public class ViewDiagnosis extends HttpServlet {
+public class SubmitDiagnosisPrescription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +35,7 @@ public class ViewDiagnosis extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ViewDiagnosis</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ViewDiagnosis at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+      
         }
     }
 
@@ -72,15 +65,41 @@ public class ViewDiagnosis extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        
-//        String pid=request.getParameter("patientid");
-//        
-//        try{
-//            PatientListDB con = new PatientListDB();
-//            boolean rslt=con.getAllPatients(pid);
-//        }
-//        
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+      
+      int pid = Integer.parseInt(request.getParameter("patientid"));
+      int docid = Integer.parseInt(request.getParameter("doctorid"));
+      String diagnosis=request.getParameter("diagnosis");
+      String prsc=request.getParameter("prescription");
+      String date=request.getParameter("date");
+      
+//      out.println(pid);
+//      out.println(docid);
+//      out.println(diagnosis);
+//      out.println(prsc);
+//      out.println(date);
+//      
+      try{
+          DBConnection con = new DBConnection();
+          boolean rslt=con.addDiagnosisPrescriptions(pid, docid, prsc, diagnosis, date);
+          if(rslt==true)
+          {
+              out.println("Added Successfully");
+              out.println("<html><head></head><body><br><a href='doctor/appointment.jsp'>Back to Appointments </a> </body></html>");
+//              RequestDispatcher rs= request.getRequestDispatcher("doctor/appointment.jsp");
+//              rs.include(request, response);
+              
+          }
+          else
+          {
+              out.println("Error");
+          }
+      }
+      catch(Exception e){
+          e.printStackTrace();
+      }
+      
         
     }
 

@@ -1,4 +1,4 @@
-package org.apache.jsp.doctor;
+package org.apache.jsp;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,7 +13,7 @@ import model.Appointments;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public final class appointment_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class newjsp1_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -171,7 +171,7 @@ GregorianCalendar cal = new GregorianCalendar();
       out.write("                        </div>\n");
       out.write("                        <div class=\"card-body\">\n");
       out.write("                            <div class=\"col\" style=\"padding-left: 0;padding-right: 0;\">\n");
-      out.write("                                <form method=\"post\" action=\"../SubmitDiagnosisPrescription\">\n");
+      out.write("                                <form method=\"post\" action=\"SubmitDiagnosisPrescription\">\n");
       out.write("                                    <input type=\"hidden\" name=\"patientid\" value=\"");
       out.print(a.getAptid());
       out.write("\">\n");
@@ -181,8 +181,8 @@ GregorianCalendar cal = new GregorianCalendar();
       out.write("                                    <input type=\"hidden\" name=\"date\" value=\"");
       out.print(dtf.format(now));
       out.write("\">\n");
-      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"diagnosis\" placeholder=\"Diagnosis\" rows=\"14\" style=\"height: 152px;\" required></textarea></div>\n");
-      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"prescription\" placeholder=\"Prescription\" rows=\"14\" style=\"height: 171px;\" required> </textarea></div>\n");
+      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"diagnosis\" placeholder=\"Diagnosis\" rows=\"14\" style=\"height: 152px;\"></textarea></div>\n");
+      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"prescription\" placeholder=\"Prescription\" rows=\"14\" style=\"height: 171px;\"></textarea></div>\n");
       out.write("                                    <div class=\"form-group text-center\"><button class=\"btn btn-primary\" type=\"submit\">SUBMIT</button></div>\n");
       out.write("                                </form>\n");
       out.write("                            </div>\n");

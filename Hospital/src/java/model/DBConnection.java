@@ -147,4 +147,24 @@ public class DBConnection {
         
         
     }
+    
+    public boolean addDiagnosisPrescriptions(int patientid,int docid,String prsc,String diagnosis,String date) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        PreparedStatement ps=getConnection().prepareStatement("insert into prescription(PatientID,DoctorID,PrscList,Notes,Date) values(?,?,?,?,?)");
+        ps.setInt(1,patientid);
+        ps.setInt(2,docid);
+        ps.setString(3,prsc);
+        ps.setString(4,diagnosis);
+        ps.setString(5,date);
+        int i = ps.executeUpdate();
+        if(i>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
+    }
 }

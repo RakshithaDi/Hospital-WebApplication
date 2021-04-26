@@ -4,6 +4,8 @@
     Author     : PC
 --%>
 
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="model.Prescription"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Patient"%>
@@ -52,11 +54,12 @@
             
              <%List<Patient> list1 = DBConnection.getAllPatients(a.getPid()); %>
             <%for(Patient e:list1){ %>
-       <!--  <tr ><td><%=a.getAptid()%></td><td id="mname"><%=e.getFname()%></td><td><%=e.getLname()%></td><td><%=e.getEmail()%></td> <td> <%=e.getMobileNo()%></td><td><%=e.getAddress()%></td><td><%=e.getDob()%></td> <td> <%=e.getGender()%></td><td><%=e.getBloodGroup()%></td> <td><%=a.getPharmacy()%></td></tr>
-         -->      
-         
+      
          <%--<% int dob =Integer.parseInt(e.getDob()); %> --%>
-        
+        <%DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+   LocalDateTime now = LocalDateTime.now();
+   System.out.println(dtf.format(now));%>
+         
                    
     <div class="container-sm">
          
@@ -97,9 +100,12 @@
                         </div>
                         <div class="card-body">
                             <div class="col" style="padding-left: 0;padding-right: 0;">
-                                <form method="post">
-                                    <div class="form-group"><textarea class="form-control" name="diagnosis" placeholder="Diagnosis" rows="14" style="height: 152px;"></textarea></div>
-                                    <div class="form-group"><textarea class="form-control" name="message" placeholder="Prescription" rows="14" style="height: 171px;"></textarea></div>
+                                <form method="post" action="../SubmitDiagnosisPrescription">
+                                    <input type="hidden" name="patientid" value="<%=a.getAptid()%>">
+                                    <input type="hidden" name="doctorid" value="<%=a.getDocid()%>">
+                                    <input type="hidden" name="date" value="<%=dtf.format(now)%>">
+                                    <div class="form-group"><textarea class="form-control" name="diagnosis" placeholder="Diagnosis" rows="14" style="height: 152px;" required></textarea></div>
+                                    <div class="form-group"><textarea class="form-control" name="prescription" placeholder="Prescription" rows="14" style="height: 171px;" required></textarea></div>
                                     <div class="form-group text-center"><button class="btn btn-primary" type="submit">SUBMIT</button></div>
                                 </form>
                             </div>
