@@ -47,6 +47,19 @@
             </div>
         </div>
     </nav>
+         <div class="row">
+            <div class="col">
+                <div style="margin: 16px;">
+                    <div class="row">
+                        <div class="col text-left align-self-center"><button class="btn btn-dark text-center" type="button" style="margin: 3px;width: 100;"><i class="fa fa-chevron-left"></i>&nbsp; PREVIOUS</button></div>
+                        <div class="col text-left align-self-center">
+                            <h6 class="text-uppercase text-center text-dark" style="font-family: Montserrat, sans-serif;text-align: center;">No : 12</h6>
+                        </div>
+                        <div class="col text-right align-self-center"><button class="btn btn-dark text-center" type="button" style="margin: 3px;width: 100px;">NEXT&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     
                        <%List<Appointments> list = DBConnection.getAllAppointments(); %>
             <%for(Appointments a:list){ %>
@@ -62,16 +75,10 @@
          
                    
     <div class="container-sm">
+    
          
             
-        <div class="row">
-            <div class="col"> 
-                <div style="margin: 16px;">
-        
-                     
-                </div>
-            </div>
-        </div>
+      
         <div class="row">
             <div class="col-xl-5 offset-xl-0 ml-auto" style="padding-left: 0;padding-right: 0;padding-bottom: 0;margin-bottom: 10px;"> 
                 <div class="mx-auto"> 
