@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2021 at 09:59 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Apr 28, 2021 at 11:28 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.2.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,6 +35,14 @@ CREATE TABLE `appointment` (
   `Date` date NOT NULL,
   `Pharmacy` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`AptID`, `LineNo`, `PatientID`, `DoctorID`, `Date`, `Pharmacy`) VALUES
+(1, 0, 1, 1, '2021-04-13', 'Yes'),
+(2, 2, 2, 1, '2021-04-13', 'no');
 
 -- --------------------------------------------------------
 
@@ -146,7 +154,8 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`PatientID`, `FirstName`, `LastName`, `Email`, `PhoneNo`, `Address`, `DOB`, `Gender`, `BloodType`, `PEC`) VALUES
-(1, 'Nimal', 'Gamage', 'nim.gamage@gmail.com', 1236547895, 'Kandy', '1998-04-08', 'Male', 'A-', 'none');
+(1, 'Nimal', 'Gamage', 'nim.gamage@gmail.com', 1236547895, 'Kandy', '1998-04-08', 'Male', 'A-', 'diabetes, allergic to paracetamol'),
+(2, 'Rakshitha', 'Dilshan', 'rakshithadilshan2@gmail.com', 77348481, 'nuwara eliya', '1991-04-12', 'Male', 'B+', 'diabetes, COPD');
 
 -- --------------------------------------------------------
 
@@ -211,7 +220,11 @@ CREATE TABLE `prescription` (
 --
 
 INSERT INTO `prescription` (`PrscID`, `PatientID`, `DoctorID`, `PrscList`, `Notes`, `Date`) VALUES
-(1, 1, 1, 'test\r\ntest2\r\ntest3\r\ntest4', 'test, test, test, test', '2021-04-11');
+(1, 1, 1, 'Metformin 5mg', 'Hypertension', '2021-04-26'),
+(2, 1, 1, 'Panadol 10mg', 'Fever', '2021-04-26'),
+(3, 2, 1, 'Fortamet, Glumetza', 'Hypertension', '2021-04-26'),
+(9, 2, 1, 'cvvcxvcxv', 'bvcb', '2021-04-26'),
+(10, 2, 1, 'gfgfgfgfgfg', 'gfgfgfgf', '2021-04-26');
 
 -- --------------------------------------------------------
 
@@ -244,7 +257,7 @@ CREATE TABLE `webadmin` (
 --
 DROP TABLE IF EXISTS `pharmacyview`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pharmacyview`  AS SELECT `a`.`PrscID` AS `PrscID`, `b`.`FirstName` AS `P_FName`, `b`.`LastName` AS `P_LName`, `c`.`FirstName` AS `D_FName`, `c`.`LastName` AS `D_LName`, `a`.`Date` AS `Date`, `a`.`PrscList` AS `Prescription`, `b`.`Email` AS `Email`, `b`.`PhoneNo` AS `Phone` FROM ((`prescription` `a` join `patient` `b` on(`a`.`PatientID` = `b`.`PatientID`)) join `doctor` `c` on(`a`.`DoctorID` = `c`.`DoctorID`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pharmacyview`  AS  select `a`.`PrscID` AS `PrscID`,`b`.`FirstName` AS `P_FName`,`b`.`LastName` AS `P_LName`,`c`.`FirstName` AS `D_FName`,`c`.`LastName` AS `D_LName`,`a`.`Date` AS `Date`,`a`.`PrscList` AS `Prescription`,`b`.`Email` AS `Email`,`b`.`PhoneNo` AS `Phone` from ((`prescription` `a` join `patient` `b` on(`a`.`PatientID` = `b`.`PatientID`)) join `doctor` `c` on(`a`.`DoctorID` = `c`.`DoctorID`)) ;
 
 --
 -- Indexes for dumped tables
@@ -300,7 +313,7 @@ ALTER TABLE `prescription`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `AptID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `AptID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `doctor`
@@ -324,7 +337,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pharmacyorders`
@@ -336,7 +349,7 @@ ALTER TABLE `pharmacyorders`
 -- AUTO_INCREMENT for table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `PrscID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `PrscID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
