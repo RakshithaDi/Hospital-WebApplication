@@ -1,19 +1,17 @@
-package org.apache.jsp;
+package org.apache.jsp.doctor;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.List;
+import model.Prescription;
+import model.DBConnection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import model.Prescription;
-import java.util.List;
 import model.Patient;
-import model.DBConnection;
 import model.Appointments;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public final class newjsp1_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class appointmentcopy_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -39,7 +37,7 @@ public final class newjsp1_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html;charset=UTF-8");
+      response.setContentType("text/html");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -57,14 +55,6 @@ public final class newjsp1_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("  \n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html lang=\"en\">\n");
       out.write("\n");
@@ -81,11 +71,62 @@ public final class newjsp1_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"../assets/css/Footer-Clean.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/css/Navigation-with-Button.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/css/styles.css\">\n");
-      out.write("     \n");
       out.write("</head>\n");
-      out.write("      \n");
+      out.write("\n");
       out.write("<body style=\"background: #dddddd;font-family: Montserrat, sans-serif;\">\n");
-      out.write("     \n");
+      out.write("    ");
+ 
+     
+      int pid = Integer.parseInt(request.getParameter("patientid"));
+      int appid = Integer.parseInt(request.getParameter("appid"));
+      int docid = Integer.parseInt(request.getParameter("docid"));
+      String appdate=request.getParameter("appdate");
+      String pharmacy=request.getParameter("pharmacy");
+      
+      
+      String fname=request.getParameter("fname");
+      String lname=request.getParameter("lname");
+      String dob=request.getParameter("dob");
+      int phoneno = Integer.parseInt(request.getParameter("phoneno"));
+      String email=request.getParameter("email");
+      String address=request.getParameter("address");
+      String gender=request.getParameter("gender");
+      String bloodtype=request.getParameter("bloodtype");
+      String pec=request.getParameter("pec");
+      
+      
+        
+      Appointments apt = new Appointments();
+      apt.setPid(pid);
+      apt.setAptid(appid);
+      apt.setDocid(docid);
+      apt.setDate(appdate);
+      apt.setPharmacy(pharmacy);
+      
+      
+      Patient pat = new Patient();
+      pat.setFname(fname);
+      pat.setLname(lname);
+      pat.setDob(dob);
+      pat.setMobileNo(phoneno);
+      pat.setEmail(email);
+      pat.setAddress(address);
+      pat.setGender(gender);
+      pat.setBloodGroup(bloodtype);
+      pat.setPec(pec);
+    
+    
+      out.write("\n");
+      out.write("    \n");
+      out.write("        ");
+DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+   LocalDateTime now = LocalDateTime.now();
+   System.out.println(dtf.format(now));
+      out.write("\n");
+      out.write("         \n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("    \n");
       out.write("    <nav class=\"navbar navbar-light navbar-expand-md navigation-clean-button\">\n");
       out.write("        <div class=\"container\"><a class=\"navbar-brand\" href=\"#\">Appointments</a><button data-toggle=\"collapse\" class=\"navbar-toggler\" data-target=\"#navcol-1\"><span class=\"sr-only\">Toggle navigation</span><span class=\"navbar-toggler-icon\"></span></button>\n");
       out.write("            <div class=\"collapse navbar-collapse\" id=\"navcol-1\">\n");
@@ -95,111 +136,89 @@ public final class newjsp1_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </nav>\n");
-      out.write("    \n");
-      out.write("                       ");
-List<Appointments> list = DBConnection.getAllAppointments(); 
-      out.write("\n");
-      out.write("            ");
-for(Appointments a:list){ 
-      out.write("\n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("             ");
-List<Patient> list1 = DBConnection.getAllPatients(a.getPid()); 
-      out.write("\n");
-      out.write("            ");
-for(Patient e:list1){ 
-      out.write("\n");
-      out.write("      \n");
-      out.write("         ");
-      out.write("\n");
-      out.write("        ");
-DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-   LocalDateTime now = LocalDateTime.now();
-   System.out.println(dtf.format(now));
-      out.write("\n");
-      out.write("         \n");
-      out.write("                   \n");
       out.write("    <div class=\"container-sm\">\n");
-      out.write("         \n");
-      out.write("            \n");
       out.write("        <div class=\"row\">\n");
-      out.write("            <div class=\"col\"> \n");
+      out.write("            <div class=\"col\">\n");
       out.write("                <div style=\"margin: 16px;\">\n");
-      out.write("        \n");
-      out.write("                     \n");
+      out.write("                    <div class=\"row\">\n");
+      out.write("                        <div class=\"col text-left align-self-center\"><button class=\"btn btn-dark text-center\" type=\"button\" style=\"margin: 3px;width: 100;\"><i class=\"fa fa-chevron-left\"></i>&nbsp; PREVIOUS</button></div>\n");
+      out.write("                        <div class=\"col text-left align-self-center\">\n");
+      out.write("                            <h6 class=\"text-uppercase text-center text-dark\" style=\"font-family: Montserrat, sans-serif;text-align: center;\">No : ");
+      out.print(apt.getAptid());
+      out.write("</h6>\n");
+      out.write("                        </div>\n");
+      out.write("                        <div class=\"col text-right align-self-center\"><button class=\"btn btn-dark text-center\" type=\"button\" style=\"margin: 3px;width: 100px;\">NEXT&nbsp;&nbsp;<i class=\"fa fa-chevron-right\"></i></button></div>\n");
+      out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("                        \n");
+      out.write("                        \n");
       out.write("        <div class=\"row\">\n");
-      out.write("            <div class=\"col-xl-5 offset-xl-0 ml-auto\" style=\"padding-left: 0;padding-right: 0;padding-bottom: 0;margin-bottom: 10px;\"> \n");
-      out.write("                <div class=\"mx-auto\"> \n");
+      out.write("            <div class=\"col-xl-5 offset-xl-0 ml-auto\" style=\"padding-left: 0;padding-right: 0;padding-bottom: 0;margin-bottom: 10px;\">\n");
+      out.write("                <div class=\"mx-auto\">\n");
       out.write("                    <div class=\"card\" style=\"padding-bottom: 0;margin-bottom: 10px;\">\n");
       out.write("                        <div class=\"card-header\">\n");
-      out.write("         \n");
       out.write("                            <h5 class=\"mb-0\">Patient Details<br></h5>\n");
-      out.write("                        </div>       \n");
+      out.write("                        </div>\n");
       out.write("                        <div class=\"card-body\" style=\"margin-bottom: 0;background: #ffffff;\">\n");
-      out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">No : ");
-      out.print(a.getAptid());
+      out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\"> ");
+      out.print(pat.getFname()+" "+pat.getLname());
       out.write("</h4>\n");
       out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">");
-      out.print(e.getFname() +" "+ e.getLname());
+      out.print(pat.getDob());
       out.write("</h4>\n");
-      out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">  ");
-GregorianCalendar cal = new GregorianCalendar(); 
-                            
-                            out.print(cal.get(Calendar.YEAR));
-      out.write(" year old</h4>\n");
       out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">");
-      out.print(e.getGender());
-      out.write("</h4>    \n");
-      out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">Blood Type : ");
-      out.print(e.getBloodGroup());
-      out.write(" </h4>\n");
-      out.write("            \n");
+      out.print(pat.getGender());
+      out.write("</h4>\n");
+      out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">Blood Group : ");
+      out.print(pat.getBloodGroup());
+      out.write("</h4>\n");
+      out.write("                            <h4 class=\"card-title\" style=\"color: rgb(0,0,0);font-size: 20px;\">Pharmacy : ");
+      out.print(apt.getPharmacy());
+      out.write("</h4>\n");
       out.write("                            <hr>\n");
       out.write("                            <h1 class=\"text-left card-title\" style=\"color: var(--red);font-size: 17px;font-family: Montserrat, sans-serif;\">Pre Existing Conditions</h1>\n");
-      out.write("                            <h1 class=\"text-left text-dark card-title\" style=\"color: var(--red);font-size: 17px;font-family: Montserrat, sans-serif;\">");
-      out.print(e.getPec());
+      out.write("                            <h1 class=\"text-left text-dark card-title\" style=\"color: var(--red);font-size: 17px;font-family: Montserrat, sans-serif;\"> ");
+      out.print(pat.getPec());
       out.write("</h1>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
+      out.write("                        \n");
       out.write("                    <div class=\"card\">\n");
       out.write("                        <div class=\"card-header\">\n");
       out.write("                            <h5 class=\"mb-0\">New Diagnosis<br></h5>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"card-body\">\n");
       out.write("                            <div class=\"col\" style=\"padding-left: 0;padding-right: 0;\">\n");
-      out.write("                                <form method=\"post\" action=\"SubmitDiagnosisPrescription\">\n");
+      out.write("                                <form method=\"post\" action=\"../SubmitDiagnosisPrescription\">\n");
       out.write("                                    <input type=\"hidden\" name=\"patientid\" value=\"");
-      out.print(a.getAptid());
+      out.print(apt.getAptid());
       out.write("\">\n");
       out.write("                                    <input type=\"hidden\" name=\"doctorid\" value=\"");
-      out.print(a.getDocid());
+      out.print(apt.getDocid());
       out.write("\">\n");
       out.write("                                    <input type=\"hidden\" name=\"date\" value=\"");
       out.print(dtf.format(now));
       out.write("\">\n");
-      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"diagnosis\" placeholder=\"Diagnosis\" rows=\"14\" style=\"height: 152px;\"></textarea></div>\n");
-      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"prescription\" placeholder=\"Prescription\" rows=\"14\" style=\"height: 171px;\"></textarea></div>\n");
+      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"diagnosis\" placeholder=\"Diagnosis\" rows=\"14\" style=\"height: 152px;\" required></textarea></div>\n");
+      out.write("                                    <div class=\"form-group\"><textarea class=\"form-control\" name=\"prescription\" placeholder=\"Prescription\" rows=\"14\" style=\"height: 171px;\" required></textarea></div>\n");
       out.write("                                    <div class=\"form-group text-center\"><button class=\"btn btn-primary\" type=\"submit\">SUBMIT</button></div>\n");
       out.write("                                </form>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
+      out.write("                        \n");
       out.write("                </div>\n");
       out.write("            </div>\n");
-      out.write("                        \n");
-      out.write("                          \n");
-      out.write("            <div class=\"col-md-6 col-xl-7 mr-auto\"> \n");
+      out.write("      <div class=\"col-md-6 col-xl-7 mr-auto\"> \n");
       out.write("                <div>\n");
       out.write("                    <div class=\"card\">\n");
       out.write("                        <div class=\"card-header\">  \n");
       out.write("                            <h5 class=\"mb-0\">History<br></h5>\n");
       out.write("                        </div>\n");
       out.write("                        ");
-List<Prescription> list2 = DBConnection.getPrescription(a.getPid()); 
+List<Prescription> list2 = DBConnection.getPrescription(apt.getPid()); 
       out.write("\n");
       out.write("            ");
 for(Prescription p:list2){ 
@@ -245,19 +264,11 @@ for(Prescription p:list2){
       out.write("\n");
       out.write("                    </div>\n");
       out.write("                </div> \n");
-      out.write("            </div> \n");
-      out.write("                    \n");
-      out.write("                  \n");
-      out.write("                    \n");
-      out.write("                    \n");
-      out.write("            \n");
+      out.write("            </div>                \n");
+      out.write("                                    \n");
+      out.write("                                    \n");
       out.write("        </div>\n");
       out.write("    </div>\n");
-      out.write("                        ");
-}
-      out.write("     ");
-}
-      out.write("\n");
       out.write("    <footer class=\"footer-basic\">\n");
       out.write("        <div class=\"social\"><a href=\"#\"><i class=\"icon ion-social-instagram\"></i></a><a href=\"#\"><i class=\"icon ion-social-twitter\"></i></a><a href=\"#\"><i class=\"icon ion-social-facebook\"></i></a></div>\n");
       out.write("        <ul class=\"list-inline\">\n");
