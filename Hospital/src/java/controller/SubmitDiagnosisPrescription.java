@@ -86,9 +86,9 @@ public class SubmitDiagnosisPrescription extends HttpServlet {
           if(rslt==true)
           {
               out.println("Added Successfully");
-              out.println("<html><head></head><body><br><a href='doctor/appointment.jsp'>Back to Appointments </a> </body></html>");
-//              RequestDispatcher rs= request.getRequestDispatcher("doctor/appointment.jsp");
-//              rs.include(request, response);
+              out.println("<html><head></head><body><br><a href='hospital/doctor/appointments_list.jsp'>Back to Appointments </a> </body></html>");
+//              RequestDispatcher rs= request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
+//              rs.forward(request, response);
               
           }
           else

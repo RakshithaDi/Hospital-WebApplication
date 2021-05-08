@@ -123,7 +123,7 @@
                         </div>
                         <div class="card-body">
                             <div class="col" style="padding-left: 0;padding-right: 0;">
-                                <form method="post" action="../SubmitDiagnosisPrescription">
+                                <form method="post" action="../../SubmitDiagnosisPrescription">
                                     <input type="hidden" name="patientid" value="<%=apt.getAptid()%>">
                                     <input type="hidden" name="doctorid" value="<%=apt.getDocid()%>">
                                     <input type="hidden" name="date" value="<%=dtf.format(now)%>">

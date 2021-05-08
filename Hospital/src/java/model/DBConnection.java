@@ -167,4 +167,62 @@ public class DBConnection {
         }
        
     }   
+    
+    public boolean checkDoctor(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        boolean st = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from doctor where FirstName=? and Password=?");
+             ps.setString(1,username);
+             ps.setString(2,password); 
+             ResultSet rs = ps.executeQuery();
+             st=rs.next();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return st;
+       
+    }   
+    
+    
+     public boolean checkPharmacist(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        boolean st = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from pharmacist where Name=? and Password=?");
+             ps.setString(1,username);
+             ps.setString(2,password); 
+             ResultSet rs = ps.executeQuery();
+             st=rs.next();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return st;
+       
+    }   
+     
+     public boolean checkReceptionist(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        boolean st = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from receptionist where Name=? and Password=?");
+             ps.setString(1,username);
+             ps.setString(2,password); 
+             ResultSet rs = ps.executeQuery();
+             st=rs.next();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return st;
+       
+    }   
 }
