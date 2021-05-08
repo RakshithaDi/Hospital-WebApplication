@@ -94,10 +94,9 @@ public class Login extends HttpServlet {
             }
             else
             {
-                
-               
-              
+          
                out.println("Username or Password Incorrect");
+               out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
             }
             
                }
@@ -124,8 +123,7 @@ public class Login extends HttpServlet {
             else
             {
                 out.println("Username or Password Incorrect");
-                RequestDispatcher rs = request.getRequestDispatcher("");
-                rs.include(request, response);
+                out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
             }
             
                }
@@ -150,8 +148,7 @@ public class Login extends HttpServlet {
             else
             {
                 out.println("Username or Password Incorrect");
-                RequestDispatcher rs = request.getRequestDispatcher("");
-                rs.include(request, response);
+                out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
             }
             
                }
