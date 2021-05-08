@@ -171,60 +171,73 @@ public class DBConnection {
     }   
     
     public boolean checkDoctor(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
-    {
-        boolean st = false;
+    { 
+         String encryptedPassword = security.getHash(password);
+        boolean verified = false;
         try{
-            PreparedStatement ps=getConnection().prepareStatement("Select * from doctor where FirstName=? and Password=?");
+            PreparedStatement ps=getConnection().prepareStatement("Select * from doctor where Username=?");
              ps.setString(1,username);
-             ps.setString(2,password); 
+            
              ResultSet rs = ps.executeQuery();
-             st=rs.next();
+             
+             if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+          
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
        
-        return st;
+        return verified;
        
     }   
     
     
      public boolean checkPharmacist(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
     {
-        boolean st = false;
+         String encryptedPassword = security.getHash(password);
+        boolean verified = false;
         try{
-            PreparedStatement ps=getConnection().prepareStatement("Select * from pharmacist where Name=? and Password=?");
+            PreparedStatement ps=getConnection().prepareStatement("Select * from pharmacist where Username=?");
              ps.setString(1,username);
-             ps.setString(2,password); 
+             
              ResultSet rs = ps.executeQuery();
-             st=rs.next();
+             
+               if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
        
-        return st;
+       return verified;
        
     }   
      
      public boolean checkReceptionist(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
     {
-        boolean st = false;
+          String encryptedPassword = security.getHash(password);
+        boolean verified = false;
         try{
-            PreparedStatement ps=getConnection().prepareStatement("Select * from receptionist where Name=? and Password=?");
+            PreparedStatement ps=getConnection().prepareStatement("Select * from receptionist where Username=?");
              ps.setString(1,username);
-             ps.setString(2,password); 
+             
              ResultSet rs = ps.executeQuery();
-             st=rs.next();
+             
+                if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
        
-        return st;
+        return verified;
        
     }   
      
