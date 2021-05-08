@@ -1,0 +1,12 @@
+SMAP
+feedback_jsp.java
+JSP
+*S JSP
+*F
++ 0 feedback.jsp
+hospital/admin/feedback.jsp
+*L
+5,52:47
+57,6:99,3
+63,20:117
+*E

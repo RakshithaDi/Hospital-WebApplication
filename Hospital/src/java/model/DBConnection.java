@@ -6,6 +6,8 @@
 
 package model;
 
+
+import Services.Security;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -167,4 +169,209 @@ public class DBConnection {
         }
        
     }   
+    
+    public boolean checkDoctor(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    { 
+         String encryptedPassword = security.getHash(password);
+        boolean verified = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from doctor where Username=?");
+             ps.setString(1,username);
+            
+             ResultSet rs = ps.executeQuery();
+             
+             if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+          
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return verified;
+       
+    }   
+    
+    
+     public boolean checkPharmacist(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+         String encryptedPassword = security.getHash(password);
+        boolean verified = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from pharmacist where Username=?");
+             ps.setString(1,username);
+             
+             ResultSet rs = ps.executeQuery();
+             
+               if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+       return verified;
+       
+    }   
+     
+     public boolean checkReceptionist(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+          String encryptedPassword = security.getHash(password);
+        boolean verified = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from receptionist where Username=?");
+             ps.setString(1,username);
+             
+             ResultSet rs = ps.executeQuery();
+             
+                if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return verified;
+       
+    }   
+     
+     
+      Security security = new Security();
+    
+  public boolean RegDoctor(String nic, String regno, String fname, String lname,String username,int phoneno,String email, String password,String address,String doctype) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+        String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into doctor(DoctorType,NIC,RegNo,FirstName,LastName,Username,PhoneNo,Email,Password,Address) values(?,?,?,?,?,?,?,?,?,?)");
+             ps.setString(1,doctype);
+             ps.setString(2,nic);
+             ps.setString(3,regno);
+             ps.setString(4,fname);
+             ps.setString(5,lname);
+             ps.setString(6,username);
+             ps.setInt(7,phoneno);
+             ps.setString(8,email);
+             ps.setString(9,encryptedPassword);
+             ps.setString(10,address);
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+  
+  
+    public boolean RegPharmacist(String name, String username, String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+        String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into pharmacist(Name,Username,Password) values(?,?,?)");
+             ps.setString(1,name);
+             ps.setString(2,username);
+             ps.setString(3,encryptedPassword);
+          
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+    
+    
+      public boolean RegReceptionist(String name, String username, String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+            String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into receptionist(Name,Username,Password) values(?,?,?)");
+             ps.setString(1,name);
+             ps.setString(2,username);
+             ps.setString(3,encryptedPassword);
+           
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+      
+       public static List<Feedback>getFeedback(){
+       
+        List<Feedback> list= new ArrayList<Feedback>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from feedback");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Feedback f1=new Feedback();
+               
+                f1.setFeedbckid(rs.getInt(1));
+                f1.setFeedbck(rs.getString(2));
+                f1.setStars(rs.getInt(3));
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(f1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
+     
+     
+
+     
 }

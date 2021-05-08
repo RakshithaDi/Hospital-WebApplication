@@ -3,15 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/Prescription.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/appointmentcopy.jsp</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/DBConnection.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/appointments.html</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/Patient.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/appointment.jsp</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/model/Appointments.java</file>
-            <file>file:/D:/github/JavaProject2/Hospital/web/doctor/appointments_list.jsp</file>
-            <file>file:/D:/github/JavaProject2/Hospital/src/java/controller/SubmitDiagnosisPrescription.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments_list.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/Services/Security.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Patient.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/receptionist/messages.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointmentcopy.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DBConnection.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Pharmacist.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Prescription.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/Login.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/SubmitDiagnosisPrescription.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/DoctorRegistration.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/receptionist/appointment-list.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/admin/accounts.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/ReceptionistRegistration.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/receptionist/add-appointment.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Appointments.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Receptionist.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/PharmacistRegistration.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments_1.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Doctor.java</file>
         </group>
     </open-files>
 </project-private>
