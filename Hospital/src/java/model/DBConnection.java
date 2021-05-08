@@ -332,6 +332,44 @@ public class DBConnection {
     
        
     } 
+      
+       public static List<Feedback>getFeedback(){
+       
+        List<Feedback> list= new ArrayList<Feedback>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from feedback");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Feedback f1=new Feedback();
+               
+                f1.setFeedbckid(rs.getInt(1));
+                f1.setFeedbck(rs.getString(2));
+                f1.setStars(rs.getInt(3));
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(f1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
      
      
 
