@@ -6,6 +6,8 @@
 
 package model;
 
+
+import Services.Security;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -225,4 +227,100 @@ public class DBConnection {
         return st;
        
     }   
+     
+     
+      Security security = new Security();
+    
+  public boolean RegDoctor(String nic, String regno, String fname, String lname,String username,int phoneno,String email, String password,String address,String doctype) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+        String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into doctor(DoctorType,NIC,RegNo,FirstName,LastName,Username,PhoneNo,Email,Password,Address) values(?,?,?,?,?,?,?,?,?,?)");
+             ps.setString(1,doctype);
+             ps.setString(2,nic);
+             ps.setString(3,regno);
+             ps.setString(4,fname);
+             ps.setString(5,lname);
+             ps.setString(6,username);
+             ps.setInt(7,phoneno);
+             ps.setString(8,email);
+             ps.setString(9,encryptedPassword);
+             ps.setString(10,address);
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+  
+  
+    public boolean RegPharmacist(String name, String username, String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+        String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into pharmacist(Name,Username,Password) values(?,?,?)");
+             ps.setString(1,name);
+             ps.setString(2,username);
+             ps.setString(3,encryptedPassword);
+          
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+    
+    
+      public boolean RegReceptionist(String name, String username, String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+            String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into receptionist(Name,Username,Password) values(?,?,?)");
+             ps.setString(1,name);
+             ps.setString(2,username);
+             ps.setString(3,encryptedPassword);
+           
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+     
+     
+
+     
 }
