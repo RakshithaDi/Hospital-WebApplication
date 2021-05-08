@@ -1,4 +1,4 @@
-package org.apache.jsp.doctor;
+package org.apache.jsp.hospital.doctor;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
