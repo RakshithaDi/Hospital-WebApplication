@@ -467,9 +467,11 @@ public class DBConnection {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 Doctor dr1=new Doctor();
-               
+               dr1.setDocid(rs.getInt(1));
                dr1.setFname(rs.getString(5));
                dr1.setLname(rs.getString(6));
+               dr1.setUsername(rs.getString(7));
+               
         
             
              
@@ -478,6 +480,45 @@ public class DBConnection {
                
                 
                 list.add(dr1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
+      
+      public static List<DoctorDateTime>getDocTimeDate(int docid){
+       
+        List<DoctorDateTime> list= new ArrayList<DoctorDateTime>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctordatetime where DoctorID='"+docid+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                DoctorDateTime dt=new DoctorDateTime();
+               dt.setDocid(rs.getInt(2));
+               dt.setDate(rs.getString(3));
+               dt.setTime(rs.getString(4));
+          
+               
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(dt);
                 
                 
                 

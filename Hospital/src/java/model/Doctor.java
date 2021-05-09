@@ -29,6 +29,7 @@ public class Doctor {
     private String password;
     private String address;
     private String username;
+    private int docid;
 
     /**
      * @return the docid
@@ -183,6 +184,20 @@ public class Doctor {
      */
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    /**
+     * @return the docid
+     */
+    public int getDocid() {
+        return docid;
+    }
+
+    /**
+     * @param docid the docid to set
+     */
+    public void setDocid(int docid) {
+        this.docid = docid;
     }
     
 

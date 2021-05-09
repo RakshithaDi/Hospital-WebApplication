@@ -1,11 +1,12 @@
 <%-- 
-    Document   : new-select-doctor
-    Created on : May 9, 2021, 2:15:19 PM
+    Document   : new-select-datetime
+    Created on : May 9, 2021, 3:31:49 PM
     Author     : PC
 --%>
 
 <%@page import="java.util.List"%>
-<%@page import="model.Doctor"%>
+<%@page import="model.DoctorDateTime"%>
+<%@page import="model.DBConnection"%>
 <%@page import="model.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -44,36 +45,38 @@
         </div>
     </nav>
     <div class="container" style="height: 753px;">
-        
-        
-        <%
+          <%
             
-                String doctype = request.getParameter("doctype");
-                
+                String docname = request.getParameter("docname");
+                int docid = Integer.parseInt(request.getParameter("docid"));
      %>
-     
-      
+
+            
+        
         
         <div class="row" style="margin: 19px;">
             <div class="col text-center" style="margin-top: 18px;height: 40px;">
-                <h1 style="color: rgb(0,0,0);font-size: 21px;">    Select Doctor&nbsp;&nbsp;</h1> 
+                <h1 style="color: rgb(0,0,0);font-size: 21px;">Select Date and Time</h1>
             </div>
-        </div>
-     <form method="post" action="new-select-datetime.jsp">
-         <input type="hidden" name="doctype" value="<%=doctype%>">
-         
-        <div class="row" style="margin: 19px;">
-            <div class="col"> <%List<Doctor> list = DBConnection.getDoctors(doctype); %>
-            <%for(Doctor dr1:list){ %> 
+        </div> 
+     <form method="post" action="new-confirm.jsp">
+        <%List<DoctorDateTime> list = DBConnection.getDocTimeDate(docid); %>
+            <%for(DoctorDateTime dt:list){ %>  
+       
+            
+            
+        <div class="row" style="margin: 19px;" id="docid">        
+            <div class="col">  
+                     <input type="hidden" name="date" id="date" value="<%= dt.getDate()%> ">
+            <input type="hidden" name="time" id="time" value="<%= dt.getTime()%>">
+            <input type="hidden" name="docname" id="docname" value="<%=docname%>">
                 <div class="row" style="margin-top: 5px;margin-bottom: 10px;">
-                    
-                        
-                        <div class="col text-center"><button class="btn btn-light btn-block text-capitalize" type="submit" name="docid"  value="<%=dr1.getDocid() %>" style="border-radius: 5px;height: 50px;border: 1px solid #bababa ;"><%= dr1.getFname() %>  <%= dr1.getLname() %>  <input type="hidden" name="docname" value="<%= dr1.getFname() %>  <%= dr1.getLname() %>"></button></div>
-                    </form>
-                </div> <%}%>
+                    <div class="col text-center"><button class="btn btn-light btn-block" type="submit" name="datetime" value="date :<%= dt.getDate()%>   time : <%= dt.getTime()%>" style="height: 50px;border-radius: 5px;border-color: rgb(179,179,179);">date : <%= dt.getDate()%>   time : <%= dt.getTime()%> </button></div>
+                </div>
             </div>
-        </div>
+        </div> <%}%>
     </div>
+            </form>
     <footer style="background: #212121;">
         <div class="container text-center"><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Privacy Policy</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">About</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Contact</a><a href="../feedback/new-feedback.html" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Leave Feedback</a></div>
         <div class="container text-center">

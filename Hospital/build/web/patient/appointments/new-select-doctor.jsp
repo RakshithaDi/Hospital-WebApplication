@@ -59,15 +59,16 @@
                 <h1 style="color: rgb(0,0,0);font-size: 21px;">    Select Doctor&nbsp;&nbsp;</h1> 
             </div>
         </div>
-     <form method="post" action="new-select-datetime.html">
+     <form method="post" action="new-select-datetime.jsp">
          <input type="hidden" name="doctype" value="<%=doctype%>">
+         
         <div class="row" style="margin: 19px;">
             <div class="col"> <%List<Doctor> list = DBConnection.getDoctors(doctype); %>
             <%for(Doctor dr1:list){ %> 
                 <div class="row" style="margin-top: 5px;margin-bottom: 10px;">
                     
                         
-                        <div class="col text-center"><button class="btn btn-light btn-block text-capitalize" type="submit" name="docname"  value="<%=dr1.getFname() %><%=dr1.getLname() %>" style="border-radius: 5px;height: 50px;border: 1px solid #bababa ;"><%=dr1.getFname() %><%=dr1.getLname() %> </button></div>
+                        <div class="col text-center"><button class="btn btn-light btn-block text-capitalize" type="submit" name="docid"  value="<%=dr1.getDocid() %>" style="border-radius: 5px;height: 50px;border: 1px solid #bababa ;"><%= dr1.getFname() %>  <%= dr1.getLname() %>  <input type="hidden" name="docname" value="<%= dr1.getFname() %>  <%= dr1.getLname() %>"></button></div>
                     </form>
                 </div> <%}%>
             </div>

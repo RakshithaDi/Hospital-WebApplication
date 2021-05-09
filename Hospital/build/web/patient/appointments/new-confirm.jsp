@@ -1,12 +1,9 @@
 <%-- 
-    Document   : new-select-doctor
-    Created on : May 9, 2021, 2:15:19 PM
+    Document   : new-confirm
+    Created on : May 9, 2021, 5:15:28 PM
     Author     : PC
 --%>
 
-<%@page import="java.util.List"%>
-<%@page import="model.Doctor"%>
-<%@page import="model.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,11 +21,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="../assets/css/Navbar-Dropdown-List-Item.css">
+    
+    <script type="text/javascript">
+
+    function incNumber() {
+        for(i=1;i>0;i++){
+        document.getElementById("display").value=i;
+    }
+    }
+    </script>
+    
 </head>
 
-<body style="background: rgb(255,255,255);">
+<body style="background: #f2f2f2;">
     <nav class="navbar navbar-light navbar-expand-md" id="mainNav" style="background: #333333;">
-        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Brand</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Central Hospitals</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="appointments.html">Appointments</a></li>
@@ -43,34 +50,65 @@
             </div>
         </div>
     </nav>
-    <div class="container" style="height: 753px;">
-        
-        
-        <%
+    
+       <%
             
-                String doctype = request.getParameter("doctype");
-                
+                String docname = request.getParameter("docname");
+                String date = request.getParameter("date");
+                String time = request.getParameter("time");
+                String datetime = request.getParameter("datetime");
      %>
-     
-      
-        
+
+    <div class="container" style="height: 753px;">
         <div class="row" style="margin: 19px;">
             <div class="col text-center" style="margin-top: 18px;height: 40px;">
-                <h1 style="color: rgb(0,0,0);font-size: 21px;">    Select Doctor&nbsp;&nbsp;</h1> 
+                <h1 style="color: rgb(0,0,0);font-size: 21px;">Confirm Your Appointment</h1>
             </div>
         </div>
-     <form method="post" action="new-select-datetime.jsp">
-         <input type="hidden" name="doctype" value="<%=doctype%>">
-         
         <div class="row" style="margin: 19px;">
-            <div class="col"> <%List<Doctor> list = DBConnection.getDoctors(doctype); %>
-            <%for(Doctor dr1:list){ %> 
-                <div class="row" style="margin-top: 5px;margin-bottom: 10px;">
-                    
-                        
-                        <div class="col text-center"><button class="btn btn-light btn-block text-capitalize" type="submit" name="docid"  value="<%=dr1.getDocid() %>" style="border-radius: 5px;height: 50px;border: 1px solid #bababa ;"><%= dr1.getFname() %>  <%= dr1.getLname() %>  <input type="hidden" name="docname" value="<%= dr1.getFname() %>  <%= dr1.getLname() %>"></button></div>
-                    </form>
-                </div> <%}%>
+            <div class="col mx-auto">
+                <div class="row">
+                    <div class="col d-xl-flex align-items-center justify-content-xl-center">
+                        <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
+                            <div class="card-body">
+                                <h4 class="card-title" style="color: rgb(0,0,0);padding: 5px;">Dr. <%=docname%></h4>
+                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;"><%=datetime%></h6>
+                               
+                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">No<label id="display"></label></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form>
+                    <div class="form-row">
+                        <div class="col d-xl-flex align-items-center justify-content-xl-center">
+                            <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);font-family: Cabin, sans-serif;">Use Central Hospital Pharmacy to Buy Medicine</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col" style="height: 20px;">
+                                            <p style="color: rgb(146,146,146);font-size: 13px;font-family: Cabin, sans-serif;">When you select this option your prescription will be automatically send to the Pharmacy and you will get an email when it's ready.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-row">
+                                <div class="col text-center" style="margin: 7px;margin-top: 15px;"><button class="btn btn-primary bg-success border rounded shadow-lg" type="button" style="color: rgb(255,255,255);background: #003893;">Confirm&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col text-center" style="margin: 6px;"><button class="btn btn-primary bg-secondary border rounded" type="button" id="inc" onclick="incNumber()" style="background: #003893;color: rgb(255,255,255);">Confirm and Pay Online&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
