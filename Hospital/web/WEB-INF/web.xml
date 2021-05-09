@@ -23,6 +23,18 @@
         <servlet-name>ReceptionistRegistration</servlet-name>
         <servlet-class>controller.ReceptionistRegistration</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PatientRegistration</servlet-name>
+        <servlet-class>controller.PatientRegistration</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PatientLogin</servlet-name>
+        <servlet-class>controller.PatientLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmitFeedback</servlet-name>
+        <servlet-class>controller.SubmitFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SubmitDiagnosisPrescription</servlet-name>
         <url-pattern>/SubmitDiagnosisPrescription</url-pattern>
@@ -42,6 +54,18 @@
     <servlet-mapping>
         <servlet-name>ReceptionistRegistration</servlet-name>
         <url-pattern>/ReceptionistRegistration</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PatientRegistration</servlet-name>
+        <url-pattern>/PatientRegistration</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PatientLogin</servlet-name>
+        <url-pattern>/PatientLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitFeedback</servlet-name>
+        <url-pattern>/SubmitFeedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
