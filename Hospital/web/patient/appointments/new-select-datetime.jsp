@@ -59,24 +59,26 @@
                 <h1 style="color: rgb(0,0,0);font-size: 21px;">Select Date and Time</h1>
             </div>
         </div> 
-     <form method="post" action="new-confirm.jsp">
+     
         <%List<DoctorDateTime> list = DBConnection.getDocTimeDate(docid); %>
             <%for(DoctorDateTime dt:list){ %>  
        
             
             
-        <div class="row" style="margin: 19px;" id="docid">        
+        <div class="row" style="margin: 19px;">        
             <div class="col">  
-                     <input type="hidden" name="date" id="date" value="<%= dt.getDate()%> ">
-            <input type="hidden" name="time" id="time" value="<%= dt.getTime()%>">
+            <form method="post" action="new-confirm.jsp">         
+            <input type="hidden" name="date" id="date" value="<%= dt.getDate()%> ">
+            <input type="hidden" name="time" id="time" value="<%= dt.getTime()%> ">
+            <input type="hidden" name="docid" id="docid" value="<%=docid%>">
             <input type="hidden" name="docname" id="docname" value="<%=docname%>">
                 <div class="row" style="margin-top: 5px;margin-bottom: 10px;">
-                    <div class="col text-center"><button class="btn btn-light btn-block" type="submit" name="datetime" value="date :<%= dt.getDate()%>   time : <%= dt.getTime()%>" style="height: 50px;border-radius: 5px;border-color: rgb(179,179,179);">date : <%= dt.getDate()%>   time : <%= dt.getTime()%> </button></div>
+                    <div class="col text-center"><button class="btn btn-light btn-block" type="submit"  style="height: 50px;border-radius: 5px;border-color: rgb(179,179,179);">date : <%= dt.getDate()%>   time : <%= dt.getTime()%> </button> </form></div>
                 </div>
             </div>
         </div> <%}%>
     </div>
-            </form>
+            
     <footer style="background: #212121;">
         <div class="container text-center"><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Privacy Policy</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">About</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Contact</a><a href="../feedback/new-feedback.html" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Leave Feedback</a></div>
         <div class="container text-center">

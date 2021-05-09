@@ -4,6 +4,7 @@
     Author     : PC
 --%>
 
+<%@page import="model.DoctorDateTime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,14 +23,6 @@
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="../assets/css/Navbar-Dropdown-List-Item.css">
     
-    <script type="text/javascript">
-
-    function incNumber() {
-        for(i=1;i>0;i++){
-        document.getElementById("display").value=i;
-    }
-    }
-    </script>
     
 </head>
 
@@ -56,7 +49,14 @@
                 String docname = request.getParameter("docname");
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
-                String datetime = request.getParameter("datetime");
+                String docid = request.getParameter("docid");
+                
+                
+                
+                DoctorDateTime ddt = new DoctorDateTime();
+                     ddt.setDate(date);
+                     ddt.setTime(time);
+                     
      %>
 
     <div class="container" style="height: 753px;">
@@ -72,9 +72,9 @@
                         <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
                             <div class="card-body">
                                 <h4 class="card-title" style="color: rgb(0,0,0);padding: 5px;">Dr. <%=docname%></h4>
-                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;"><%=datetime%></h6>
-                               
-                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">No<label id="display"></label></h6>
+                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">Date : <%=ddt.getDate()%></h6>
+                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">Time : <%=ddt.getTime()%></h6>
+                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">No</h6>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                                 <div class="col text-center" style="margin: 7px;margin-top: 15px;"><button class="btn btn-primary bg-success border rounded shadow-lg" type="button" style="color: rgb(255,255,255);background: #003893;">Confirm&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
                             </div>
                             <div class="form-row">
-                                <div class="col text-center" style="margin: 6px;"><button class="btn btn-primary bg-secondary border rounded" type="button" id="inc" onclick="incNumber()" style="background: #003893;color: rgb(255,255,255);">Confirm and Pay Online&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button></div>
+                                <div class="col text-center" style="margin: 6px;"><button class="btn btn-primary bg-secondary border rounded" type="button" style="background: #003893;color: rgb(255,255,255);">Confirm and Pay Online&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button></div>
                             </div>
                         </div>
                     </div>
