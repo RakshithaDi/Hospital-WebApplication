@@ -239,7 +239,39 @@ public class DBConnection {
        
         return verified;
        
-    }   
+    }  
+     
+     
+     
+         public boolean checkPatient(String email,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    { 
+         String encryptedPassword = security.getHash(password);
+        boolean verified = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from patient where email=?");
+             ps.setString(1,email);
+            
+             ResultSet rs = ps.executeQuery();
+             
+             if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+          
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return verified;
+       
+    }  
+     
+     
+     
+     
+     
+     
      
      
       Security security = new Security();
@@ -370,6 +402,58 @@ public class DBConnection {
         
         
     }
+       
+       public boolean RegPatient(String fname,String lname,String email,int phoneno,String password,String gender,String bloodgroup,String dob,String address,String pec) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+    
+        
+        
+        String encryptedPassword = security.getHash(password);
+     
+            PreparedStatement ps=getConnection().prepareStatement("Insert into patient(FirstName,LastName,Email,PhoneNo,Password,Address,DOB,Gender,BloodType,PEC) values(?,?,?,?,?,?,?,?,?,?)");
+             ps.setString(1,fname);
+             ps.setString(2,lname);
+             ps.setString(3,email);
+             ps.setInt(4,phoneno);
+             ps.setString(5,encryptedPassword);
+             ps.setString(6,address);
+             ps.setString(7,dob);
+             ps.setString(8,gender);
+             ps.setString(9,bloodgroup);
+             ps.setString(10,pec);
+          
+             int i = ps.executeUpdate();
+                 if(i>0)
+                {
+                     return true;
+                }
+             else
+                {
+                     return false;
+                }
+             
+    
+       
+    } 
+       
+       
+       
+        public boolean AddFeedback(String rate,String feedback) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        PreparedStatement ps=getConnection().prepareStatement("insert into feedback(Text,Stars) values(?,?)");
+        ps.setString(1,feedback);
+        ps.setString(2,rate);
+        int i = ps.executeUpdate();
+        if(i>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
+    }   
      
      
 
