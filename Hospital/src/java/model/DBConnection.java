@@ -453,7 +453,45 @@ public class DBConnection {
             return false;
         }
        
-    }   
+    }
+        
+        
+      public static List<Doctor>getDoctors(String doctype){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor where DoctorType='"+doctype+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor dr1=new Doctor();
+               
+               dr1.setFname(rs.getString(5));
+               dr1.setLname(rs.getString(6));
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(dr1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
      
      
 
