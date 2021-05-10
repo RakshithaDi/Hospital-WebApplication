@@ -270,7 +270,30 @@ public class DBConnection {
         return verified;
        
     }  
-     
+         
+         
+         public boolean checkAdmin(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+          String encryptedPassword = security.getHash(password);
+        boolean verified = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from webadmin where Username=?");
+             ps.setString(1,username);
+             
+             ResultSet rs = ps.executeQuery();
+             
+                if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return verified;
+       
+    }  
      
      
      
@@ -641,16 +664,16 @@ public class DBConnection {
             PreparedStatement ps=con.prepareStatement("select * from patient where email ='"+email+"'  ");
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
-                Patient pa2=new Patient();
+                Patient user=new Patient();
                
-                pa2.setPid(rs.getInt(1));
+                user.setPid(rs.getInt(1));
                
                 
                // e.setDeceased(rs.getString(11));
                
                 
                 
-                list.add(pa2);
+                list.add(user);
                 
                 
                 
@@ -664,6 +687,81 @@ public class DBConnection {
         
     }
         
+         
+          public static List<Doctor>getDoctorName(int docid){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor where DoctorID='"+docid+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor doc2=new Doctor();
+               
+               doc2.setFname(rs.getString(7));
+               doc2.setLname(rs.getString(6));
+              
+               
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(doc2);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
+          
+              public static List<Appointments>getBookedAppointments(int patientid){
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from appointment where PatientID='"+patientid+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Appointments bookap=new Appointments();
+                //e.setNic(rs.getString(1));
+               
+                bookap.setLineno(rs.getInt(1));
+                bookap.setPid(rs.getInt(2));
+                bookap.setDocid(rs.getInt(3));
+                bookap.setDate(rs.getString(4));
+                bookap.setTime(rs.getString(5));
+                bookap.setPharmacy(rs.getString(6));
+                bookap.setAptid(rs.getInt(7));
+               
+                
+                
+                list.add(bookap);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
 
      
 

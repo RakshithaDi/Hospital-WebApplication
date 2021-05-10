@@ -133,6 +133,36 @@ public class Login extends HttpServlet {
             }
             
         }
+        
+            else if("Admin".equals(usertype))
+        {
+            try{
+           
+            boolean rslt = con.checkAdmin(username,password);
+            if(rslt==true)
+            {
+                out.println("You have succesfully logged!!");
+//                RequestDispatcher rs = request.getRequestDispatcher("");
+//                rs.include(request, response);
+                 response.sendRedirect("hospital/pharmacist/order-list.html");
+            }
+            else
+            {
+                out.println("Username or Password Incorrect");
+                out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
+            }
+            
+               }
+            catch(Exception e)
+            {
+            e.printStackTrace();
+            }
+            
+        }
+        
+        
+        
+        
         else
         {
             

@@ -1,0 +1,25 @@
+SMAP
+appointments_jsp.java
+JSP
+*S JSP
+*F
++ 0 appointments.jsp
+patient/appointments/appointments.jsp
+*L
+5,64:51
+69:115,5
+70:120,3
+71:123
+72,2:124,3
+74,5:130
+79:135,5
+80,3:140
+83:143,3
+84,2:146
+86:148,3
+87,2:151
+89:153,3
+90,3:156
+93:159,5
+94,58:164
+*E
