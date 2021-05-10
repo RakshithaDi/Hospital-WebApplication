@@ -4,6 +4,9 @@
     Author     : PC
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="model.DBConnection"%>
+<%@page import="model.Appointments"%>
 <%@page import="model.DoctorDateTime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,8 +59,10 @@
                 DoctorDateTime ddt = new DoctorDateTime();
                      ddt.setDate(date);
                      ddt.setTime(time);
-                     
+                                  
      %>
+     
+    
 
     <div class="container" style="height: 753px;">
         <div class="row" style="margin: 19px;">
@@ -66,27 +71,37 @@
             </div>
         </div>
         <div class="row" style="margin: 19px;">
+             <form method="post" action="../../SubmitAppointment">
             <div class="col mx-auto">
                 <div class="row">
+                     <%List<Appointments> list = DBConnection.checkAppointments(); %>
+            <%for(Appointments ap3:list){ %>  
                     <div class="col d-xl-flex align-items-center justify-content-xl-center">
                         <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
                             <div class="card-body">
-                                <h4 class="card-title" style="color: rgb(0,0,0);padding: 5px;">Dr. <%=docname%></h4>
+                                <h4 class="card-title" style="color: rgb(0,0,0);padding: 5px;">Dr. <%=docname%> </h4>
                                 <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">Date : <%=ddt.getDate()%></h6>
                                 <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">Time : <%=ddt.getTime()%></h6>
-                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">No</h6>
+                                <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">No :  <%=ap3.getCount()%> </h6>
+                           
                             </div>
                         </div>
                     </div>
                 </div>
-                <form>
                     <div class="form-row">
                         <div class="col d-xl-flex align-items-center justify-content-xl-center">
                             <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
                                 <div class="card-body">
                                     <div class="form-row">
                                         <div class="col">
-                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);font-family: Cabin, sans-serif;">Use Central Hospital Pharmacy to Buy Medicine</label></div>
+                                           
+                                                         <input type="hidden" name="patientid" value="1">
+                                                         <input type="hidden" name="docid" value="<%=docid%>">
+                                                         <input type="hidden" name="lineno" value="<%=ap3.getCount()%>">
+                                                         <input type="hidden" name="date" value="<%=date%>">
+                                                         <input type="hidden" name="time" value="<%=time%>">    
+                                                  
+                                            <div class="form-check"><input class="form-check-input" type="checkbox" id="pharmacy-1" name="pharmacy" value="Yes" ><label class="form-check-label" for="formCheck-1" style="color: rgb(0,0,0);font-family: Cabin, sans-serif;">Use Central Hospital Pharmacy to Buy Medicine</label></div>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -101,15 +116,15 @@
                     <div class="form-row">
                         <div class="col">
                             <div class="form-row">
-                                <div class="col text-center" style="margin: 7px;margin-top: 15px;"><button class="btn btn-primary bg-success border rounded shadow-lg" type="button" style="color: rgb(255,255,255);background: #003893;">Confirm&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
-                            </div>
+                                <div class="col text-center" style="margin: 7px;margin-top: 15px;"><button class="btn btn-primary bg-success border rounded shadow-lg" type="submit" style="color: rgb(255,255,255);background: #003893;">Confirm&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
+                            </div>  
                             <div class="form-row">
                                 <div class="col text-center" style="margin: 6px;"><button class="btn btn-primary bg-secondary border rounded" type="button" style="background: #003893;color: rgb(255,255,255);">Confirm and Pay Online&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button></div>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
+               
+            </div> </form> <%}%> 
         </div>
     </div>
     <footer style="background: #212121;">

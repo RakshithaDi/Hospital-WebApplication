@@ -89,7 +89,9 @@ public class PatientLogin extends HttpServlet {
 //                RequestDispatcher rs = request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
 //                rs.forward(request, response);
                // response.sendRedirect("hospital/doctor/appointments_list.jsp");
-          
+               
+                request.setAttribute("email",email );
+                request.getRequestDispatcher("patient/appointments/appointments.jsp").forward(request, response);
             }
             else
             {
