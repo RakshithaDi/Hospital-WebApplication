@@ -56,7 +56,7 @@
         HttpSession se = request.getSession();
         session.setMaxInactiveInterval(1800); //Expires after 30 seconds inactivity
         String email = (String)session.getAttribute("email");
-       
+        out.println("Hello " + email);
         
         %>
      
@@ -70,7 +70,7 @@
         <div class="row" style="margin: 14px;">
             <div class="col">
                 <div class="row" style="margin: 14px;">
-                    <div class="col"><span style="color: rgb(255,16,16);font-family: Cabin, sans-serif;">UPCOMING <% out.println("Hello " + email); %> </span>
+                    <div class="col"><span style="color: rgb(255,16,16);font-family: Cabin, sans-serif;">UPCOMING</span>
                     </div>
                 </div>
                 <div class="row" style="margin: 14px;">

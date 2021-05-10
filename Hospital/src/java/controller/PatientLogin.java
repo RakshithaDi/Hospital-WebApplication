@@ -91,9 +91,9 @@ public class PatientLogin extends HttpServlet {
 //                RequestDispatcher rs = request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
 //                rs.forward(request, response);
                // response.sendRedirect("hospital/doctor/appointments_list.jsp");
-              HttpSession session = request.getSession();
-           session.setAttribute("email",email);
-           response.sendRedirect("patient/appointments/appointments.jsp");
+                HttpSession session = request.getSession();
+                session.setAttribute("email",email);
+                response.sendRedirect("patient/appointments/appointments.jsp");
                 
 //                request.setAttribute("email",email);
 //                response.sendRedirect("patient/appointments/appointments.jsp");

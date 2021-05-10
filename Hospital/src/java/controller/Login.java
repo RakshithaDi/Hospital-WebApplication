@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DBConnection;
 
 /**
@@ -89,7 +90,9 @@ public class Login extends HttpServlet {
                 out.println("You have succesfully logged!!");
 //                RequestDispatcher rs = request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
 //                rs.forward(request, response);
-                response.sendRedirect("hospital/doctor/appointments_list.jsp");
+                HttpSession session = request.getSession();
+                session.setAttribute("username",username);
+                response.sendRedirect("hospital/doctor/appointment_list.jsp");
           
             }
             else
@@ -118,6 +121,8 @@ public class Login extends HttpServlet {
                 out.println("You have succesfully logged!!");
 //                RequestDispatcher rs = request.getRequestDispatcher("");
 //                rs.include(request, response);
+                 HttpSession session = request.getSession();
+                 session.setAttribute("username",username);
                  response.sendRedirect("hospital/pharmacist/order-list.html");
             }
             else
@@ -144,7 +149,9 @@ public class Login extends HttpServlet {
                 out.println("You have succesfully logged!!");
 //                RequestDispatcher rs = request.getRequestDispatcher("");
 //                rs.include(request, response);
-                 response.sendRedirect("hospital/pharmacist/order-list.html");
+                 HttpSession session = request.getSession();
+                 session.setAttribute("username",username);
+                 response.sendRedirect("hospital/admin/accounts.jsp");
             }
             else
             {
@@ -172,8 +179,9 @@ public class Login extends HttpServlet {
             if(rslt==true)
             {
                 out.println("You have succesfully logged!!");
-                RequestDispatcher rs = request.getRequestDispatcher("");
-                rs.include(request, response);
+                HttpSession session = request.getSession();
+                session.setAttribute("username",username);
+                response.sendRedirect("hospital/receptionist/messages.jsp");
             }
             else
             {

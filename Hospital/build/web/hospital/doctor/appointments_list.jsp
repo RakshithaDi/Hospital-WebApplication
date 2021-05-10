@@ -84,6 +84,9 @@
                 
                  <input type="submit"  value="View">
             </form>
+                
+                </td>
+                 </tr>
                     
                     
                     

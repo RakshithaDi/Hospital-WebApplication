@@ -763,6 +763,82 @@ public class DBConnection {
         
     }
               
+       public static List<Doctor>getDoctorId(String username){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor where Username='"+username+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor doc3=new Doctor();
+               
+               doc3.setDocid(rs.getInt(1));
+               
+              
+               
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(doc3);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
+       
+       
+       public static List<Appointments>getAppointmentDetails(int docid){
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from appointment where DoctorID='"+docid+"'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Appointments appo1=new Appointments();
+                //e.setNic(rs.getString(1));
+               
+                appo1.setLineno(rs.getInt(1));
+                appo1.setPid(rs.getInt(2));
+                appo1.setDocid(rs.getInt(3));
+                appo1.setDate(rs.getString(4));
+                appo1.setTime(rs.getString(5));
+                appo1.setPharmacy(rs.getString(6));
+                appo1.setAptid(rs.getInt(7));
+               
+                
+                
+                list.add(appo1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
+              
               
 
      

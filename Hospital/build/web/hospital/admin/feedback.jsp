@@ -38,15 +38,24 @@
            
 
 <body style="background: #dddddd;">
+    
+       <%
+          
+         //Expires after 30 seconds inactivity
+        String username = (String)session.getAttribute("username");
+        
+        
+        %>
+    
     <nav class="navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search">
         <div class="container"><a class="navbar-brand" href="#"><i class="fas fa-hospital" style="font-size: 25px;"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="accounts.html">Create Accounts</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="accounts.jsp">Create Accounts</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="#"><strong>Feedback</strong></a></li>
                 </ul>
             </div>
-            <div class="dropdown menu_links"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);">user's name</a>
+            <div class="dropdown menu_links"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"><%out.println("Hello " + username);%> </a>
                 <div class="dropdown-menu"><a class="dropdown-item" href="#">Logout</a></div>
             </div>
         </div>

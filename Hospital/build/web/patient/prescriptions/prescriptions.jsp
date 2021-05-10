@@ -4,6 +4,7 @@
     Author     : PC
 --%>
 
+<%@page import="model.Patient"%>
 <%@page import="model.Doctor"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Prescription"%>
@@ -45,17 +46,29 @@
         </div>
     </nav>
     
+    
+    <%
+          
+
+        String email = (String)session.getAttribute("email");
+       
+        
+        %>
+     
+      <%List<Patient> list3 = DBConnection.getPatientID(email); %>
+            <%for(Patient plog:list3){ %>
+    
          
     <div class="container">
         <div class="col" style="margin-top: 20px;">
             <div class="row" style="margin-top: 25px;margin-bottom: 20px;">
                 <div class="col">
-                     <%List<Prescription> list2 = DBConnection.getPrescription(1); %>
+                     <%List<Prescription> list2 = DBConnection.getPrescription(plog.getPid()); %>
             <%for(Prescription p:list2){ %>  
             
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-2" style="color: rgb(129,129,129);border-color: rgb(0,0,0);">Prescription ID: <%=p.getPrscid()%>&nbsp;</h6>
+                            <h6 class="mb-2" style="color: rgb(129,129,129);border-color: rgb(0,0,0);">Prescription ID: <%=p.getPrscid()%>  <%=email%>&nbsp;</h6>
                             <h4 class="text-capitalize card-title" style="color: rgb(0,0,0);font-size: 20px;"> 
                                 <%List<Doctor> list = DBConnection.getDoctorName(p.getDocid()); %>
                                  <%for(Doctor doc2:list){ %>Dr.<%=doc2.getFname()%> <%=doc2.getLname()%> <%}%></h4>
@@ -66,7 +79,7 @@
                                 <div class="col text-center"><button class="btn btn-light border rounded" type="button" style="margin-right: 10px;margin-left: 10px;">Pay Online</button></div>
                             </div>
                         </div>
-                    </div> <%}%> 
+                    </div> <%}%> <%}%> 
                 </div>
             </div>
           
