@@ -12,6 +12,8 @@
 <%@page import="model.DBConnection"%>
 <%@page import="model.DBConnection"%>
 
+<%@page import="javax.servlet.http.HttpSession"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +39,7 @@
         <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Central Hospitals</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="appointments.jsp">Appointments</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="appointment.jsp">Appointments</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" data-bss-hover-animate="pulse" href="../prescriptions/prescriptions.jsp">Prescriptions</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" data-bss-hover-animate="pulse" href="../chat/messages.html">Chat</a></li>
                     <li class="nav-item text-center d-xl-flex justify-content-xl-center align-items-xl-center nav-link js-scroll-trigger">
@@ -49,24 +51,35 @@
             </div>
         </div>
     </nav>
-    
-   
+    <%
+          
+        HttpSession se = request.getSession();
+        session.setMaxInactiveInterval(1800); //Expires after 30 seconds inactivity
+        String email = (String)session.getAttribute("email");
+       
+        
+        %>
+     
+      <%List<Patient> list2 = DBConnection.getPatientID(email); %>
+            <%for(Patient plog:list2){ %> 
  
     <div class="container" style="height: 802px;">
         <div class="row" style="margin: 32px;height: 100px;">
-            <div class="col text-center align-self-center"><a class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="background: #0051ba;color: rgb(255,255,255);" href="new-select-specialization.html">NEW Appointment&nbsp;&nbsp;<i class="fa fa-plus"></i></a></div>
+            <div class="col text-center align-self-center"><form method="post" action="new-select-specialization.jsp"> <button  type="submit" name="patientid" value="<%=plog.getPid()%>" class="btn btn-primary" role="button" data-bss-hover-animate="pulse" style="background: #0051ba;color: rgb(255,255,255);" >NEW Appointment&nbsp;&nbsp;<i class="fa fa-plus"></i></</button></form></div>
         </div>
         <div class="row" style="margin: 14px;">
             <div class="col">
                 <div class="row" style="margin: 14px;">
-                    <div class="col"><span style="color: rgb(255,16,16);font-family: Cabin, sans-serif;">UPCOMING  </span>
+                    <div class="col"><span style="color: rgb(255,16,16);font-family: Cabin, sans-serif;">UPCOMING <% out.println("Hello " + email); %> </span>
                     </div>
                 </div>
                 <div class="row" style="margin: 14px;">
                     <div class="col">
                         <div class="row">
                             <div class="col" style="box-shadow: 0px 0px 0px 0px;">
-                                <%List<Appointments> list1 = DBConnection.getBookedAppointments(1); %>  <%-- need to pass patient id--%>
+           
+                                
+             <%List<Appointments> list1 = DBConnection.getBookedAppointments(plog.getPid()); %>  <%-- need to pass patient id--%>
             <%for(Appointments bookap:list1){ %>
         
                <%List<Doctor> list = DBConnection.getDoctorName(bookap.getDocid()); %>
@@ -90,7 +103,7 @@
                                             </div>
                                         </div>  
                                     </div>
-                                </div> <%}%>     <%}%>
+                                </div> <%}%>     <%}%>  <%}%>
                             </div>
                         </div>
                     </div>

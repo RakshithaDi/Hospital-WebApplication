@@ -73,7 +73,7 @@ public class SubmitAppointment extends HttpServlet {
       String time=request.getParameter("time");
       int lineno = Integer.parseInt(request.getParameter("lineno"));
       String pharmacy=request.getParameter("pharmacy");
-      int apid=1;
+      
       
       
       if (!"Yes".equals(pharmacy))

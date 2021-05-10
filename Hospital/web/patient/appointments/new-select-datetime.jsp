@@ -49,6 +49,7 @@
             
                 String docname = request.getParameter("docname");
                 int docid = Integer.parseInt(request.getParameter("docid"));
+                String pid = request.getParameter("patientid");
      %>
 
             
@@ -67,7 +68,8 @@
             
         <div class="row" style="margin: 19px;">        
             <div class="col">  
-            <form method="post" action="new-confirm.jsp">         
+            <form method="post" action="new-confirm.jsp">  
+            <input type="hidden" name="patientid" value="<%= pid%>">
             <input type="hidden" name="date" id="date" value="<%= dt.getDate()%> ">
             <input type="hidden" name="time" id="time" value="<%= dt.getTime()%> ">
             <input type="hidden" name="docid" id="docid" value="<%=docid%>">

@@ -53,6 +53,7 @@
                 String date = request.getParameter("date");
                 String time = request.getParameter("time");
                 String docid = request.getParameter("docid");
+                String pid = request.getParameter("patientid");
                 
                 
                 
@@ -72,6 +73,7 @@
         </div>
         <div class="row" style="margin: 19px;">
              <form method="post" action="../../SubmitAppointment">
+                 
             <div class="col mx-auto">
                 <div class="row">
                      <%List<Appointments> list = DBConnection.checkAppointments(); %>
@@ -95,7 +97,7 @@
                                     <div class="form-row">
                                         <div class="col">
                                            
-                                                         <input type="hidden" name="patientid" value="1">
+                                                         <input type="hidden" name="patientid" value="<%=pid%>">
                                                          <input type="hidden" name="docid" value="<%=docid%>">
                                                          <input type="hidden" name="lineno" value="<%=ap3.getCount()%>">
                                                          <input type="hidden" name="date" value="<%=date%>">

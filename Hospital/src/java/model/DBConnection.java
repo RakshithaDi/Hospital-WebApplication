@@ -664,16 +664,16 @@ public class DBConnection {
             PreparedStatement ps=con.prepareStatement("select * from patient where email ='"+email+"'  ");
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
-                Patient user=new Patient();
+                Patient plog=new Patient();
                
-                user.setPid(rs.getInt(1));
+                plog.setPid(rs.getInt(1));
                
                 
                // e.setDeceased(rs.getString(11));
                
                 
                 
-                list.add(user);
+                list.add(plog);
                 
                 
                 
@@ -762,6 +762,8 @@ public class DBConnection {
         return list;
         
     }
+              
+              
 
      
 
