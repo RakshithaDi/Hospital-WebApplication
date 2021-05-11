@@ -12,7 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DBConnection;
+import model.Patient;
 
 /**
  *
@@ -85,11 +87,19 @@ public class PatientLogin extends HttpServlet {
             boolean rslt = con.checkPatient(email,password);
             if(rslt==true)
             {
-                out.println("You have succesfully logged!!");
+                //out.println("You have succesfully logged!!");
 //                RequestDispatcher rs = request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
 //                rs.forward(request, response);
                // response.sendRedirect("hospital/doctor/appointments_list.jsp");
-          
+                HttpSession session = request.getSession();
+                session.setAttribute("email",email);
+                response.sendRedirect("patient/appointments/appointments.jsp");
+                
+//                request.setAttribute("email",email);
+//                response.sendRedirect("patient/appointments/appointments.jsp");
+                //request.setAttribute("email",email );
+                //request.getRequestDispatcher("patient/appointments/appointments.jsp").forward(request, response);
+                
             }
             else
             {

@@ -51,7 +51,7 @@
             <br>
                 
             <table border='1' width='100%' id="myTable">
-            <tr class="header"><th> Appointment ID</th> <th>Name</th><th>Email</th><th>Gender</th> <th>DOB</th><th>Appointment Date</th><th>View</th></tr>
+            <tr class="header"><th> Appointment ID</th> <th>Name</th><th>Email</th><th>Gender</th> <th>DOB</th><th>Appointment Date</th><th>Time</th><th>View</th></tr>
         
                        <%List<Appointments> list = DBConnection.getAllAppointments(); %>
             <%for(Appointments a:list){ %>
@@ -60,7 +60,7 @@
              <%List<Patient> list1 = DBConnection.getAllPatients(a.getPid()); %>
             <%for(Patient e:list1){ %>
             
-            <tr><td><%=a.getAptid()%></td><td><%=e.getFname()+" "+e.getLname()%></td><td><%=e.getEmail()%></td> <td> <%=e.getGender()%></td><td><%=e.getDob()%></td><td><%=a.getDate()%></td> <td>
+            <tr><td><%=a.getAptid()%></td><td><%=e.getFname()+" "+e.getLname()%></td><td><%=e.getEmail()%></td> <td> <%=e.getGender()%></td><td><%=e.getDob()%></td><td><%=a.getDate()%></td><td><%=a.getTime()%></td> <td>
                     
                     
                      <form method="post" action="appointmentcopy.jsp">
@@ -84,6 +84,9 @@
                 
                  <input type="submit"  value="View">
             </form>
+                
+                </td>
+                 </tr>
                     
                     
                     

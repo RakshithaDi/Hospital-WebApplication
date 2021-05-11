@@ -1,0 +1,14 @@
+SMAP
+timeslots_jsp.java
+JSP
+*S JSP
+*F
++ 0 timeslots.jsp
+hospital/receptionist/timeslots.jsp
+*L
+5,31:44
+38,4:78
+41,11:82
+52:93,3
+53,66:96
+*E

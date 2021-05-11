@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,11 +53,13 @@ public class DBConnection {
                 e.setLname(rs.getString(3));
                 e.setEmail(rs.getString(4));
                 e.setMobileNo(rs.getInt(5));
-                e.setAddress(rs.getString(6));
-                e.setDob(rs.getString(7));
-                e.setGender(rs.getString(8));
-                e.setBloodGroup(rs.getString(9));
-                e.setPec(rs.getString(10));
+                
+                
+                e.setAddress(rs.getString(7));
+                e.setDob(rs.getString(8));
+                e.setGender(rs.getString(9));
+                e.setBloodGroup(rs.getString(10));
+                e.setPec(rs.getString(11));
                 
                // e.setDeceased(rs.getString(11));
                
@@ -87,13 +90,14 @@ public class DBConnection {
             while(rs.next()){
                 Appointments a=new Appointments();
                 //e.setNic(rs.getString(1));
-                a.setAptid(rs.getInt(1));
-                a.setLineno(rs.getInt(2));
-                a.setPid(rs.getInt(3));
-                a.setDocid(rs.getInt(4));
-                a.setDate(rs.getString(5));
+               
+                a.setLineno(rs.getInt(1));
+                a.setPid(rs.getInt(2));
+                a.setDocid(rs.getInt(3));
+                a.setDate(rs.getString(4));
+                a.setTime(rs.getString(5));
                 a.setPharmacy(rs.getString(6));
-             
+                a.setAptid(rs.getInt(7));
                
                 
                 
@@ -266,7 +270,30 @@ public class DBConnection {
         return verified;
        
     }  
-     
+         
+         
+         public boolean checkAdmin(String username,String password) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+          String encryptedPassword = security.getHash(password);
+        boolean verified = false;
+        try{
+            PreparedStatement ps=getConnection().prepareStatement("Select * from webadmin where Username=?");
+             ps.setString(1,username);
+             
+             ResultSet rs = ps.executeQuery();
+             
+                if(rs.next() && encryptedPassword.equals(rs.getString("Password"))){
+                 verified = true;
+             }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+       
+        return verified;
+       
+    }  
      
      
      
@@ -438,6 +465,37 @@ public class DBConnection {
        
        
        
+       
+            public boolean AddAppointment(int lineno,int pid,int docid,String date,String time,String pharmacy) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        PreparedStatement ps=getConnection().prepareStatement("Insert into appointment(LineNo,PatientID,DoctorID,Date,Time,Pharmacy) values(?,?,?,?,?,?)");
+        
+        ps.setInt(1,lineno);
+        ps.setInt(2,pid);
+        ps.setInt(3,docid);
+        ps.setString(4,date);
+        ps.setString(5,time);
+        ps.setString(6,pharmacy);
+        
+           
+        
+       
+        int i = ps.executeUpdate();
+        if(i>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
+    }
+            
+            
+       
+       
+       
         public boolean AddFeedback(String rate,String feedback) throws ClassNotFoundException, ClassNotFoundException, SQLException
     {
         PreparedStatement ps=getConnection().prepareStatement("insert into feedback(Text,Stars) values(?,?)");
@@ -506,9 +564,9 @@ public class DBConnection {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 DoctorDateTime dt=new DoctorDateTime();
-               dt.setDocid(rs.getInt(2));
-               dt.setDate(rs.getString(3));
-               dt.setTime(rs.getString(4));
+               dt.setDocid(rs.getInt(1));
+               dt.setDate(rs.getString(2));
+               dt.setTime(rs.getString(3));
           
                
         
@@ -533,7 +591,313 @@ public class DBConnection {
         
         
     }
+      
+      public int checkAppointmentss() throws ClassNotFoundException, ClassNotFoundException, SQLException
+    { 
+         
+            Statement ps=getConnection().createStatement();
+             
+            String query = "SELECT COUNT(*) FROM appointment";
+            
+            ResultSet rs = ps.executeQuery(query);
+            rs.next();
+            int count = rs.getInt(1);
+            count = count + 1;
+            
+            Appointments ap3 = new Appointments();
+            ap3.setCount(count);
+            ap3.getCount();
+         
+            return count;
+       
+    }  
+      
+      
+      
+        public static List<Appointments>checkAppointments() throws ClassNotFoundException, SQLException{
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+       
+            
+            Connection con = DBConnection.getConnection();
+            Statement ps=getConnection().createStatement();
+             
+            String query = "SELECT COUNT(*) FROM appointment";
+            
+            ResultSet rs = ps.executeQuery(query);
+            rs.next();
+            int count = rs.getInt(1);
+            count = count + 1;
+            
+            Appointments ap3 = new Appointments();
+            ap3.setCount(count);
+            ap3.getCount();
+          
+               
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(ap3);
+                
+                
+                
+            
+            con.close();
+      
+        return list;
+        
+        
+        
+    }
      
+        
+         public static List<Patient>getPatientID(String email){
+       
+        List<Patient> list= new ArrayList<Patient>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from patient where email ='"+email+"'  ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Patient plog=new Patient();
+               
+                plog.setPid(rs.getInt(1));
+               
+                
+               // e.setDeceased(rs.getString(11));
+               
+                
+                
+                list.add(plog);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
+        
+         
+          public static List<Doctor>getDoctorName(int docid){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor where DoctorID='"+docid+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor doc2=new Doctor();
+               
+               doc2.setFname(rs.getString(7));
+               doc2.setLname(rs.getString(6));
+              
+               
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(doc2);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
+          
+              public static List<Appointments>getBookedAppointments(int patientid){
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from appointment where PatientID='"+patientid+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Appointments bookap=new Appointments();
+                //e.setNic(rs.getString(1));
+               
+                bookap.setLineno(rs.getInt(1));
+                bookap.setPid(rs.getInt(2));
+                bookap.setDocid(rs.getInt(3));
+                bookap.setDate(rs.getString(4));
+                bookap.setTime(rs.getString(5));
+                bookap.setPharmacy(rs.getString(6));
+                bookap.setAptid(rs.getInt(7));
+               
+                
+                
+                list.add(bookap);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
+              
+       public static List<Doctor>getDoctorId(String username){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor where Username='"+username+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor doc3=new Doctor();
+               
+               doc3.setDocid(rs.getInt(1));
+               
+               
+              
+               
+        
+            
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(doc3);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
+       
+       
+       public static List<Appointments>getAppointmentDetails(int docid){
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from appointment where DoctorID='"+docid+"'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Appointments appo1=new Appointments();
+                //e.setNic(rs.getString(1));
+               
+                appo1.setLineno(rs.getInt(1));
+                appo1.setPid(rs.getInt(2));
+                appo1.setDocid(rs.getInt(3));
+                appo1.setDate(rs.getString(4));
+                appo1.setTime(rs.getString(5));
+                appo1.setPharmacy(rs.getString(6));
+                appo1.setAptid(rs.getInt(7));
+               
+                
+                
+                list.add(appo1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
+       
+       
+         public static List<Doctor>getDoctorDetails(){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor docd1=new Doctor();
+                //e.setNic(rs.getString(1));
+               
+                docd1.setDocid(rs.getInt(1));
+                docd1.setFname(rs.getString(5));
+                docd1.setLname(rs.getString(6));
+           
+               
+                
+                
+                list.add(docd1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
+       
+       
+     public boolean addDoctortimedate(int docid,String time,String date) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        PreparedStatement ps=getConnection().prepareStatement("insert into doctordatetime(DoctorID,Date,Time) values(?,?,?)");
+        
+        ps.setInt(1,docid);
+        ps.setString(2,date);
+        ps.setString(3,time);
+        
+        
+        int i = ps.executeUpdate();
+        if(i>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
+    }  
+              
+              
+
      
 
      

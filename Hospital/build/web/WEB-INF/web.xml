@@ -35,6 +35,14 @@
         <servlet-name>SubmitFeedback</servlet-name>
         <servlet-class>controller.SubmitFeedback</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubmitAppointment</servlet-name>
+        <servlet-class>controller.SubmitAppointment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmitDoctorTimeDate</servlet-name>
+        <servlet-class>controller.SubmitDoctorTimeDate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SubmitDiagnosisPrescription</servlet-name>
         <url-pattern>/SubmitDiagnosisPrescription</url-pattern>
@@ -66,6 +74,14 @@
     <servlet-mapping>
         <servlet-name>SubmitFeedback</servlet-name>
         <url-pattern>/SubmitFeedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitAppointment</servlet-name>
+        <url-pattern>/SubmitAppointment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitDoctorTimeDate</servlet-name>
+        <url-pattern>/SubmitDoctorTimeDate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

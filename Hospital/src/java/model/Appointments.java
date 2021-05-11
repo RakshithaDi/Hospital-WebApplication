@@ -18,6 +18,8 @@ public class Appointments {
     
     private String date;
     private String pharmacy;
+    private int count;
+    private String time;
 
     /**
      * @return the aptid
@@ -101,6 +103,34 @@ public class Appointments {
      */
     public void setPharmacy(String pharmacy) {
         this.pharmacy = pharmacy;
+    }
+
+    /**
+     * @return the count
+     */
+    public int getCount() {
+        return count;
+    }
+
+    /**
+     * @param count the count to set
+     */
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    /**
+     * @return the time
+     */
+    public String getTime() {
+        return time;
+    }
+
+    /**
+     * @param time the time to set
+     */
+    public void setTime(String time) {
+        this.time = time;
     }
    
     
