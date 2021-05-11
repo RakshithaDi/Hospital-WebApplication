@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="../assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     
+    
+    
   
 </head>
 
@@ -42,6 +44,8 @@
         HttpSession se = request.getSession();
         session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
         String username = (String)session.getAttribute("username");
+        
+      
         
         
         %>

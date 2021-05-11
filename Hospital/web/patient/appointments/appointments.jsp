@@ -58,8 +58,6 @@
         String email = (String)session.getAttribute("email");
        // out.println("Hello " + email);
     
-          if(email == null) {
-           response.sendRedirect("patient/auth/login.html");
    }
 %>
         
