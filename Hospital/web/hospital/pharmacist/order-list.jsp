@@ -35,7 +35,7 @@
     <%
           
         HttpSession se = request.getSession();
-        session.setMaxInactiveInterval(1800); //Expires after 30 seconds inactivity
+        session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
         String username = (String)session.getAttribute("username");
         
         

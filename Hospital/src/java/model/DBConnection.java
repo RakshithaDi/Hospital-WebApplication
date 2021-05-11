@@ -564,9 +564,9 @@ public class DBConnection {
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 DoctorDateTime dt=new DoctorDateTime();
-               dt.setDocid(rs.getInt(2));
-               dt.setDate(rs.getString(3));
-               dt.setTime(rs.getString(4));
+               dt.setDocid(rs.getInt(1));
+               dt.setDate(rs.getString(2));
+               dt.setTime(rs.getString(3));
           
                
         
@@ -777,6 +777,7 @@ public class DBConnection {
                
                doc3.setDocid(rs.getInt(1));
                
+               
               
                
         
@@ -838,6 +839,62 @@ public class DBConnection {
         return list;
         
     }
+       
+       
+         public static List<Doctor>getDoctorDetails(){
+       
+        List<Doctor> list= new ArrayList<Doctor>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from doctor");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Doctor docd1=new Doctor();
+                //e.setNic(rs.getString(1));
+               
+                docd1.setDocid(rs.getInt(1));
+                docd1.setFname(rs.getString(5));
+                docd1.setLname(rs.getString(6));
+           
+               
+                
+                
+                list.add(docd1);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
+       
+       
+     public boolean addDoctortimedate(int docid,String time,String date) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        PreparedStatement ps=getConnection().prepareStatement("insert into doctordatetime(DoctorID,Date,Time) values(?,?,?)");
+        
+        ps.setInt(1,docid);
+        ps.setString(2,date);
+        ps.setString(3,time);
+        
+        
+        int i = ps.executeUpdate();
+        if(i>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
+    }  
               
               
 

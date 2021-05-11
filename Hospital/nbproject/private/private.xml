@@ -3,48 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-select-datetime.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments_list.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Patient.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/appointments.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/receptionist/messages.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-pay.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Feedback.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/prescriptions/prescriptions.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-select-datetime.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/PatientLogin.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DBConnection.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/auth/signup.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/feedback/new-feedback.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DoctorDateTime.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-select-specialization.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/admin/feedback.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/PharmacistRegistration.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-confirm.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments_1.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-select-doctor.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/Services/Security.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/SubmitAppointment.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointmentcopy.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/index.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-confirm.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Pharmacist.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Prescription.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/prescriptions/prescription.jsp</file>
             <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/Login.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/SubmitDiagnosisPrescription.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/DoctorRegistration.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/PatientRegistration.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/SubmitFeedback.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/admin/accounts.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointment.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/appointments.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/ReceptionistRegistration.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/appointments/new-select-doctor.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Appointments.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Receptionist.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/patient/auth/login.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/Doctor.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments_list.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DoctorDateTime.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointmentcopy.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointment_list.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appo.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/pharmacist/order-list.html</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/pharmacist/order-list.jsp</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DBConnection.java</file>
+            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/auth/login.html</file>
         </group>
     </open-files>
 </project-private>

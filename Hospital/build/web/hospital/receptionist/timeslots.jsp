@@ -4,6 +4,9 @@
     Author     : PC
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="model.Doctor"%>
+<%@page import="model.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +42,9 @@
         
         
         %>
+        
+        
+             
     
     
     <nav class="navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search" style="background: rgb(255,255,255);">
@@ -60,8 +66,11 @@
                 <div class="card" style="height: 775px;">
                     <div class="card-body">
                         <h5 class="text-center card-title" style="font-family: Cabin, sans-serif;">Doctors</h5>
+                        
                         <div class="table-responsive">
+                               
                             <table class="table">
+                             
                                 <thead>
                                     <tr>
                                         <th>Doctor Name</th>
@@ -69,16 +78,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                     <%List<Doctor> list = DBConnection.getDoctorDetails(); %>
+            <%for(Doctor docd1:list){ %> 
                                     <tr>
-                                        <td>Cell 1</td>
-                                        <td>Cell 2</td>
+                                        <td><%=docd1.getDocid()%></td>
+                                        <td><%=docd1.getFname()%> <%=docd1.getLname()%></td>
                                     </tr>
-                                    <tr>
-                                        <td>Cell 3</td>
-                                        <td>Cell 4</td>
-                                    </tr>
+                                     <%}%>
                                 </tbody>
-                            </table>
+                              
+                            </table> 
                         </div>
                     </div>
                 </div>
@@ -87,11 +96,11 @@
                 <div class="card" style="height: 428px;">
                     <div class="card-body" style="height: 595px;">
                         <h5 class="text-center card-title" style="font-family: Cabin, sans-serif;">Add Time Slots</h5>
-                        <form>
-                            <div class="form-group"><span style="font-family: Cabin, sans-serif;">Doctor ID</span><input class="form-control" type="text" required=""></div>
-                            <div class="form-group"><span style="font-family: Cabin, sans-serif;">Date</span><input class="form-control" type="date" required=""></div>
-                            <div class="form-group"><span style="font-family: Cabin, sans-serif;">Time</span><input class="form-control" type="time" required=""></div>
-                            <div class="form-group text-center"><button class="btn btn-dark" type="button" style="font-family: Cabin, sans-serif;">ADD</button></div>
+                        <form method="post" action="../../SubmitDoctorTimeDate">
+                            <div class="form-group"><span style="font-family: Cabin, sans-serif;">Doctor ID</span><input class="form-control" name="docid" type="text" required=""></div>
+                            <div class="form-group"><span style="font-family: Cabin, sans-serif;">Date</span><input class="form-control" type="date" name="date" required=""></div>
+                            <div class="form-group"><span style="font-family: Cabin, sans-serif;">Time</span><input class="form-control" type="time" name="time" required=""></div>
+                            <div class="form-group text-center"><button class="btn btn-dark" type="submit" style="font-family: Cabin, sans-serif;">ADD</button></div>
                         </form>
                         <div class="alert alert-success" role="alert"><span><strong>Alert</strong> text.</span></div>
                     </div>
