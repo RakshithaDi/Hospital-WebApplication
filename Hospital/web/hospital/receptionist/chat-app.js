@@ -2,7 +2,7 @@ function test(abc){
     console.log(abc)
    }
 
-var selected = '';
+var selected = ""
 var db = firebase.firestore();
 
 function initChat(email,name){
@@ -35,18 +35,18 @@ function mcountListener(countCheck,email){
 }
 
 function loadmessage(email){
+    console.log("clicked");
 
     const chat_main = document.getElementById('chatcont')
     chat_main.innerHTML = ""
     selected = email;
-    //console.log(selected)
-    //console.log("hdcbsjdhcb"); 
+    console.log(selected)
+    document.getElementById("fname").innerText = selected  
 
     db.collection("messages").doc(email).collection("messages").orderBy("order","asc").get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             //console.log(doc.data());
             var sender = doc.data().sender;
-
             var textcont = document.createElement('div')
             textcont.setAttribute("class","row d-xl-flex justify-content-xl-end")
             textcont.setAttribute("style","margin-bottom: 5px;margin-top: 5px;")
@@ -65,26 +65,26 @@ function loadmessage(email){
                 textcont2.innerHTML = "<div class='col-auto d-xl-flex my-auto' style='background: #3840ff;color: rgb(255,255,255);border-radius: 38px;border-width: 1px;border-color: rgb(128,128,128);'><span style='font-family: Cabin, sans-serif;'>" + doc.data().text + "</span></div>";
                 chat_main.append(textcont2);
             }
-
-            //textcont.innerText = doc.data().text;
-            //chat_main.append(textcont);
-            //console.log(sender)
         });
     });
-
     var docRef = db.collection("messages").doc(email);
     docRef.get().then(function(doc) {
         var mcount = doc.data().messageCount;
         countCheck = mcount;
         //console.log(mcount)
         mcountListener(countCheck,email)     
-    });       
+    });
+    db.collection("messages").doc(selected).update({
+        unread: 'no'
+    }) 
+    var element = document.getElementById("chatcont");
+    element.scrollTop = element.scrollHeight;      
 }
 
 function sendmessage(){
 
     let message = document.getElementById("mtext").value
-    console.log(message)
+    //console.log(message)
 
     var docRef = db.collection("messages").doc(selected);
     docRef.get().then(function(doc) {
@@ -93,19 +93,21 @@ function sendmessage(){
         
         db.collection("messages").doc(selected).update({
             messageCount: mcount,
-            ltime: firebase.firestore.Timestamp.fromDate(new Date())
+            ltime: firebase.firestore.Timestamp.fromDate(new Date()),
+            unread: 'no'
         })
         console.log(selected)
 
         db.collection("messages").doc(selected).collection("messages").doc().set({
-            sender: "f",
+            sender: "s",
             text: message,
             order: mcount,
             status: "unread",
             timestamp: firebase.firestore.Timestamp.fromDate(new Date())
-        })
+        })  
     });
-    document.getElementById("mtext").value = ""        
+    loadlist();
+    document.getElementById("mtext").value = ""     
 }
 
 function newmessage(mcount,email){
@@ -116,7 +118,6 @@ function newmessage(mcount,email){
         querySnapshot.forEach(function(doc){    
             //console.log(doc.data());
             var sender = doc.data().sender;
-
             var textcont = document.createElement('div')
             textcont.setAttribute("class","row d-xl-flex justify-content-xl-end")
             textcont.setAttribute("style","margin-bottom: 5px;margin-top: 5px;")
@@ -138,4 +139,46 @@ function newmessage(mcount,email){
 
         });
     });
+}
+
+function loadlist(){
+
+    const listdiv = document.getElementById('list')
+    listdiv.innerHTML = "";
+
+    //db.collection("messages").doc(email).collection("messages").orderBy("order","asc").get().then(function(querySnapshot)
+    db.collection("messages").orderBy("ltime","desc").get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+
+            var box = document.createElement('button')
+            box.setAttribute("class","btn btn-dark btn-block text-capitalize text-left border rounded border-light")
+            box.setAttribute("type","button")
+            box.setAttribute("id",doc.id)
+            box.setAttribute("onclick","loadmessage(this.id)")
+            box.setAttribute("style","height: 60px;color: rgb(255,255,255);border-width: 0px;")
+
+            if(doc.data().unread == 'no'){
+                box.innerHTML = "<span class='text-left float-left' style='color: rgb(255,255,255);border-style: none;'><i class='fa fa-user-circle' style='font-size: 18px;'></i></span><span class='text-left float-left' style='color: rgb(255,255,255);border-style: none;margin-left: 8px;font-family: Cabin, sans-serif; font-size: 18px;'>" + doc.data().name +"</span>"
+            }
+            else{
+                box.innerHTML = "<span class='text-left float-left' style='color: rgb(255,255,255);border-style: none;'><i class='fa fa-user-circle' style='font-size: 18px;'></i></span><span class='text-left float-left' style='color: rgb(255,255,255);border-style: none;margin-left: 8px;font-family: Cabin, sans-serif; font-size: 18px;'>" + doc.data().name +"</span><h5><span class='float-right badge badge-danger'>New</span></h5>"
+            }
+
+            
+
+
+            //box.innerHTML = `<div id=` + doc.id + ` onclick = loadmessage(this.id) class='row s12 card grey darken-1'><div class='col s3 fimg'><i class='center-align valign-wrapper medium material-icons'>account_box</i></div><div class='col s8 ftext'><div class='fname'><h6><b>${doc.data().name}</b></h6></div> <div class='fnew'></div> </div></div>`;
+
+
+            listdiv.append(box);
+
+        });
+    });
+    //var docRef = db.collection("messages").doc(email);
+    //docRef.get().then(function(doc) {
+        //var mcount = doc.data().messageCount;
+        //countCheck = mcount;
+        //console.log(mcount)
+        //mcountListener(countCheck,email)     
+    //});       
 }
