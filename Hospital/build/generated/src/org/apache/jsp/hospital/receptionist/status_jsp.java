@@ -1,4 +1,4 @@
-package org.apache.jsp.hospital.admin;
+package org.apache.jsp.hospital.receptionist;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -52,11 +52,10 @@ public final class status_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">\n");
       out.write("    <title>hospital</title>\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/bootstrap/css/bootstrap.min.css\">\n");
+      out.write("    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Cabin\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Montserrat:400,600,700\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/fonts/fontawesome-all.min.css\">\n");
-      out.write("    <link rel=\"stylesheet\" href=\"../assets/fonts/font-awesome.min.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/fonts/ionicons.min.css\">\n");
-      out.write("    <link rel=\"stylesheet\" href=\"../assets/fonts/fontawesome5-overrides.min.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/css/Contact-Form-Clean.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/css/Footer-Basic.css\">\n");
       out.write("    <link rel=\"stylesheet\" href=\"../assets/css/Footer-Clean.css\">\n");
@@ -70,51 +69,30 @@ public final class status_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\n");
       out.write("\n");
       out.write("<body style=\"background: #dddddd;\">\n");
-      out.write("     ");
-
-          
-       
-        String statu = (String)session.getAttribute("statu");
-       // out.println("Hello " + statu);
-        
-        
+      out.write("    \n");
       out.write("\n");
-      out.write("\n");
+      out.write("             \n");
       out.write("    \n");
       out.write("    \n");
-      out.write("    <nav class=\"navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search\">\n");
+      out.write("    <nav class=\"navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search\" style=\"background: rgb(255,255,255);\">\n");
       out.write("        <div class=\"container\"><a class=\"navbar-brand\" href=\"#\"><i class=\"fas fa-hospital\" style=\"font-size: 25px;\"></i></a><button data-toggle=\"collapse\" class=\"navbar-toggler\" data-target=\"#navcol-1\"><span class=\"sr-only\">Toggle navigation</span><span class=\"navbar-toggler-icon\"></span></button>\n");
       out.write("            <div class=\"collapse navbar-collapse\" id=\"navcol-1\">\n");
       out.write("                <ul class=\"navbar-nav\">\n");
-      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" data-bss-hover-animate=\"pulse\" href=\"accounts.jsp\"><strong style=\"font-family: Montserrat, sans-serif;\">Create Accounts</strong></a></li>\n");
-      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" data-bss-hover-animate=\"pulse\" href=\"feedback.jsp\" style=\"font-family: Montserrat, sans-serif;\">Feedback</a></li>\n");
+      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" data-bss-hover-animate=\"pulse\" href=\"messages.jsp\">CHAT</a></li>\n");
+      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" data-bss-hover-animate=\"pulse\" href=\"timeslots.jsp\"><strong>TIMESLOTS</strong></a></li>\n");
       out.write("                </ul>\n");
       out.write("            </div>\n");
-      out.write("            <div class=\"dropdown menu_links\"><a class=\"dropdown-toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" style=\"margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);font-family: Montserrat, sans-serif;\"></a>\n");
+      out.write("            <div class=\"dropdown menu_links\"><a class=\"dropdown-toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" style=\"margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);\"> </a>\n");
       out.write("                <div class=\"dropdown-menu\"><a class=\"dropdown-item\" href=\"#\">Logout</a></div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </nav>\n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("    <div class=\"container-fluid\" style=\"height: 618px;\">\n");
+      out.write("    <div class=\"container\" style=\"margin-top: 30px;margin-bottom: 100px;height: 900px;\">\n");
       out.write("        <div class=\"row\">\n");
-      out.write("            <div class=\"col-md-4\">\n");
-      out.write("                <h1> ");
-      out.print(statu);
-      out.write("  </h1>\n");
+      out.write("            <div class=\"col-md-6\" style=\"height: 807px;\">\n");
+      out.write("              \n");
       out.write("            </div>\n");
-      out.write("           \n");
-      out.write("            <div class=\"col-md-4\">\n");
-      out.write("                \n");
-      out.write("            </div>\n");
-      out.write("        </div>\n");
-      out.write("    </div>\n");
-      out.write("    <div class=\"container\" style=\"height: 261px;\">\n");
-      out.write("        <div class=\"row\">\n");
-      out.write("            <div class=\"col-md-12\" style=\"padding: 18px;\">\n");
-      out.write("                <div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button><span><strong>Alert</strong> text.</span></div>\n");
-      out.write("            </div>\n");
+      out.write("            \n");
       out.write("        </div>\n");
       out.write("    </div>\n");
       out.write("    <footer class=\"footer-basic\">\n");
@@ -126,14 +104,14 @@ public final class status_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <li class=\"list-inline-item\"><a href=\"#\" style=\"font-size: 15px;\">Terms</a></li>\n");
       out.write("            <li class=\"list-inline-item\"><a href=\"#\" style=\"font-size: 15px;\">Privacy Policy</a></li>\n");
       out.write("        </ul>\n");
-      out.write("        <p class=\"copyright\">Company Name © 2021</p>\n");
+      out.write("        <p class=\"copyright\">Central Hospitals © 2021</p>\n");
       out.write("    </footer>\n");
       out.write("    <script src=\"../assets/js/jquery.min.js\"></script>\n");
       out.write("    <script src=\"../assets/bootstrap/js/bootstrap.min.js\"></script>\n");
       out.write("    <script src=\"../assets/js/bs-init.js\"></script>\n");
       out.write("</body>\n");
       out.write("\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

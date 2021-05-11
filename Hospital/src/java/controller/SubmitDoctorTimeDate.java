@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DBConnection;
 
 /**
@@ -76,13 +77,18 @@ public class SubmitDoctorTimeDate extends HttpServlet {
 //      out.println(docid);
 //      out.println(time);
 //      out.println(date);
-   
+      String statu;
       try{
           DBConnection con = new DBConnection();
           boolean rslt=con.addDoctortimedate(docid,time,date);
           if(rslt==true)
           {
               out.println("Added Successfully");
+              statu="Added Successfully!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("hospital/receptionist/status.jsp");
  //             out.println("<html><head></head><body><br><a href='hospital/doctor/appointments_list.jsp'>Back to Appointments </a> </body></html>");
 //              RequestDispatcher rs= request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
 //              rs.forward(request, response);
@@ -91,6 +97,11 @@ public class SubmitDoctorTimeDate extends HttpServlet {
           else
           {
               out.println("Error");
+                statu="Something Went Wrong!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("hospital/receptionist/status.jsp");
           }
       }
       catch(Exception e){

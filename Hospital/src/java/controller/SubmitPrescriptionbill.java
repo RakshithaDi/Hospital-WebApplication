@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DBConnection;
 
 /**
@@ -76,13 +77,18 @@ public class SubmitPrescriptionbill extends HttpServlet {
 //      out.println(status);
 //      out.println(billnotes);
 //      out.println(price);
-    
+    String statu;
       try{
           DBConnection con = new DBConnection();
           boolean rslt=con.addPrescriptionBill(prscid,status,billnotes,price);
           if(rslt==true)
           {
               out.println("Added Successfully");
+              statu="Added Successfully!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("hospital/pharmacist/status.jsp");
             
 //              RequestDispatcher rs= request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
 //              rs.forward(request, response);
@@ -91,6 +97,11 @@ public class SubmitPrescriptionbill extends HttpServlet {
           else
           {
               out.println("Error");
+               statu="Something Went Wrong!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("hospital/pharmacist/status.jsp");
           }
       }
       catch(Exception e){
