@@ -57,6 +57,11 @@
         session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
         String email = (String)session.getAttribute("email");
        // out.println("Hello " + email);
+    
+          if(email == null) {
+           response.sendRedirect("patient/auth/login.html");
+   }
+%>
         
       
         %>
