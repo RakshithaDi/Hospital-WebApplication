@@ -8,10 +8,12 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DBConnection;
 
 /**
@@ -88,21 +90,31 @@ public class SubmitAppointment extends HttpServlet {
 //      out.println(time);
 //      out.println(lineno);
 //      out.println(pharmacy);
-     
+     String statu;
+    
       
      try{
           DBConnection con = new DBConnection();
           boolean rslt=con.AddAppointment(lineno,pid,docid,date,time,pharmacy);
           if(rslt==true)
           {
+              statu="Appointment Added Successfully!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("patient/appointments/status.jsp");
               out.println("Added Successfully");
              // out.println("<html><head></head><body><br><a href='hospital/doctor/appointments_list.jsp'>Back to Appointments </a> </body></html>");
-//              RequestDispatcher rs= request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
-//              rs.forward(request, response);
+             
+            
               
           }
           else
           {
+              statu="Something Went Wrong";
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("patient/appointments/status.jsp");
               out.println("Error");
           }
       }

@@ -68,7 +68,7 @@
             
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="mb-2" style="color: rgb(129,129,129);border-color: rgb(0,0,0);">Prescription ID: <%=p.getPrscid()%>  <%=email%>&nbsp;</h6>
+                            <h6 class="mb-2" style="color: rgb(129,129,129);border-color: rgb(0,0,0);">Prescription ID: <%=p.getPrscid()%> &nbsp;</h6>
                             <h4 class="text-capitalize card-title" style="color: rgb(0,0,0);font-size: 20px;"> 
                                 <%List<Doctor> list = DBConnection.getDoctorName(p.getDocid()); %>
                                  <%for(Doctor doc2:list){ %>Dr.<%=doc2.getFname()%> <%=doc2.getLname()%> <%}%></h4>

@@ -50,6 +50,7 @@
             
                 String doctype = request.getParameter("doctype");
                 String pid = request.getParameter("patientid");
+               
                 
      %>
      
@@ -68,6 +69,7 @@
         <div class="row" style="margin: 19px;">
             <div class="col"> 
                 <form method="post" action="new-select-datetime.jsp">
+                    
                      <input type="hidden" name="doctype" value="<%=doctype%>">
                      <input type="hidden" name="patientid" value="<%=pid%>">
                      <input type="hidden" name="docname" value="<%= dr1.getFname() %>  <%= dr1.getLname() %>">

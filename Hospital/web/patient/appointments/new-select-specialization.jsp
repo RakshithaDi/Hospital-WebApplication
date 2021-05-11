@@ -42,6 +42,7 @@
     </nav>
     <%
         String pid = request.getParameter("patientid");
+      
     %>
     
     
@@ -54,6 +55,7 @@
         <div class="row" style="margin: 19px;">
             <div class="col"><form method="post" action="new-select-doctor.jsp">
                     <input type="hidden" name="patientid" value="<%=pid%>">
+                 
                 <div class="row" style="margin-top: 5px;margin-bottom: 10px;"> 
                     <div class="col text-center"> <button class="btn btn-light btn-block text-capitalize" type="submit" name="doctype"  style="border-radius: 5px;height: 50px;border: 1px solid #c3c3c3 ;" value="Anesthesiologist">Anesthesiologist</button></div>
                 </div>

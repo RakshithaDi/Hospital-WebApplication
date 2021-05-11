@@ -57,6 +57,8 @@
                 
                 
                 
+                
+                
                 DoctorDateTime ddt = new DoctorDateTime();
                      ddt.setDate(date);
                      ddt.setTime(time);
@@ -73,7 +75,8 @@
         </div>
         <div class="row" style="margin: 19px;">
              <form method="post" action="../../SubmitAppointment">
-                 
+                    
+
             <div class="col mx-auto">
                 <div class="row">
                      <%List<Appointments> list = DBConnection.checkAppointments(); %>

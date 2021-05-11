@@ -1,20 +1,15 @@
 <%-- 
-    Document   : prescription
-    Created on : May 9, 2021, 1:31:55 PM
+    Document   : status
+    Created on : May 11, 2021, 4:10:04 PM
     Author     : PC
 --%>
 
-<%@page import="model.Patient"%>
-<%@page import="model.Doctor"%>
-<%@page import="java.util.List"%>
-<%@page import="model.Prescription"%>
-<%@page import="model.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="utf-8">
+        <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>patient 2</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
@@ -26,15 +21,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="../assets/css/Navbar-Dropdown-List-Item.css">
+    
 </head>
 
-<body style="background: #f2f2f2;">
+<body style="background: rgb(242,242,242);">
     <nav class="navbar navbar-light navbar-expand-md" id="mainNav" style="background: #333333;">
         <div class="container"><a class="navbar-brand js-scroll-trigger" href="#">Central Hospitals</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" data-bss-hover-animate="pulse" href="../appointments/appointments.jsp">Appointments</a></li>
-                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="#download">Prescriptions</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link active js-scroll-trigger" href="appointments.jsp">Appointments</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" data-bss-hover-animate="pulse" href="../prescriptions/prescriptions.jsp">Prescriptions</a></li>
                     <li class="nav-item nav-link js-scroll-trigger"><a class="nav-link js-scroll-trigger" data-bss-hover-animate="pulse" href="../chat/messages.html">Chat</a></li>
                     <li class="nav-item text-center d-xl-flex justify-content-xl-center align-items-xl-center nav-link js-scroll-trigger">
                         <div class="nav-item dropdown d-xl-flex justify-content-xl-center align-items-xl-center menu_links"><a class="dropdown-toggle active" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgba(255,255,255,0.75);border-color: rgba(0,0,0,0);font-size: 25px;font-family: Cabin, sans-serif;text-align: center;"><i class="fa fa-user-o" style="font-size: 24px;"></i></a>
@@ -45,48 +41,26 @@
             </div>
         </div>
     </nav>
-    
-    
     <%
           
-
-        String email = (String)session.getAttribute("email");
        
+        String statu = (String)session.getAttribute("statu");
+       // out.println("Hello " + statu);
         
         %>
      
-      <%List<Patient> list3 = DBConnection.getPatientID(email); %>
-            <%for(Patient plog:list3){ %>
-    
-         
-    <div class="container">
-        <div class="col" style="margin-top: 20px;">
-            <div class="row" style="margin-top: 25px;margin-bottom: 20px;">
-                <div class="col">
-                     <%List<Prescription> list2 = DBConnection.getPrescription(plog.getPid()); %>
-            <%for(Prescription p:list2){ %>  
-            
-                    <div class="card">
-                        <div class="card-body">
-                            <h6 class="mb-2" style="color: rgb(129,129,129);border-color: rgb(0,0,0);">Prescription ID: <%=p.getPrscid()%> &nbsp;</h6>
-                            <h4 class="text-capitalize card-title" style="color: rgb(0,0,0);font-size: 20px;"> 
-                                <%List<Doctor> list = DBConnection.getDoctorName(p.getDocid()); %>
-                                 <%for(Doctor doc2:list){ %>Dr.<%=doc2.getFname()%> <%=doc2.getLname()%> <%}%></h4>
-                            <h6 class="mb-2" style="color: rgb(27,27,27);border-color: rgb(0,0,0);">Date :  <%=p.getDate()%></h6>
-                            <p class="card-text" style="color: rgb(0,0,0);"> <%=p.getPrsclist()%> <br><%=p.getNotes()%></p>
-                            
-                            <div class="row">
-                                <div class="col text-center"><button class="btn btn-light border rounded" type="button" style="margin-right: 10px;margin-left: 10px;">Pay Online</button></div>
-                            </div>
-                        </div>
-                    </div> <%}%> <%}%> 
-                </div>
-            </div>
-          
+    <div class="container" style="height: 802px;">
+        <div class="row" style="margin: 32px;height: 100px;">
+            <center><h1 style="color:black;">         <%=statu%>  </h1></center>  
         </div>
-    </div>
+        
+        
+        <div class="row" style="margin: 32px;height: 100px;">
+            <center><h2 style="color:black;">Thank You!</h2></center>
+        </div>
+    </div> 
     <footer style="background: #212121;">
-        <div class="container text-center"><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Privacy Policy</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">About</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Contact</a></div>
+        <div class="container text-center"><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Privacy Policy</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">About</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Contact</a><a href="../feedback/new-feedback.html" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Leave Feedback</a></div>
         <div class="container text-center">
             <p style="font-family: Cabin, sans-serif;color: rgb(154,154,154);">CENTRAL HOSPITALS © 2021</p>
         </div>

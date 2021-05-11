@@ -1,15 +1,10 @@
-package org.apache.jsp.hospital.pharmacist;
+package org.apache.jsp.hospital.admin;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import model.Patient;
-import model.Prescription;
-import java.util.List;
-import model.Appointments;
-import model.DBConnection;
 
-public final class order_002dlist_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class status_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -49,11 +44,6 @@ public final class order_002dlist_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html lang=\"en\">\n");
       out.write("\n");
@@ -81,128 +71,39 @@ public final class order_002dlist_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("<body style=\"background: #dddddd;\">\n");
       out.write("    \n");
-      out.write("    ");
-
-          
-        HttpSession se = request.getSession();
-        session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
-        String username = (String)session.getAttribute("username");
-        
-        
-        
       out.write("\n");
-      out.write("        \n");
-      out.write("       \n");
       out.write("    \n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("    \n");
-      out.write("     \n");
       out.write("    \n");
       out.write("    <nav class=\"navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search\">\n");
       out.write("        <div class=\"container\"><a class=\"navbar-brand\" href=\"#\"><i class=\"fas fa-hospital\" style=\"font-size: 25px;\"></i></a><button data-toggle=\"collapse\" class=\"navbar-toggler\" data-target=\"#navcol-1\"><span class=\"sr-only\">Toggle navigation</span><span class=\"navbar-toggler-icon\"></span></button>\n");
       out.write("            <div class=\"collapse navbar-collapse\" id=\"navcol-1\">\n");
       out.write("                <ul class=\"navbar-nav\">\n");
-      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"order-list.jsp\" style=\"font-family: Montserrat, sans-serif;\"><strong>Order List</strong></a></li>\n");
-      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" href=\"orders.jsp\" style=\"font-family: Montserrat, sans-serif;\">Orders</a></li>\n");
+      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" data-bss-hover-animate=\"pulse\" href=\"#\"><strong style=\"font-family: Montserrat, sans-serif;\">Create Accounts</strong></a></li>\n");
+      out.write("                    <li class=\"nav-item\"><a class=\"nav-link\" data-bss-hover-animate=\"pulse\" href=\"feedback.jsp\" style=\"font-family: Montserrat, sans-serif;\">Feedback</a></li>\n");
       out.write("                </ul>\n");
       out.write("            </div>\n");
-      out.write("            <div class=\"dropdown menu_links\" style=\"font-family: Montserrat, sans-serif;\"><a class=\"dropdown-toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" style=\"margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);\">");
-out.println("Hello " + username);
-      out.write("  </a>\n");
+      out.write("            <div class=\"dropdown menu_links\"><a class=\"dropdown-toggle\" aria-expanded=\"false\" data-toggle=\"dropdown\" style=\"margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);font-family: Montserrat, sans-serif;\"></a>\n");
       out.write("                <div class=\"dropdown-menu\"><a class=\"dropdown-item\" href=\"#\">Logout</a></div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </nav>\n");
-      out.write("    <div class=\"container\" style=\"height: 814px;\">\n");
-      out.write("        <div class=\"col\" style=\"padding: 0px;background: #ffffff;margin: 13px;\">\n");
-      out.write("            <div class=\"table-responsive\">\n");
-      out.write("                <table class=\"table\">\n");
-      out.write("                    <thead>\n");
-      out.write("                        <tr>\n");
-      out.write("                            <th>Order ID</th>\n");
-      out.write("                            <th>Patient Name</th>\n");
-      out.write("                            <th></th>\n");
-      out.write("                        </tr>\n");
-      out.write("                    </thead>\n");
-      out.write("                    <tbody>\n");
-      out.write("                        \n");
-      out.write("                         ");
-List<Appointments> list = DBConnection.getPhamacyValue(); 
-      out.write("\n");
-      out.write("            ");
-for(Appointments appo2:list){ 
-      out.write(" \n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("            \n");
-      out.write("            ");
-List<Prescription> list1 = DBConnection.getPrescription(appo2.getPid()); 
-      out.write("\n");
-      out.write("            ");
-for(Prescription p:list1){ 
-      out.write("  \n");
-      out.write("            \n");
-      out.write("             ");
-List<Patient> list2 = DBConnection.getAllPatients(appo2.getPid()); 
-      out.write("\n");
-      out.write("            ");
-for(Patient e:list2){ 
-      out.write("  \n");
-      out.write("                        <tr>\n");
-      out.write("                            <td>");
-      out.print(p.getPrscid());
-      out.write(" </td>\n");
-      out.write("                            <td>");
-      out.print(e.getFname());
-      out.write(' ');
-      out.print(e.getLname());
-      out.write("</td>\n");
-      out.write("                            <td>\n");
-      out.write("                                \n");
-      out.write("                                \n");
-      out.write("                                  <form method=\"post\" action=\"orders.jsp\">\n");
-      out.write("                \n");
-      out.write("                     <input type=\"hidden\" name=\"prscid\" value=\"");
-      out.print(p.getPrscid());
-      out.write("\">\n");
-      out.write("                     <input type=\"hidden\" name=\"dob\" value=\"");
-      out.print(e.getDob());
-      out.write("\">\n");
-      out.write("                     <input type=\"hidden\" name=\"gender\" value=\"");
-      out.print(e.getGender());
-      out.write("\">\n");
-      out.write("                     <input type=\"hidden\" name=\"prslist\" value=\"");
-      out.print(p.getPrsclist());
-      out.write("\">\n");
-      out.write("                     <input type=\"hidden\" name=\"name\" value=\"");
-      out.print(e.getFname());
-      out.write(' ');
-      out.print(e.getLname());
-      out.write("\">\n");
-      out.write("                   \n");
-      out.write("                  \n");
-      out.write("            \n");
-      out.write("                 <button class=\"btn btn-light\" type=\"submit\"><b>View</b></button>\n");
-      out.write("                 \n");
-      out.write("                 </form>\n");
+      out.write("    \n");
+      out.write("    \n");
+      out.write("    <div class=\"container-fluid\" style=\"height: 618px;\">\n");
+      out.write("        <div class=\"row\">\n");
+      out.write("            <div class=\"col-md-4\">\n");
       out.write("               \n");
-      out.write("                              \n");
-      out.write("                        </tr>\n");
-      out.write("                        \n");
-      out.write("                 ");
-}
-      out.write(' ');
-      out.write(' ');
-}
-      out.write(' ');
-}
-      out.write("\n");
-      out.write("                       \n");
-      out.write("                    </tbody>\n");
-      out.write("                </table>\n");
+      out.write("            </div>\n");
+      out.write("           \n");
+      out.write("            <div class=\"col-md-4\">\n");
+      out.write("                \n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("    </div>\n");
+      out.write("    <div class=\"container\" style=\"height: 261px;\">\n");
+      out.write("        <div class=\"row\">\n");
+      out.write("            <div class=\"col-md-12\" style=\"padding: 18px;\">\n");
+      out.write("                <div class=\"alert alert-danger alert-dismissible\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">×</span></button><span><strong>Alert</strong> text.</span></div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </div>\n");
