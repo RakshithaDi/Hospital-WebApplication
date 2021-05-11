@@ -47,6 +47,14 @@
         <servlet-name>SubmitPrescriptionbill</servlet-name>
         <servlet-class>controller.SubmitPrescriptionbill</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PatientLogout</servlet-name>
+        <servlet-class>controller.PatientLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>controller.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SubmitDiagnosisPrescription</servlet-name>
         <url-pattern>/SubmitDiagnosisPrescription</url-pattern>
@@ -90,6 +98,14 @@
     <servlet-mapping>
         <servlet-name>SubmitPrescriptionbill</servlet-name>
         <url-pattern>/SubmitPrescriptionbill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PatientLogout</servlet-name>
+        <url-pattern>/PatientLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

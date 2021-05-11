@@ -57,7 +57,7 @@
                 </ul>
             </div>
             <div class="dropdown menu_links"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);font-family: Montserrat, sans-serif;"><%out.println("Hello " + username);%> </a>
-                <div class="dropdown-menu"><a class="dropdown-item" href="../auth/login.html">Logout</a></div>
+                <div class="dropdown-menu"><a class="dropdown-item" href="../../Logout">Logout</a></div>
             </div>
         </div>
     </nav>
