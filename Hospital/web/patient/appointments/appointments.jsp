@@ -15,6 +15,9 @@
 <%@page import="javax.servlet.http.HttpSession"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% response.setHeader("Cache-Control","no-cache");    
+        response.setHeader("Pragma","no-cache"); %>
 <!DOCTYPE html>
 <html>
 
@@ -54,9 +57,10 @@
     <%
           
         HttpSession se = request.getSession();
-        session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
+      //  session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
         String email = (String)session.getAttribute("email");
        // out.println("Hello " + email);
+        
     
    
 %>

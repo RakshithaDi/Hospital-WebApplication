@@ -41,7 +41,7 @@
     
        <%
           
-         //Expires after 30 seconds inactivity
+         
         String username = (String)session.getAttribute("username");
         
         
