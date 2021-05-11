@@ -81,12 +81,14 @@ public class SubmitPrescriptionbill extends HttpServlet {
       String billnotes=request.getParameter("billnotes");
       String price=request.getParameter("price");
       String phoneno=request.getParameter("phoneno");
+      String courtycode= "+94";
+      String newmob=courtycode+phoneno;
       
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         
         if("Available".equals(status)){
             Message message = Message.creator(
-            new PhoneNumber("+94702435206"),
+            new PhoneNumber(newmob),
             new PhoneNumber("+14154187518"), 
             "Your medicines are ready! \nOrder ID:" + prscid + "\n\nCentral Hospitals Pharmacy").create();
             System.out.println(message.getSid());
