@@ -140,7 +140,7 @@
                             <td><%=appo1.getTime()%></td>
                             <td>
                               
-                <form method="post" action="appointmentcopy.jsp">
+                <form method="post" action="appointment.jsp">
                 
                      <input type="hidden" name="patientid" value="<%=e.getPid()%>">
                      <input type="hidden" name="appid" value="<%=appo1.getLineno()%>">
