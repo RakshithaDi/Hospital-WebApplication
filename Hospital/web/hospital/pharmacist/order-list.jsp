@@ -4,6 +4,11 @@
     Author     : PC
 --%>
 
+<%@page import="model.Patient"%>
+<%@page import="model.Prescription"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Appointments"%>
+<%@page import="model.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +45,15 @@
         
         
         %>
+        
+       
     
+    
+    
+    
+    
+    
+     
     
     <nav class="navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search">
         <div class="container"><a class="navbar-brand" href="#"><i class="fas fa-hospital" style="font-size: 25px;"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -67,16 +80,42 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
+                         <%List<Appointments> list = DBConnection.getPhamacyValue(); %>
+            <%for(Appointments appo2:list){ %> 
+            
+            
+            
+            <%List<Prescription> list1 = DBConnection.getPrescription(appo2.getPid()); %>
+            <%for(Prescription p:list1){ %>  
+            
+             <%List<Patient> list2 = DBConnection.getAllPatients(appo2.getPid()); %>
+            <%for(Patient e:list2){ %>  
                         <tr>
-                            <td>Cell 1</td>
-                            <td>Cell 2</td>
-                            <td><button class="btn btn-light" type="button">View</button></td>
+                            <td><%=p.getPrscid()%> </td>
+                            <td><%=e.getFname()%> <%=e.getLname()%></td>
+                            <td>
+                                
+                                
+                                  <form method="post" action="orders.jsp">
+                
+                     <input type="hidden" name="prscid" value="<%=p.getPrscid()%>">
+                     <input type="hidden" name="dob" value="<%=e.getDob()%>">
+                     <input type="hidden" name="gender" value="<%=e.getGender()%>">
+                     <input type="hidden" name="prslist" value="<%=p.getPrsclist()%>">
+                     <input type="hidden" name="name" value="<%=e.getFname()%> <%=e.getLname()%>">
+                   
+                  
+            
+                 <button class="btn btn-light" type="submit"><b>View</b></button>
+                 
+                 </form>
+               
+                              
                         </tr>
-                        <tr>
-                            <td>Cell 3</td>
-                            <td>Cell 4</td>
-                            <td><button class="btn btn-light" type="button">View</button></td>
-                        </tr>
+                        
+                 <%}%>  <%}%> <%}%>
+                       
                     </tbody>
                 </table>
             </div>

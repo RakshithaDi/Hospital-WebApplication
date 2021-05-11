@@ -897,8 +897,61 @@ public class DBConnection {
     }  
               
               
-
+       public static List<Appointments>getPhamacyValue(){
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from appointment where Pharmacy='Yes'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Appointments appo2=new Appointments();
+                //e.setNic(rs.getString(1));
+               
+                appo2.setLineno(rs.getInt(1));
+                appo2.setPid(rs.getInt(2));
+                appo2.setDocid(rs.getInt(3));
+                appo2.setDate(rs.getString(4));
+                appo2.setTime(rs.getString(5));
+                appo2.setPharmacy(rs.getString(6));
+                appo2.setAptid(rs.getInt(7));
+               
+                
+                
+                list.add(appo2);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }
      
+       
+         public boolean addPrescriptionBill(int prscid,String status,String billnotes,String price) throws ClassNotFoundException, ClassNotFoundException, SQLException
+    {
+        PreparedStatement ps=getConnection().prepareStatement("insert into pharmacyorders(PrscID,Ready,Price,Note) values(?,?,?,?)");
+        ps.setInt(1,prscid);
+        ps.setString(2,status);
+        ps.setString(3,price);
+        ps.setString(4,billnotes);
+        int i = ps.executeUpdate();
+        if(i>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
+    }   
 
      
 }

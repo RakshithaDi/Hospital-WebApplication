@@ -123,7 +123,7 @@ public class Login extends HttpServlet {
 //                rs.include(request, response);
                  HttpSession session = request.getSession();
                  session.setAttribute("username",username);
-                 response.sendRedirect("hospital/pharmacist/order-list.html");
+                 response.sendRedirect("hospital/pharmacist/order-list.jsp");
             }
             else
             {

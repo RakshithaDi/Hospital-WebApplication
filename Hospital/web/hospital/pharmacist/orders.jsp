@@ -38,6 +38,14 @@
         String username = (String)session.getAttribute("username");
         
         
+        int prscid = Integer.parseInt(request.getParameter("prscid"));
+        String prslist=request.getParameter("prslist");
+        String dob=request.getParameter("dob");
+        String gender=request.getParameter("gender");
+        String name=request.getParameter("name");
+        
+        
+        
         %>
     
     
@@ -61,7 +69,7 @@
                     <div class="row">
                         <div class="col text-left align-self-center"><button class="btn btn-dark text-center" type="button" style="margin: 3px;width: 100;"><i class="fa fa-chevron-left"></i>&nbsp; PREVIOUS</button></div>
                         <div class="col text-left align-self-center">
-                            <h5 class="text-center text-dark" style="font-family: Montserrat, sans-serif;text-align: center;">Order No : 12</h5>
+                            <h5 class="text-center text-dark" style="font-family: Montserrat, sans-serif;text-align: center;">Order No : <%=prscid%></h5>
                         </div>
                         <div class="col text-right align-self-center"><button class="btn btn-dark text-center" type="button" style="margin: 3px;width: 100px;">NEXT&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button></div>
                     </div>
@@ -78,27 +86,30 @@
                         <div class="card-body" style="background: #ffffff;padding: 15px;">
                             <div class="card" style="padding: 0px;margin: 0px;margin-top: 0px;margin-bottom: 8px;">
                                 <div class="card-body">
-                                    <h5 class="card-title" style="color: rgb(0,0,0);font-size: 17px;">35 year old</h5>
-                                    <h4 class="card-title" style="color: rgb(0,0,0);font-size: 17px;">Male</h4>
+                                    <h5 class="card-title" style="color: rgb(0,0,0);font-size: 17px;"> <%=name%> </h5>
+                                    <h5 class="card-title" style="color: rgb(0,0,0);font-size: 17px;"> <%=dob%> </h5>
+                                    <h4 class="card-title" style="color: rgb(0,0,0);font-size: 17px;"><%=gender%> </h4>
                                 </div>
                             </div>
                             <div class="card" style="margin-bottom: 8px;">
                                 <div class="card-body">
-                                    <p class="card-text">Nullam id dolor 25mg<br>id nibh ultricies 5mg<br>vehicula ut id eli 500mg<br>Cras justo odio 100mg<br>dapibus ac facilisis in 50mg<br>egestas eget quam 200mg</p>
+                                    <p class="card-text"><%=prslist%> </p>
                                 </div>
                             </div>
                             <div class="card" style="margin-bottom: 8px;">
                                 <div class="card-body">
-                                    <form method="post">
-                                        <div class="form-group"><input class="form-control" type="text" placeholder="Total Price"></div>
+                                    <form method="post" action="../../SubmitPrescriptionbill">
+                                        <input type="hidden" name="prscid" value="<%=prscid%>">
+                                        <div class="form-group"><input class="form-control" type="text" name="price" placeholder="Total Price" ></div>
                                         <div class="form-group"><textarea class="form-control" name="billnotes" placeholder="Any Notes" rows="5" style="height: 103px;"></textarea></div>
-                                    </form>
+                                    
                                 </div>
                             </div>
                             <div class="card" style="margin-bottom: 8px;">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col text-center"><button class="btn btn-success" type="button" style="margin-right: 10px;">Mark as Ready&nbsp;&nbsp;<i class="fa fa-check"></i></button><button class="btn btn-danger" type="button" style="margin-left: 10px;">Mark as Not Available&nbsp;&nbsp;<i class="fa fa-remove"></i></button></div>
+                                        <div class="col text-center"><button class="btn btn-success" type="submit" name="status" value="Available" style="margin-right: 10px;">Mark as Ready&nbsp;&nbsp;<i class="fa fa-check"></i></button><button class="btn btn-danger" type="submit" name="status" value="Not Available" style="margin-left: 10px;">Mark as Not Available&nbsp;&nbsp;<i class="fa fa-remove"></i></button></div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
