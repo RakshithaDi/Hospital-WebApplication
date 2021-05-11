@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+ <% response.setHeader("Cache-Control", "no-cache, no-store");%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,13 +30,15 @@
     <link rel="stylesheet" href="../assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="../assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    
+  
 </head>
 
 <body style="background: #dddddd;">
     
     
     <%
-          
+         
         HttpSession se = request.getSession();
         session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
         String username = (String)session.getAttribute("username");
@@ -53,7 +57,7 @@
                 </ul>
             </div>
             <div class="dropdown menu_links"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);font-family: Montserrat, sans-serif;"><%out.println("Hello " + username);%> </a>
-                <div class="dropdown-menu"><a class="dropdown-item" href="#">Logout</a></div>
+                <div class="dropdown-menu"><a class="dropdown-item" href="../auth/login.html">Logout</a></div>
             </div>
         </div>
     </nav>
