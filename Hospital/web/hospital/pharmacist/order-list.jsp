@@ -104,6 +104,7 @@
                      <input type="hidden" name="gender" value="<%=e.getGender()%>">
                      <input type="hidden" name="prslist" value="<%=p.getPrsclist()%>">
                      <input type="hidden" name="name" value="<%=e.getFname()%> <%=e.getLname()%>">
+                     <input type="hidden" name="phoneno" value="<%=e.getMobileNo()%>">
                    
                   
             

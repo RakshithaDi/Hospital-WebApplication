@@ -43,6 +43,7 @@
         String dob=request.getParameter("dob");
         String gender=request.getParameter("gender");
         String name=request.getParameter("name");
+        String phoneno=request.getParameter("phoneno");
         
         
         
@@ -100,6 +101,7 @@
                                 <div class="card-body">
                                     <form method="post" action="../../SubmitPrescriptionbill">
                                         <input type="hidden" name="prscid" value="<%=prscid%>">
+                                        <input type="hidden" name="phoneno" value="<%=phoneno%>">
                                         <div class="form-group"><input class="form-control" type="text" name="price" placeholder="Total Price" ></div>
                                         <div class="form-group"><textarea class="form-control" name="billnotes" placeholder="Any Notes" rows="5" style="height: 103px;"></textarea></div>
                                     
