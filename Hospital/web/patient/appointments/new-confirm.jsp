@@ -89,7 +89,9 @@
                                 <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">Time : <%=ddt.getTime()%></h6>
                                 <h6 class="text-muted card-subtitle mb-2" style="padding: 5px;">No :  <%=ap3.getCount()%> </h6>
                            
-                            </div>
+                            </div>                      
+                                                            
+                                                  
                         </div>
                     </div>
                 </div>
@@ -123,13 +125,24 @@
                             <div class="form-row">
                                 <div class="col text-center" style="margin: 7px;margin-top: 15px;"><button class="btn btn-primary bg-success border rounded shadow-lg" type="submit" style="color: rgb(255,255,255);background: #003893;">Confirm&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
                             </div>  
-                            <div class="form-row">
-                                <div class="col text-center" style="margin: 6px;"><button class="btn btn-primary bg-secondary border rounded" type="button" style="background: #003893;color: rgb(255,255,255);">Confirm and Pay Online&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button></div>
-                            </div>
+                            
                         </div>
                     </div>
                
-            </div> </form> <%}%> 
+            </div> </form>
+                <div class="form-row">
+                                <div class="col text-center" style="margin: 6px;">
+                                    <form method="post" action="new-pay.jsp">
+                                        <input type="hidden" name="doctorName" value="<%=docname%>">
+                                                         <input type="hidden" name="apDate" value="<%=ddt.getDate()%>">
+                                                         <input type="hidden" name="apTime" value="<%=ddt.getTime()%>">
+                                                         <input type="hidden" name="apNo" value="<%=ap3.getCount()%>">
+                                    <button class="btn btn-primary bg-secondary border rounded" type="submit" style="background: #003893;color: rgb(255,255,255);">Confirm and Pay Online&nbsp;&nbsp;<i class="fa fa-angle-double-right"></i></button> </form></div>
+                                    
+                            </div>
+            
+            
+            <%}%> 
         </div>
     </div>
     <footer style="background: #212121;">
