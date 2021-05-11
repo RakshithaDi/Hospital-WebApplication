@@ -15,11 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.DBConnection;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
 /**
  *
  * @author PC
  */
 public class SubmitPrescriptionbill extends HttpServlet {
+    
+    public static final String ACCOUNT_SID = "AC30903a9112a151014af6052c82523ef5";
+    public static final String AUTH_TOKEN = "2cd31f51636fa62accfd09899148b575";
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -72,6 +80,23 @@ public class SubmitPrescriptionbill extends HttpServlet {
       String status=request.getParameter("status");
       String billnotes=request.getParameter("billnotes");
       String price=request.getParameter("price");
+      
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        
+        if("Available".equals(status)){
+            Message message = Message.creator(
+            new PhoneNumber("+94702435206"),
+            new PhoneNumber("+14154187518"), 
+            "Your medicines are ready! \nOrder ID:" + prscid + "\n\nCentral Hospitals Pharmacy").create();
+            System.out.println(message.getSid());
+        }
+        else{
+            Message message = Message.creator(
+            new PhoneNumber("+94702435206"),
+            new PhoneNumber("+14154187518"), 
+            "We are sorry!, Your medicines are currently not available in our pharmacy \n\nCentral Hospitals").create();
+            System.out.println(message.getSid());
+        }
       
 //      out.println(prscid);
 //      out.println(status);

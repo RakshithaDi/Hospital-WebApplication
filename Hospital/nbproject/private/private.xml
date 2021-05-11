@@ -3,17 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/controller/Login.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments_list.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DoctorDateTime.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointments.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointmentcopy.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appointment_list.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/doctor/appo.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/pharmacist/order-list.html</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/pharmacist/order-list.jsp</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/src/java/model/DBConnection.java</file>
-            <file>file:/D:/github/Hospital-WebApplication/Hospital/web/hospital/auth/login.html</file>
+            <file>file:/C:/GitHubProjects/Hospital-WebApplication/Hospital/src/java/controller/SubmitPrescriptionbill.java</file>
         </group>
     </open-files>
 </project-private>
