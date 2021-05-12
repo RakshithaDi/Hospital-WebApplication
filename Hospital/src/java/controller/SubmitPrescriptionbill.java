@@ -26,7 +26,7 @@ import com.twilio.type.PhoneNumber;
 public class SubmitPrescriptionbill extends HttpServlet {
     
     public static final String ACCOUNT_SID = "AC30903a9112a151014af6052c82523ef5";
-    public static final String AUTH_TOKEN = "2cd31f51636fa62accfd09899148b575";
+    public static final String AUTH_TOKEN = "b37b147b45b9372b18cb743cc8880781";
 
 
     /**
@@ -88,7 +88,7 @@ public class SubmitPrescriptionbill extends HttpServlet {
         
         if("Available".equals(status)){
             Message message = Message.creator(
-            new PhoneNumber(newmob),
+            new PhoneNumber("+94702435206"),
             new PhoneNumber("+14154187518"), 
             "Your medicines are ready! \nOrder ID:" + prscid + "\n\nCentral Hospitals Pharmacy").create();
             System.out.println(message.getSid());
