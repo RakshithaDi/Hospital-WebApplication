@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>patient 2</title>
+    <title>Add your Feedback</title>
+    <link rel="icon" href="../assets/img/logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
@@ -46,8 +47,12 @@
                         <div class="col d-xl-flex align-items-center justify-content-xl-center">
                             <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
                                 <div class="card-body">
-                                    <div class="form-group"><span style="font-family: Cabin, sans-serif;color: rgb(47,47,47);">Rating</span><input class="form-control-range" type="range" name="rate"></div>
-                                    <div class="form-group text-center"><span style="font-family: Cabin, sans-serif;color: rgb(255,43,43);font-size: 18px;">5</span></div>
+                                    <div class="form-group"><span style="font-family: Cabin, sans-serif;color: rgb(47,47,47);">Rating</span>
+                                        <input onclick="funrval();" id="rin" class="form-control-range" min="1" max="10" type="range" name="rate">
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <span id="rval" style="font-family: Cabin, sans-serif;color: rgb(255,43,43);font-size: 18px;">Select a rating from above slider</span>
+                                    </div>
                                     <div class="form-group"><span style="font-family: Cabin, sans-serif;color: rgb(47,47,47);">Review</span><textarea class="form-control" name="feedback" placeholder="type your review" style="font-family: Cabin, sans-serif;height: 308px;"></textarea></div>
                                     <div class="form-group text-center"><button class="btn btn-primary bg-success border rounded" type="submit" style="color: rgb(255,255,255);background: #003893;">Submit&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
                                 </div>
@@ -70,6 +75,18 @@
     <script src="../assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="../assets/js/grayscale.js"></script>
+
+
+    <script>
+        function funrval(){
+            var number=document.getElementById("rin").value;
+        var out=document.getElementById("rval");
+        out.innerText = number;  
+        }
+        
+    </script>
+
+
 </body>
 
 </html>

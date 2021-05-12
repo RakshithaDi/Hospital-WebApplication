@@ -16,7 +16,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>patient 2</title>
+    <title>Prescriptions</title>
+    <link rel="icon" href="../assets/img/logo.png">
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
@@ -66,7 +67,7 @@
                      <%List<Prescription> list2 = DBConnection.getPrescription(plog.getPid()); %>
             <%for(Prescription p:list2){ %>  
             
-                    <div class="card">
+                    <div class="card mb-2">
                         <div class="card-body">
                             <h6 class="mb-2" style="color: rgb(129,129,129);border-color: rgb(0,0,0);">Prescription ID: <%=p.getPrscid()%> &nbsp;</h6>
                             <h4 class="text-capitalize card-title" style="color: rgb(0,0,0);font-size: 20px;"> 
@@ -75,9 +76,9 @@
                             <h6 class="mb-2" style="color: rgb(27,27,27);border-color: rgb(0,0,0);">Date :  <%=p.getDate()%></h6>
                             <p class="card-text" style="color: rgb(0,0,0);"> <%=p.getPrsclist()%> <br><%=p.getNotes()%></p>
                             
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col text-center"><button class="btn btn-light border rounded" type="button" style="margin-right: 10px;margin-left: 10px;">Pay Online</button></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div> <%}%> <%}%> 
                 </div>
