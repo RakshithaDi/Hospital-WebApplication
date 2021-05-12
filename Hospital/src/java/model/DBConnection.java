@@ -953,5 +953,42 @@ public class DBConnection {
        
     }   
 
+       public static List<Prescription>getPrescriptionDetails(int pid,int docid){
+       
+        List<Prescription> list= new ArrayList<Prescription>();
+        int status=0;
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from prescription where PatientID='"+pid+"' and DoctorID='"+docid+"' ");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Prescription pp1=new Prescription();
+               
+                pp1.setPrscid(rs.getInt(1));
+                pp1.setPid(rs.getInt(2));
+                pp1.setDocid(rs.getInt(3));
+                pp1.setPrsclist(rs.getString(4));
+                pp1.setNotes(rs.getString(5));
+                pp1.setDate(rs.getString(6));
+             
+               // e.setDeceased(rs.getString(11));
+               
+               
+                
+                list.add(pp1);
+                
+             
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+        
+        
+    }
      
 }

@@ -88,7 +88,7 @@ public class SubmitDiagnosisPrescription extends HttpServlet {
           if(rslt==true)
           {
               out.println("Added Successfully");
-               statu="Appointment Added Successfully!";
+               statu="Added Successfully!";
               
               HttpSession session = request.getSession();
               session.setAttribute("statu",statu);

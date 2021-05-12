@@ -86,33 +86,34 @@
             
             
             
-            <%List<Prescription> list1 = DBConnection.getPrescription(appo2.getPid()); %>
-            <%for(Prescription p:list1){ %>  
             
-             <%List<Patient> list2 = DBConnection.getAllPatients(appo2.getPid()); %>
+            
+            <%List<Prescription> list1 = DBConnection.getPrescriptionDetails(appo2.getPid(),appo2.getDocid()); %>
+            <%for(Prescription pp1:list1){ %>  
+            
+             <%List<Patient> list2 = DBConnection.getAllPatients(pp1.getPid()); %>
             <%for(Patient e:list2){ %>  
                         <tr>
-                            <td><%=p.getPrscid()%> </td>
+                            <td><%=pp1.getPrscid()%> </td>
                             <td><%=e.getFname()%> <%=e.getLname()%></td>
                             <td>
                                 
                                 
                                   <form method="post" action="orders.jsp">
                 
-                     <input type="hidden" name="prscid" value="<%=p.getPrscid()%>">
+                     <input type="hidden" name="prscid" value="<%=pp1.getPrscid()%>">
                      <input type="hidden" name="dob" value="<%=e.getDob()%>">
                      <input type="hidden" name="gender" value="<%=e.getGender()%>">
-                     <input type="hidden" name="prslist" value="<%=p.getPrsclist()%>">
+                     <input type="hidden" name="prslist" value="<%=pp1.getPrsclist()%>">
                      <input type="hidden" name="name" value="<%=e.getFname()%> <%=e.getLname()%>">
                      <input type="hidden" name="phoneno" value="<%=e.getMobileNo()%>">
-                   
-                  
-            
+                     
+                              
                  <button class="btn btn-light" type="submit"><b>View</b></button>
                  
                  </form>
                
-                              
+                            </td>     
                         </tr>
                         
                  <%}%>  <%}%> <%}%>
