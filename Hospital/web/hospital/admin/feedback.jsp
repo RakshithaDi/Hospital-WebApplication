@@ -55,7 +55,7 @@
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="#"><strong>Feedback</strong></a></li>
                 </ul>
             </div>
-            <div class="dropdown menu_links"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"><%out.println("Hello " + username);%> </a>
+            <div class="dropdown menu_links"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"><%out.println("Admin ("+username+")");%> </a>
                 <div class="dropdown-menu"><a class="dropdown-item" href="../../Logout">Logout</a></div>
             </div>
         </div>
