@@ -47,11 +47,14 @@
     
     <div style="background: url(&quot;../assets/img/pexels-tara-winstead-7722646.jpg&quot;) center / cover no-repeat;height: 917px;">
         <div class="container" style="color: rgb(255,255,255);font-family: Cabin, sans-serif;padding-top: 87px;">
-            <div class="card">
-                <div class="card-body text-center">
-                    <center><h1 style="color:black;">         <%=statu%>  </h1></center> 
-                </div>
-            </div>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <center> <h1> <%=statu%>  </h1> </center>
+               
         </div>
     </div>
     <footer style="background: #212121;">

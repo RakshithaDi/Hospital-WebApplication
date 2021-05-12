@@ -50,15 +50,21 @@
         %>
      
     <div class="container" style="height: 802px;">
-        <div class="row" style="margin: 32px;height: 100px;">
-            <center><h1 style="color:black;">         <%=statu%>  </h1></center>  
-        </div>
         
-        
-        <div class="row" style="margin: 32px;height: 100px;">
-            <center><h2 style="color:black;">Thank You!</h2></center>
-        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <center> <h1 style="color:black;"> <%=statu%>  </h1> </center>
+        <br>
+        <center><h2 style="color:black;">Thank You!</h2></center>
+       
     </div> 
+        
+        
+        
     <footer style="background: #212121;">
         <div class="container text-center"><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Privacy Policy</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">About</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Contact</a><a href="../feedback/new-feedback.html" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Leave Feedback</a></div>
         <div class="container text-center">

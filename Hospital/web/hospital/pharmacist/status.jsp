@@ -54,11 +54,19 @@
             </div>
         </div>
     </nav>
+        
+        
     <div class="container" style="height: 814px;">
-        <div class="col" style="padding: 0px;background: #ffffff;margin: 13px;">
-           <h1> <%=statu%>  </h1>
-        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <center> <h1> <%=statu%>  </h1> </center>
     </div>
+        
+        
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">

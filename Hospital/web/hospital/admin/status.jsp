@@ -57,23 +57,15 @@
     
     
     <div class="container-fluid" style="height: 618px;">
-        <div class="row">
-            <div class="col-md-4">
-                <h1> <%=statu%>  </h1>
-            </div>
-           
-            <div class="col-md-4">
-                
-            </div>
-        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <center> <h1> <%=statu%>  </h1> </center>
     </div>
-    <div class="container" style="height: 261px;">
-        <div class="row">
-            <div class="col-md-12" style="padding: 18px;">
-                <div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Alert</strong> text.</span></div>
-            </div>
-        </div>
-    </div>
+    
     <footer class="footer-basic">
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
         <ul class="list-inline">
