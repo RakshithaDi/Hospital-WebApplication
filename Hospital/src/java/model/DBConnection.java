@@ -448,6 +448,7 @@ public class DBConnection {
              ps.setString(8,gender);
              ps.setString(9,bloodgroup);
              ps.setString(10,pec);
+             
           
              int i = ps.executeUpdate();
                  if(i>0)

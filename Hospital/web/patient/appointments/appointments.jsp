@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="../assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
-    <link rel="stylesheet" href="../assets/css/Navbar-Dropdown-List-Item.css">
+    <link rel="stylesheet" href="../assets/css/Navbar-Dropdown-List-Item.css"> 
     
 </head>
 
@@ -126,7 +126,9 @@
                 <div class="row" style="margin: 14px;">
                     <div class="col">
                         <div class="row">
-                            
+                          
+                            <div class="col">
+                                  
                             
                                                
                                 <%List<Patient> list3 = DBConnection.getPatientID(email); %>
@@ -139,7 +141,6 @@
                <%List<Doctor> list = DBConnection.getDoctorName(pastd.getDocid()); %>
                                  <%for(Doctor doc2:list){ %>
                             
-                            <div class="col">
                                 <div class="card" style="margin: 7px;">
                                     <div class="card-body" style="height: 65px;">
                                         <div class="row">
@@ -162,8 +163,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> <%}%>     <%}%>  <%}%>
-                        </div>
+                            </div> 
+                        </div><%}%>     <%}%>  <%}%>
                     </div>
                 </div>
             </div>
