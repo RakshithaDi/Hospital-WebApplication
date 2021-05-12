@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2021 at 05:38 PM
+-- Generation Time: May 12, 2021 at 07:01 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -46,7 +46,7 @@ INSERT INTO `appointment` (`LineNo`, `PatientID`, `DoctorID`, `Date`, `Time`, `P
 (2, 2, 4, '2021-05-22 ', '15:03 ', 'Yes', 2),
 (3, 3, 2, '2021-05-19 ', '18:00 ', 'No', 3),
 (4, 4, 5, '2021-05-25 ', '11:32 ', 'Yes', 4),
-(5, 1, 3, '2021-05-20 ', '02:02 ', 'Yes', 5);
+(5, 1, 3, '2021-05-10', '02:02 ', 'Yes', 5);
 
 -- --------------------------------------------------------
 
@@ -211,8 +211,8 @@ CREATE TABLE `patient` (
 INSERT INTO `patient` (`PatientID`, `FirstName`, `LastName`, `Email`, `PhoneNo`, `Password`, `Address`, `DOB`, `Gender`, `BloodType`, `PEC`) VALUES
 (1, 'Rakshitha', 'Dilshan', 'rakshithadilshan1@gmail.com', 766807668, '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]', 'No 21, Nuwara Eliya', '2000-01-01', 'Male', 'B-', 'Heart attack'),
 (2, 'Kasun', 'Kalhara', 'kasunkalhara@gmail.com', 773456531, '[121, -16, 111, -113, -34, 51, 52, 97, 115, -97, 34, 0, -112, -94, 60, -78, -89, -97, 109, 113, 75, -18, 16, 13, 14, 75, 74, -14, 73, 41, 70, 25]', 'No 72, Horana', '2004-06-06', 'Male', 'A+', 'Kidney disease'),
-(3, 'Dinusha', 'Lakmal', 'lahirumadushanka@gmail.com', 722726442, '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]', 'No 42, Malabe', '1997-06-30', 'Male', 'A+', 'Anxiety, depression or mood disorder resulting in recent hospitalization or time off work'),
-(4, 'Lahiru', 'Madushanka', 'dinushalakmal1@gmail.com', 713033789, '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]', 'No 01, Gampaha', '1997-07-08', 'Male', 'A+', 'Hydrocephalus');
+(3, 'Dinusha', 'Lakmal', 'dinushalakmal1@gmail.com', 722726442, '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]', 'No 42, Malabe', '1997-06-30', 'Male', 'A+', 'Anxiety, depression or mood disorder resulting in recent hospitalization or time off work'),
+(4, 'Lahiru', 'Madushanka', 'lahirumadushanka@gmail.com', 713033789, '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]', 'No 01, Gampaha', '1997-07-08', 'Male', 'A+', 'Hydrocephalus');
 
 -- --------------------------------------------------------
 

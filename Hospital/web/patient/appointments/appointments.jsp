@@ -56,10 +56,20 @@
     </nav>
     <%
           
-        HttpSession se = request.getSession();
+        //HttpSession se = request.getSession();
       //  session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
         String email = (String)session.getAttribute("email");
        // out.println("Hello " + email);
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
+      
+         if(session.getAttribute("email")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
+        
         
     
    
@@ -158,13 +168,13 @@
                                                 <h5 style="color: rgb(0,0,0);"><%=pastd.getTime()%></h5>
                                             </div>
                                             <div class="col-xl-2 text-center">
-                                                <h5 style="color: rgb(0,0,0);">No.<%=pastd.getLineno()%></h5>
+                                                <h5 style="color: rgb(0,0,0);">No.<%=pastd.getLineno()%></h5> <%}%>     <%}%>  <%}%>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div> 
-                        </div><%}%>     <%}%>  <%}%>
+                        </div>
                     </div>
                 </div>
             </div>
