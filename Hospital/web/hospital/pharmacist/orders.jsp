@@ -35,9 +35,16 @@
      <%
           
        
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
         String username = (String)session.getAttribute("username");
-        
-        
+         if(session.getAttribute("username")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
+   
         int prscid = Integer.parseInt(request.getParameter("prscid"));
         String prslist=request.getParameter("prslist");
         String dob=request.getParameter("dob");
@@ -68,11 +75,12 @@
             <div class="col">
                 <div style="margin: 16px;">
                     <div class="row">
-                        <div class="col text-left align-self-center"><button class="btn btn-dark text-center" type="button" style="margin: 3px;width: 100;"><i class="fa fa-chevron-left"></i>&nbsp; PREVIOUS</button></div>
+                       
                         <div class="col text-left align-self-center">
+                            <br>
                             <h5 class="text-center text-dark" style="font-family: Montserrat, sans-serif;text-align: center;">Order No : <%=prscid%></h5>
                         </div>
-                        <div class="col text-right align-self-center"><button class="btn btn-dark text-center" type="button" style="margin: 3px;width: 100px;">NEXT&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button></div>
+                        
                     </div>
                 </div>
             </div>

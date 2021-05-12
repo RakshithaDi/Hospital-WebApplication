@@ -36,7 +36,16 @@
           
        
         String statu = (String)session.getAttribute("statu");
-       // out.println("Hello " + statu);
+        
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
+        String username = (String)session.getAttribute("username");
+         if(session.getAttribute("username")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
         
         %>
 
@@ -49,7 +58,7 @@
                     <li class="nav-item"><a class="nav-link" href="orders.jsp" style="font-family: Montserrat, sans-serif;">Orders</a></li>
                 </ul>
             </div>
-            <div class="dropdown menu_links" style="font-family: Montserrat, sans-serif;"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"> </a>
+            <div class="dropdown menu_links" style="font-family: Montserrat, sans-serif;"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"> <%out.println("Pharmacist ("+username+")");%> </a>
                 <div class="dropdown-menu"><a class="dropdown-item" href="../../Logout">Logout</a></div>
             </div>
         </div>

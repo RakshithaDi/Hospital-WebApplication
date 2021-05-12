@@ -39,9 +39,18 @@
     
     <%
           
-        HttpSession se = request.getSession();
-        session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
+       // HttpSession se = request.getSession();
+       // session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
+       
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
         String username = (String)session.getAttribute("username");
+         if(session.getAttribute("username")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
         
       
         %>
@@ -60,7 +69,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="order-list.jsp" style="font-family: Montserrat, sans-serif;"><strong>Order List</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="orders.jsp" style="font-family: Montserrat, sans-serif;">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Montserrat, sans-serif;">Orders</a></li>
                 </ul>
             </div>
             <div class="dropdown menu_links" style="font-family: Montserrat, sans-serif;"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"><%out.println("Pharmacist ("+username+")");%>  </a>

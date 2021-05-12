@@ -35,9 +35,18 @@
     
     <%
           
-        HttpSession se = request.getSession();
-        session.setMaxInactiveInterval(1800); //Expires after 30 seconds inactivity
+        //HttpSession se = request.getSession();
+       // session.setMaxInactiveInterval(1800); //Expires after 30 seconds inactivity
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
         String username = (String)session.getAttribute("username");
+         if(session.getAttribute("username")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
+       
         
         
         %>
