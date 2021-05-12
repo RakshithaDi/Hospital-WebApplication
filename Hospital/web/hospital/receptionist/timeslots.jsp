@@ -108,9 +108,9 @@
                             <div class="form-group"><span style="font-family: Cabin, sans-serif;">Doctor ID</span><input class="form-control" name="docid" type="text" required=""></div>
                             <div class="form-group"><span style="font-family: Cabin, sans-serif;">Date</span><input class="form-control" type="date" name="date" required=""></div>
                             <div class="form-group"><span style="font-family: Cabin, sans-serif;">Time</span><input class="form-control" type="time" name="time" required=""></div>
-                            <div class="form-group text-center"><button class="btn btn-dark" type="submit" style="font-family: Cabin, sans-serif;">ADD</button></div>
+                            <div class="form-group text-center"><br><button class="btn btn-dark" type="submit" style="font-family: Cabin, sans-serif;">ADD</button></div>
                         </form>
-                        <div class="alert alert-success" role="alert"><span><strong>Alert</strong> text.</span></div>
+                        
                     </div>
                 </div>
             </div>

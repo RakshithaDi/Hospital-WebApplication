@@ -143,7 +143,7 @@
     <div class="container" style="height: 261px;">
         <div class="row">
             <div class="col-md-12" style="padding: 18px;">
-                <div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                
             </div>
         </div>
     </div>
