@@ -86,20 +86,7 @@ public class SubmitPrescriptionbill extends HttpServlet {
       
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         
-        if("Available".equals(status)){
-            Message message = Message.creator(
-            new PhoneNumber("+94702435206"),
-            new PhoneNumber("+14154187518"), 
-            "Your medicines are ready! \nOrder ID:" + prscid + "\n\nCentral Hospitals Pharmacy").create();
-            System.out.println(message.getSid());
-        }
-        else{
-            Message message = Message.creator(
-            new PhoneNumber("+94702435206"),
-            new PhoneNumber("+14154187518"), 
-            "We are sorry!, Your medicines are currently not available in our pharmacy \n\nCentral Hospitals").create();
-            System.out.println(message.getSid());
-        }
+      
       
 //      out.println(prscid);
 //      out.println(status);
@@ -111,9 +98,30 @@ public class SubmitPrescriptionbill extends HttpServlet {
           boolean rslt=con.addPrescriptionBill(prscid,status,billnotes,price);
           if(rslt==true)
           {
+              
+                if("Available".equals(status)){
+            Message message = Message.creator(
+            new PhoneNumber("+94766807668"),
+            new PhoneNumber("+14154187518"), 
+            "Your medicines are ready! \nOrder ID:" + prscid + "\n\nCentral Hospitals Pharmacy").create();
+            System.out.println(message.getSid());
+            
+              out.println("Added Successfully");
+              statu="Added Successfully!";
+             
+        }
+        else{
+            Message message = Message.creator(
+            new PhoneNumber("+94766807668"),
+            new PhoneNumber("+14154187518"), 
+            "We are sorry!, Your medicines are currently not available in our pharmacy \n\nCentral Hospitals").create();
+            System.out.println(message.getSid());
+            
               out.println("Added Successfully");
               statu="Added Successfully!";
               
+            
+        }
               HttpSession session = request.getSession();
               session.setAttribute("statu",statu);
               response.sendRedirect("hospital/pharmacist/status.jsp");
