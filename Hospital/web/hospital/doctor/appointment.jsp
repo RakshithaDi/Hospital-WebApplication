@@ -156,7 +156,7 @@
                                     <input type="hidden" name="date" value="<%=dtf.format(now)%>">
                                     <div class="form-group"><textarea class="form-control" name="diagnosis" placeholder="Diagnosis" rows="14" style="height: 152px;" required></textarea></div>
                                     <div class="form-group"><textarea class="form-control" name="prescription" placeholder="Prescription" rows="14" style="height: 171px;" required></textarea></div>
-                                    <div class="form-group text-center"><button class="btn btn-primary" type="submit">SUBMIT</button></div>
+                                    <div id="presubmit" class="form-group text-center"><button class="btn btn-primary" type="submit">SUBMIT</button></div>
                                 </form>
                             </div>
                         </div>
@@ -219,10 +219,12 @@
             <li class="list-inline-item"><a href="#">Terms</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
         </ul>
-        <p class="copyright">Company Name © 2021</p>
+        <p class="copyright">Company Name ï¿½ 2021</p>
     </footer>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../notify.js"></script>
+    <script>notify2()</script>
 </body>
 
 </html>

@@ -11,14 +11,21 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-function notify2(email){
-    db.collection("messages").doc(email).onSnapshot(function(doc) {
-        if(doc.data().p_unread == 'yes'){
-            if(!alert('You have new messages')){
+function notify2(){
+    db.collection("notifications").doc("pharmacy").onSnapshot(function(doc) {
+        if(doc.data().new == 'yes'){
+            if(!alert('New orders are available!')){
                 db.collection("messages").doc(email).update({
-                    p_unread: 'no',
+                    new: 'no',
                 })
+                window.location.reload();
             }
         }
     });
+}
+
+document.getElementById('moreText').onclick = function () {
+    db.collection("notifications").doc("pharmacy").update({
+        new: 'yes',
+    })
 }
