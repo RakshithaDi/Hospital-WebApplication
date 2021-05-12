@@ -51,7 +51,19 @@
     <%
           
 
-        String email = (String)session.getAttribute("email");
+    
+        
+         String email = (String)session.getAttribute("email");
+       // out.println("Hello " + email);
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
+      
+         if(session.getAttribute("email")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
        
         
         %>
