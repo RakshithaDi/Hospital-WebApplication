@@ -1,6 +1,36 @@
-function test(abc){
-    console.log(abc)
-   }
+var firebaseConfig = {
+    apiKey: "AIzaSyCHTea8bbIN2e4GfiTHE7ywEqGKCkjkJY0",
+    authDomain: "central-hospitals.firebaseapp.com",
+    projectId: "central-hospitals",
+    storageBucket: "central-hospitals.appspot.com",
+    messagingSenderId: "77497319312",
+    appId: "1:77497319312:web:5eb35ebf7cac318d41fd15",
+    measurementId: "G-77Y7N8Y48G"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+const messaging = firebase.messaging();
+// Get registration token. Initially this makes a network call, once retrieved
+// subsequent calls to getToken will return from cache.
+messaging.getToken({ vapidKey: 'BElGrptkGJHYy6XBiWXVCW3mKJ8a3E0cUuR4n6sS4yErlFNbayvfhhT3WSXrIATbOx1xr7U5DrCDYNCFNyX4Aa4' }).then((currentToken) => {
+    if (currentToken) {
+        //db.collection("notifications").doc("receptionists").collection("clients").doc().set({toket: currentToken})  
+    } else {
+      // Show permission request UI
+      console.log('No registration token available. Request permission to generate one.');
+      // ...
+    }
+  }).catch((err) => {
+    console.log('An error occurred while retrieving token. ', err);
+    // ...
+  });
+
+messaging.onMessage((payload) => {
+console.log('Message received. ', payload);
+// ...
+});
 
 var selected = ""
 var db = firebase.firestore();
