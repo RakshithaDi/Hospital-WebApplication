@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 11:02 AM
+-- Generation Time: May 12, 2021 at 05:38 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -42,8 +42,11 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`LineNo`, `PatientID`, `DoctorID`, `Date`, `Time`, `Pharmacy`, `AptID`) VALUES
-(1, 1, 2, '2021-05-16 ', '9:00 AM ', 'Yes', 1),
-(2, 2, 2, '2021-05-18 ', '8:00 PM ', 'No', 2);
+(1, 1, 1, '2021-05-17', '07:00 ', 'Yes', 1),
+(2, 2, 4, '2021-05-22 ', '15:03 ', 'Yes', 2),
+(3, 3, 2, '2021-05-19 ', '18:00 ', 'No', 3),
+(4, 4, 5, '2021-05-25 ', '11:32 ', 'Yes', 4),
+(5, 1, 3, '2021-05-20 ', '02:02 ', 'Yes', 5);
 
 -- --------------------------------------------------------
 
@@ -70,9 +73,11 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`DoctorID`, `DoctorType`, `NIC`, `RegNo`, `FirstName`, `LastName`, `Username`, `PhoneNo`, `Email`, `Password`, `Address`) VALUES
-(1, 'Immunologist', '1998343259V', '0001', 'Kasun', 'Kalhara', 'Kasun', 713033789, 'kasunkalhara@gmail.com', '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]', 'No 22,Colombo'),
-(2, 'Anesthesiologist', '9809654346V', '0002', 'Ravindu', 'Jayathilake', 'Ravindu', 776547807, 'ravindujayathilake@gmail.com', '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]', 'No 02, Rathnapura'),
-(3, 'Anesthesiologist', '20000010234', '0003', 'Hasiru ', 'Kalhara', 'Hasiru', 776547807, 'hasirunawodya@gmail.com', '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]', 'No 02, Rathnapura');
+(1, 'Anesthesiologist', '98096765789V', '0001', 'Anoja', 'Abeyjeewa', 'Anoja', 785674383, 'anojaabeyjeewa@gmail.com', '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]', 'No 21, Kandy'),
+(2, 'Anesthesiologist', '87679876546V', '0002', 'Ashan', 'Perera', 'Ashan', 765478987, 'ashanperera@gmail.com', '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]', 'No 87, Gampola'),
+(3, 'Cardiologist', '76866789678V', '0003', 'Harshani', 'Gunathilaka', 'Harshani', 786578678, 'harshanigunathilaka', '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]', 'No 02, Rathnapura'),
+(4, 'Cardiologist', '87609876897V', '0004', 'Thusara', 'Ariyathilake', 'Thushara', 765758768, 'thusharaariyathilake@gmail.com', '[121, -16, 111, -113, -34, 51, 52, 97, 115, -97, 34, 0, -112, -94, 60, -78, -89, -97, 109, 113, 75, -18, 16, 13, 14, 75, 74, -14, 73, 41, 70, 25]', 'No 21, Godagama'),
+(5, 'Dermatologist', '76349876906V', '0005', 'Lakmalee', 'Samaraweera', 'Lakmalee', 765456789, 'lakmaleesamaraweera@gmail.com', '[-59, 7, -90, -113, 48, -109, -24, -123, 118, 82, 87, -19, 63, 23, 108, 117, 122, -81, 98, -69, 76, -68, 46, -7, 75, 46, 125, -93, 64, 109, -106, 118]', 'No 32, Kahawaththa');
 
 -- --------------------------------------------------------
 
@@ -92,13 +97,21 @@ CREATE TABLE `doctordatetime` (
 --
 
 INSERT INTO `doctordatetime` (`DoctorID`, `Date`, `Time`, `ID`) VALUES
-(2, '2021-05-16', '9:00 AM', 1),
-(2, '2021-05-17', '01:00 PM ', 2),
-(1, '2021-05-17', '12:00 PM', 3),
-(3, '2021-05-18', '3:00 PM', 4),
-(3, '2021-05-18', '8:00 PM', 5),
-(1, '2021-05-17', '12:13', 7),
-(2, '2021-05-20', '14:13', 8);
+(1, '2021-05-17', '07:00', 1),
+(1, '2021-05-17', '18:00', 2),
+(1, '2021-05-18', '00:00', 3),
+(2, '2021-05-17', '10:30', 4),
+(2, '2021-05-18', '10:30', 5),
+(2, '2021-05-19', '18:00', 6),
+(3, '2021-05-19', '13:00', 7),
+(3, '2021-05-20', '02:02', 8),
+(4, '2021-05-21', '17:03', 9),
+(4, '2021-05-22', '15:03', 10),
+(4, '2021-05-21', '19:03', 11),
+(5, '2021-05-23', '08:36', 12),
+(5, '2021-05-24', '00:04', 13),
+(5, '2021-05-25', '11:32', 14),
+(2, '2021-05-10', '11:20', 15);
 
 -- --------------------------------------------------------
 
@@ -168,9 +181,8 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`FeedbackID`, `Text`, `Stars`) VALUES
 (1, 'Good Communication', 5),
 (2, 'Terrible Service', 1),
-(3, 'Good Service', 88),
-(4, 'Bad Service', 7),
-(5, 'Good Communication', 12);
+(3, 'Good Service', 7),
+(4, 'Bad Service', 3);
 
 -- --------------------------------------------------------
 
@@ -197,8 +209,10 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`PatientID`, `FirstName`, `LastName`, `Email`, `PhoneNo`, `Password`, `Address`, `DOB`, `Gender`, `BloodType`, `PEC`) VALUES
-(1, 'Nimal', 'Gamage', 'nimalgamage@gmail.com', 713033789, '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]', 'No 23, Gampaha', '1995-06-15', 'Male', 'A+', 'Diabetes'),
-(2, 'Dinusha', 'Lakmal', 'dinushalakmal1@gmail.com', 776547807, '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]', 'No 22, Wajirapura', '1996-06-04', 'Male', 'A+', 'allergic to paracetamol');
+(1, 'Rakshitha', 'Dilshan', 'rakshithadilshan1@gmail.com', 766807668, '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]', 'No 21, Nuwara Eliya', '2000-01-01', 'Male', 'B-', 'Heart attack'),
+(2, 'Kasun', 'Kalhara', 'kasunkalhara@gmail.com', 773456531, '[121, -16, 111, -113, -34, 51, 52, 97, 115, -97, 34, 0, -112, -94, 60, -78, -89, -97, 109, 113, 75, -18, 16, 13, 14, 75, 74, -14, 73, 41, 70, 25]', 'No 72, Horana', '2004-06-06', 'Male', 'A+', 'Kidney disease'),
+(3, 'Dinusha', 'Lakmal', 'lahirumadushanka@gmail.com', 722726442, '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]', 'No 42, Malabe', '1997-06-30', 'Male', 'A+', 'Anxiety, depression or mood disorder resulting in recent hospitalization or time off work'),
+(4, 'Lahiru', 'Madushanka', 'dinushalakmal1@gmail.com', 713033789, '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]', 'No 01, Gampaha', '1997-07-08', 'Male', 'A+', 'Hydrocephalus');
 
 -- --------------------------------------------------------
 
@@ -219,8 +233,10 @@ CREATE TABLE `pharmacist` (
 
 INSERT INTO `pharmacist` (`StaffID`, `Name`, `Username`, `Password`) VALUES
 (1, 'Pasindu Gimhana', 'Pasindu', '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]'),
-(2, 'Rakshitha Dilshan', 'Rakshitha', '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]'),
-(3, 'Sadun Jayarathna', 'Sadun', '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]');
+(2, 'Bawantha', 'Dilshan', '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]'),
+(3, 'Sadun Jayarathna', 'Sadun', '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]'),
+(4, 'Sadeepa Damidu', 'Sadeepa', '[121, -16, 111, -113, -34, 51, 52, 97, 115, -97, 34, 0, -112, -94, 60, -78, -89, -97, 109, 113, 75, -18, 16, 13, 14, 75, 74, -14, 73, 41, 70, 25]'),
+(5, 'Sachith Pathirana', 'Sachith', '[-63, -13, 48, -48, -81, -13, 28, 28, -121, 64, 63, 30, 67, 71, -68, -62, 26, -1, 124, 23, -103, 8, 114, 53, 53, -14, -77, 23, 35, 112, 37, 37]');
 
 -- --------------------------------------------------------
 
@@ -241,8 +257,9 @@ CREATE TABLE `pharmacyorders` (
 --
 
 INSERT INTO `pharmacyorders` (`PrscID`, `Ready`, `Price`, `Note`, `OrderID`) VALUES
-(1, 'Available', '500', 'Three times a day', 1),
-(2, 'Not Available', '', '', 2);
+(1, 'Available', '200', '3 times for a day', 1),
+(3, 'Available', '100', '2 times for a day', 2),
+(4, 'Not Available', '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -282,9 +299,11 @@ CREATE TABLE `prescription` (
 --
 
 INSERT INTO `prescription` (`PrscID`, `PatientID`, `DoctorID`, `PrscList`, `Notes`, `Date`) VALUES
-(1, 1, 1, 'Metformin 5mg', 'Hypertension', '2021-04-26'),
-(2, 1, 1, 'Panadol 10mg', 'Fever', '2021-04-26'),
-(3, 2, 1, 'Fortamet, Glumetza', 'Hypertension', '2021-04-26');
+(1, 1, 1, 'aspirin tablets bp 75 mg', 'Fever', '2021-05-12'),
+(2, 3, 2, 'glimepiride 1 mg', 'diabetes', '2021-05-12'),
+(3, 2, 4, 'panadol 100 mg tablet', 'headache ', '2021-05-12'),
+(4, 4, 5, '\r\nOmeprazole 10 mg gastro-resistant tablets', 'gastric', '2021-05-12'),
+(5, 1, 3, 'amlodipine tablet 5mg', 'blood pressure', '2021-05-12');
 
 -- --------------------------------------------------------
 
@@ -305,25 +324,9 @@ CREATE TABLE `receptionist` (
 
 INSERT INTO `receptionist` (`StaffID`, `Name`, `Username`, `Password`) VALUES
 (1, 'Suranga Lakmal', 'Suranga', '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]'),
-(2, 'Dilshan', 'Sanjeewa', '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `apid` varchar(90) NOT NULL,
-  `lineno` varchar(90) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`apid`, `lineno`) VALUES
-('213d', 'erere');
+(2, 'Dilshan Sanjeewa', 'Sanjeewa', '[-19, -18, 41, -8, -126, 84, 59, -107, 102, 32, -78, 109, 14, -32, -25, -23, 80, 57, -101, 28, 66, 34, -11, -34, 5, -32, 100, 37, -76, -55, -107, -23]'),
+(4, 'Gimsara Theekshana', 'Gimsara', '[49, -118, -18, 63, -19, -116, -99, 4, 13, 53, -89, -4, 31, -89, 118, -5, 49, 48, 56, 51, -86, 45, -24, -123, 53, 77, -33, 61, 68, -40, -5, 105]'),
+(5, 'Kamal Perera', 'Kamal', '[-59, 7, -90, -113, 48, -109, -24, -123, 118, 82, 87, -19, 63, 23, 108, 117, 122, -81, 98, -69, 76, -68, 46, -7, 75, 46, 125, -93, 64, 109, -106, 118]');
 
 -- --------------------------------------------------------
 
@@ -343,7 +346,8 @@ CREATE TABLE `webadmin` (
 --
 
 INSERT INTO `webadmin` (`StaffID`, `Name`, `Username`, `Password`) VALUES
-(1, 'admin', 'admin', '[-116, 105, 118, -27, -75, 65, 4, 21, -67, -23, 8, -67, 77, -18, 21, -33, -79, 103, -87, -56, 115, -4, 75, -72, -88, 31, 111, 42, -76, 72, -87, 24]');
+(1, 'Admin', 'admin', '[-116, 105, 118, -27, -75, 65, 4, 21, -67, -23, 8, -67, 77, -18, 21, -33, -79, 103, -87, -56, 115, -4, 75, -72, -88, 31, 111, 42, -76, 72, -87, 24]'),
+(2, 'Dinith Thennakoon', 'Dinith', '[15, -2, 26, -67, 26, 8, 33, 83, 83, -62, 51, -42, -32, 9, 97, 62, -107, -18, -60, 37, 56, 50, -89, 97, -81, 40, -1, 55, -84, 90, 21, 12]');
 
 -- --------------------------------------------------------
 
@@ -419,12 +423,6 @@ ALTER TABLE `receptionist`
   ADD PRIMARY KEY (`StaffID`);
 
 --
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`apid`);
-
---
 -- Indexes for table `webadmin`
 --
 ALTER TABLE `webadmin`
@@ -438,19 +436,19 @@ ALTER TABLE `webadmin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `AptID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `AptID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `DoctorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `doctordatetime`
 --
 ALTER TABLE `doctordatetime`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `doctortype`
@@ -462,43 +460,43 @@ ALTER TABLE `doctortype`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `FeedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `FeedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `PatientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pharmacist`
 --
 ALTER TABLE `pharmacist`
-  MODIFY `StaffID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `StaffID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pharmacyorders`
 --
 ALTER TABLE `pharmacyorders`
-  MODIFY `OrderID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `OrderID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `PrscID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `PrscID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `receptionist`
 --
 ALTER TABLE `receptionist`
-  MODIFY `StaffID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `StaffID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `webadmin`
 --
 ALTER TABLE `webadmin`
-  MODIFY `StaffID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `StaffID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
