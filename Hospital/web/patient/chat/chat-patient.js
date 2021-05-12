@@ -78,7 +78,10 @@ function loadmessage(email){
         countCheck = mcount;
         //console.log(mcount)
         mcountListener(countCheck,email)     
-    });       
+    });
+    var element = document.getElementById("chatcont");
+    element.scrollTop = element.scrollHeight;
+    notify(selected);       
 }
 
 function sendmessage(){
@@ -93,6 +96,7 @@ function sendmessage(){
         
         db.collection("messages").doc(selected).update({
             messageCount: mcount,
+            unread: 'yes',
             ltime: firebase.firestore.Timestamp.fromDate(new Date())
         })
         console.log(selected)
@@ -103,6 +107,10 @@ function sendmessage(){
             order: mcount,
             status: "unread",
             timestamp: firebase.firestore.Timestamp.fromDate(new Date())
+        })
+
+        db.collection("notifications").doc('chat-rec').update({
+            unread: 'yes',
         })
     });
     document.getElementById("mtext").value = ""        
@@ -137,5 +145,19 @@ function newmessage(mcount,email){
             }
 
         });
+    });
+    var objDiv = document.getElementById("chatcont");
+    objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+function notify(email){
+    db.collection("messages").doc(email).onSnapshot(function(doc) {
+        if(doc.data().p_unread == 'yes'){
+            if(!alert('You have new messages')){
+                db.collection("messages").doc(email).update({
+                    p_unread: 'no',
+                })
+            }
+        }
     });
 }

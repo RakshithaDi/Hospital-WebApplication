@@ -11,27 +11,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-const messaging = firebase.messaging();
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-messaging.getToken({ vapidKey: 'BElGrptkGJHYy6XBiWXVCW3mKJ8a3E0cUuR4n6sS4yErlFNbayvfhhT3WSXrIATbOx1xr7U5DrCDYNCFNyX4Aa4' }).then((currentToken) => {
-    if (currentToken) {
-        db.collection("notifications").doc("receptionists").collection("clients").doc(currentToken).set({token: currentToken})  
-    } else {
-      // Show permission request UI
-      console.log('No registration token available. Request permission to generate one.');
-      // ...
-    }
-  }).catch((err) => {
-    console.log('An error occurred while retrieving token. ', err);
-    // ...
-  });
-
-messaging.onMessage((payload) => {
-console.log('Message received. ', payload);
-// ...
-});
-
 var selected = ""
 var db = firebase.firestore();
 
@@ -108,7 +87,7 @@ function loadmessage(email){
         unread: 'no'
     }) 
     var element = document.getElementById("chatcont");
-    element.scrollTop = element.scrollHeight;      
+    element.scrollTop = element.scrollHeight;       
 }
 
 function sendmessage(){
@@ -124,7 +103,8 @@ function sendmessage(){
         db.collection("messages").doc(selected).update({
             messageCount: mcount,
             ltime: firebase.firestore.Timestamp.fromDate(new Date()),
-            unread: 'no'
+            unread: 'no',
+            p_unread: 'yes'
         })
         console.log(selected)
 
@@ -169,6 +149,8 @@ function newmessage(mcount,email){
 
         });
     });
+    var element = document.getElementById("chatcont");
+    element.scrollTop = element.scrollHeight;
 }
 
 function loadlist(){
@@ -211,4 +193,17 @@ function loadlist(){
         //console.log(mcount)
         //mcountListener(countCheck,email)     
     //});       
+}
+
+function notify(email){
+    db.collection("notifications").doc('chat-rec').onSnapshot(function(doc) {
+        if(doc.data().unread == 'yes'){
+            loadlist();
+            if(!alert('You have new messages')){
+                db.collection("notifications").doc('chat-rec').update({
+                    unread: 'no',
+                })
+            }
+        }
+    });
 }

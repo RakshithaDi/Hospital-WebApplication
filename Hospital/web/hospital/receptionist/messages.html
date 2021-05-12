@@ -49,8 +49,8 @@
                         <div class="card" style="background: rgb(255,255,255);">
                             <div class="card-body" style="height: 700px;">
                                 <div class="col" style="padding-right: 0px;padding-left: 0px;">
-                                    <div class="row" style="margin-right: 0px;margin-bottom: 10px;border-style: none;">
-                                        <div id="list" class="col scroll" style="padding-right: 5px;padding-left: 5px;border-style: none;">
+                                    <div class="row overflow-auto" style="margin-right: 0px;margin-bottom: 10px;border-style: none;">
+                                        <div id="list" class="col overflow-auto" style="padding-right: 5px;padding-left: 5px;border-style: none;">
                                             <button class="btn btn-dark btn-block text-capitalize text-left border rounded border-light" type="button" style="height: 60px;color: rgb(255,255,255);border-width: 0px;">
                                                 <span class="text-left float-left" style="color: rgb(255,255,255);border-style: none;">
                                                     <i class="fa fa-user-circle" style="font-size: 18px;"></i>
@@ -72,7 +72,7 @@
                                 <div class="card" style="height: 650px;">
                                     <div class="card-body" style="padding: 10px;">
                                         <div class="col d-xl-flex justify-content-xl-center align-items-xl-center" style="padding-right: 0px;padding-left: 0px;height: 52px;margin-bottom: 10px;background: #e0e0e0;border-radius: 5px;font-family: Cabin, sans-serif;"><span id="fname" class="text-center" style="color: rgb(0,0,0);font-family: Cabin, sans-serif;font-size: 21px;">Select Conversation</span></div>
-                                        <div id="chatcont" class="col" style="height: 565px;border-radius: 5px;border: 1px solid rgb(221,221,221);padding-right: 20px;padding-left: 20px;">
+                                        <div id="chatcont" class="col overflow-auto" style="height: 565px;border-radius: 5px;border: 1px solid rgb(221,221,221);padding-right: 20px;padding-left: 20px;">
                                             <!-- <div class="row d-xl-flex justify-content-xl-start" style="margin-bottom: 5px;margin-top: 5px;">
                                                 <div class="col-auto" style="background: #3840ff;color: rgb(255,255,255);border-radius: 38px;border-width: 1px;border-color: rgb(128,128,128);"><span style="font-family: Cabin, sans-serif;">kkvjankjvnkfjnk&nbsp; dkjvnnfdk dfjdnf dkfjvnkfv</span></div>
                                             </div>
@@ -123,6 +123,7 @@
 
     <script src="chat-app.js"></script>
     <script>loadlist()</script>
+    <script>notify()</script>
 
 </body>
 
