@@ -97,9 +97,14 @@ public class Login extends HttpServlet {
             }
             else
             {
-          
-               out.println("Username or Password Incorrect");
-               out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
+               
+               String message="Username or Password Incorrect";
+               HttpSession session = request.getSession();
+               session.setAttribute("message",message);
+               response.sendRedirect("hospital/auth/login.jsp");
+               
+               
+             
             }
             
                }
@@ -127,8 +132,10 @@ public class Login extends HttpServlet {
             }
             else
             {
-                out.println("Username or Password Incorrect");
-                out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
+               String message="Username or Password Incorrect";
+               HttpSession session = request.getSession();
+               session.setAttribute("message",message);
+               response.sendRedirect("hospital/auth/login.jsp");
             }
             
                }
@@ -155,8 +162,10 @@ public class Login extends HttpServlet {
             }
             else
             {
-                out.println("Username or Password Incorrect");
-                out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
+               String message="Username or Password Incorrect";
+               HttpSession session = request.getSession();
+               session.setAttribute("message",message);
+               response.sendRedirect("hospital/auth/login.jsp");
             }
             
                }
@@ -185,8 +194,10 @@ public class Login extends HttpServlet {
             }
             else
             {
-                out.println("Username or Password Incorrect");
-                out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
+               String message="Username or Password Incorrect";
+               HttpSession session = request.getSession();
+               session.setAttribute("message",message);
+               response.sendRedirect("hospital/auth/login.jsp");
             }
             
                }

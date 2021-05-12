@@ -27,7 +27,12 @@
 
 </head>
 
-
+     <%
+          
+       
+        String message = (String)session.getAttribute("message");
+        
+        %>
 
 <body style="background: url(&quot;../assets/img/pexels-tara-winstead-7722646.jpg&quot;) center / contain;">
  
@@ -46,7 +51,7 @@
                 <div class="form-check"><input class="form-check-input" type="radio" id="usertype" name="usertype" value="Receptionist"><label class="form-check-label" for="formCheck-3" style="color: rgb(0,0,0);">Receptionist</label></div>
             </div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="background: var(--blue);">LOG IN</button></div><a class="forgot" href="#">Forgot your email or password?</a><br>
-            <div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span><strong>Alert</strong> text.</span></div>
+            <p style="color:red"><%=message%>!</p>
         </form>
     </section>
     <script src="../assets/js/jquery.min.js"></script>
