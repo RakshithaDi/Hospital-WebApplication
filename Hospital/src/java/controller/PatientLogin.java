@@ -87,25 +87,21 @@ public class PatientLogin extends HttpServlet {
             boolean rslt = con.checkPatient(email,password);
             if(rslt==true)
             {
-                //out.println("You have succesfully logged!!");
-//                RequestDispatcher rs = request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
-//                rs.forward(request, response);
-               // response.sendRedirect("hospital/doctor/appointments_list.jsp");
+             
                 HttpSession session = request.getSession();
                 session.setAttribute("email",email);
                 response.sendRedirect("patient/appointments/appointments.jsp");
                 
-//                request.setAttribute("email",email);
-//                response.sendRedirect("patient/appointments/appointments.jsp");
-                //request.setAttribute("email",email );
-                //request.getRequestDispatcher("patient/appointments/appointments.jsp").forward(request, response);
+//               
                 
             }
             else
             {
           
-               out.println("Username or Password Incorrect");
-              // out.println("<html><head></head><body><br><a href='hospital/auth/login.html'>Back to Login </a> </body></html>");
+               String message="Username or Password Incorrect";
+               HttpSession session = request.getSession();
+               session.setAttribute("message",message);
+               response.sendRedirect("patient/auth/login.jsp");
             }
             
                }
