@@ -1,3 +1,10 @@
+<%-- 
+    Document   : status
+    Created on : May 12, 2021, 3:50:02 PM
+    Author     : PC
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -33,30 +40,22 @@
             </div>
         </div>
     </nav>
+       <%
+          
+       
+        String statu = (String)session.getAttribute("statu");
+       // out.println("Hello " + statu);
+        
+        %>
+    
     <div class="container" style="height: 753px;">
-        <div class="row" style="margin: 19px;">
-            <div class="col text-center" style="margin-top: 18px;height: 40px;">
-                <h1 style="color: rgb(0,0,0);font-size: 21px;">Add Your Feedback</h1>
-            </div>
-        </div>
-        <div class="row" style="margin: 19px;">
-            <div class="col mx-auto">
-                <form method="post"  action="../../SubmitFeedback">
-                    <div class="form-row">
-                        <div class="col d-xl-flex align-items-center justify-content-xl-center">
-                            <div class="card d-xl-flex align-self-center justify-content-xl-center" style="width: 798px;margin: 5px;">
-                                <div class="card-body">
-                                    <div class="form-group"><span style="font-family: Cabin, sans-serif;color: rgb(47,47,47);">Rating</span><input class="form-control-range" type="range" name="rate"></div>
-                                    <div class="form-group text-center"><span style="font-family: Cabin, sans-serif;color: rgb(255,43,43);font-size: 18px;">5</span></div>
-                                    <div class="form-group"><span style="font-family: Cabin, sans-serif;color: rgb(47,47,47);">Review</span><textarea class="form-control" name="feedback" placeholder="type your review" style="font-family: Cabin, sans-serif;height: 308px;"></textarea></div>
-                                    <div class="form-group text-center"><button class="btn btn-primary bg-success border rounded" type="submit" style="color: rgb(255,255,255);background: #003893;">Submit&nbsp;&nbsp;<i class="fa fa-check"></i></button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+         <center><h1 style="color:black;">         <%=statu%>  </h1></center> 
     </div>
     <footer style="background: #212121;">
         <div class="container text-center"><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Privacy Policy</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">About</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Contact</a><a href="#" style="font-family: Cabin, sans-serif;color: var(--info);margin-right: 10px;margin-left: 10px;">Leave Feedback</a></div>

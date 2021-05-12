@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.DBConnection;
 
 /**
@@ -72,23 +73,32 @@ public class SubmitFeedback extends HttpServlet {
       String feedback=request.getParameter("feedback");
       
 
-      out.println(rate);
-      out.println(feedback);
+     // out.println(rate);
+      //out.println(feedback);
       
+      String statu;
       try{
           DBConnection con = new DBConnection();
           boolean rslt=con.AddFeedback(rate,feedback);
           if(rslt==true)
           {
-              out.println("Added Successfully");
-             // out.println("<html><head></head><body><br><a href='hospital/doctor/appointments_list.jsp'>Back to Appointments </a> </body></html>");
-//              RequestDispatcher rs= request.getRequestDispatcher("hospital/doctor/appointments_list.jsp");
-//              rs.forward(request, response);
+             
+               out.println("Added Successfully");
+              statu="Added Successfully!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("patient/feedback/status.jsp");
               
           }
           else
           {
               out.println("Error");
+               statu="Something Went Wrong!";
+              
+              HttpSession session = request.getSession();
+              session.setAttribute("statu",statu);
+              response.sendRedirect("patient/feedback/status.jsp");
           }
       }
       catch(Exception e){
