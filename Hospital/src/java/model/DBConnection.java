@@ -733,7 +733,7 @@ public class DBConnection {
         try{
             
             Connection con = DBConnection.getConnection();
-            PreparedStatement ps=con.prepareStatement("select * from appointment where PatientID='"+patientid+"' ");
+            PreparedStatement ps=con.prepareStatement("select * from appointment where Date>=CAST(CURRENT_TIMESTAMP AS DATE) and PatientID='"+patientid+"'");
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 Appointments bookap=new Appointments();
@@ -762,6 +762,48 @@ public class DBConnection {
         return list;
         
     }
+              
+              
+       
+        public static List<Appointments>getAppointmentsByPastDate(int patientid){
+       
+        List<Appointments> list= new ArrayList<Appointments>();
+        try{
+            
+            Connection con = DBConnection.getConnection();
+            PreparedStatement ps=con.prepareStatement("select * from appointment where Date<CAST(CURRENT_TIMESTAMP AS DATE) and PatientID='"+patientid+"'");
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Appointments pastd=new Appointments();
+                //e.setNic(rs.getString(1));
+               
+                pastd.setLineno(rs.getInt(1));
+                pastd.setPid(rs.getInt(2));
+                pastd.setDocid(rs.getInt(3));
+                pastd.setDate(rs.getString(4));
+                pastd.setTime(rs.getString(5));
+                pastd.setPharmacy(rs.getString(6));
+                pastd.setAptid(rs.getInt(7));
+               
+                
+                
+                list.add(pastd);
+                
+                
+                
+            }
+            con.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return list;
+        
+    }       
+              
+              
+              
+              
               
        public static List<Doctor>getDoctorId(String username){
        
@@ -990,5 +1032,7 @@ public class DBConnection {
         
         
     }
+       
+       
      
 }

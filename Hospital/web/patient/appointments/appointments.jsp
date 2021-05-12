@@ -126,28 +126,43 @@
                 <div class="row" style="margin: 14px;">
                     <div class="col">
                         <div class="row">
+                            
+                            
+                                               
+                                <%List<Patient> list3 = DBConnection.getPatientID(email); %>
+            <%for(Patient plog:list3){ %>  
+            
+            
+             <%List<Appointments> list1 = DBConnection.getAppointmentsByPastDate(plog.getPid()); %>  <%-- need to pass patient id--%>
+            <%for(Appointments pastd:list1){ %>
+        
+               <%List<Doctor> list = DBConnection.getDoctorName(pastd.getDocid()); %>
+                                 <%for(Doctor doc2:list){ %>
+                            
                             <div class="col">
                                 <div class="card" style="margin: 7px;">
                                     <div class="card-body" style="height: 65px;">
                                         <div class="row">
                                             <div class="col text-center">
+             
+                                                
                                                 <div style="height: 22px;">
-                                                    <h5 class="text-capitalize" style="color: rgb(0,0,0);">Dr. Charitha De Silva</h5>
+                                                    <h5 class="text-capitalize" style="color: rgb(0,0,0);">Dr.<%=doc2.getFname()%> <%=doc2.getLname()%></h5>
                                                 </div>
+                                            </div> 
+                                            <div class="col-xl-2 text-center">
+                                                <h5 style="color: rgb(0,0,0);"><%=pastd.getDate()%></h5>
                                             </div>
                                             <div class="col-xl-2 text-center">
-                                                <h5 style="color: rgb(0,0,0);">2021.05.02</h5>
+                                                <h5 style="color: rgb(0,0,0);"><%=pastd.getTime()%></h5>
                                             </div>
                                             <div class="col-xl-2 text-center">
-                                                <h5 style="color: rgb(0,0,0);">10:30 AM</h5>
-                                            </div>
-                                            <div class="col-xl-2 text-center">
-                                                <h5 style="color: rgb(0,0,0);">No.05</h5>
+                                                <h5 style="color: rgb(0,0,0);">No.<%=pastd.getLineno()%></h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> <%}%>     <%}%>  <%}%>
                         </div>
                     </div>
                 </div>
