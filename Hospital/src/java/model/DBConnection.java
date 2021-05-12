@@ -668,6 +668,8 @@ public class DBConnection {
                 Patient plog=new Patient();
                
                 plog.setPid(rs.getInt(1));
+                plog.setFname(rs.getString(2));
+                plog.setLname(rs.getString(3));
                
                 
                // e.setDeceased(rs.getString(11));

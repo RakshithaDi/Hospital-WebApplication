@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="model.Patient"%>
+<%@page import="model.DBConnection"%>
 <!DOCTYPE html>
 <html>
 
@@ -15,6 +18,26 @@
     <link rel="stylesheet" href="../assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="../assets/css/Navbar-Dropdown-List-Item.css">
 </head>
+
+  <%
+          
+        //HttpSession se = request.getSession();
+      //  session.setMaxInactiveInterval(3600); //Expires after 30 seconds inactivity
+        String email = (String)session.getAttribute("email");
+       // out.println("Hello " + email);
+       ;
+      
+         if(session.getAttribute("email")==null)
+        {
+            response.sendRedirect("../auth/login.html");
+        }
+        
+        
+    
+   
+%>
+
+
 
 <body style="background: #f2f2f2;">
 
@@ -103,11 +126,16 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
+     <%List<Patient> list2 = DBConnection.getPatientID(email); %>
+            <%for(Patient plog:list2){ %> 
+            
+            
+           
     <script src="chat-patient.js"></script>
-    <script>initChat('test email','test name')</script>
+    <script>initChat(<%=email%>,<%=plog.getFname()%> <%=plog.getLname()%>)</script>
     <script src="../notify.js"></script>
     <script>//notify('test email')</script>
-
+    <%}%>
 </body>
 
 </html>
