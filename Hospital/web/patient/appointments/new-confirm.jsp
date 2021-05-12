@@ -74,7 +74,7 @@
                 <h1 style="color: rgb(0,0,0);font-size: 21px;">Confirm Your Appointment</h1>
             </div>
         </div>
-        <div class="row" style="margin: 19px;">
+        <div class="row d-xl-flex align-items-center justify-content-xl-center" style="margin: 19px;">
              <form method="post" action="../../SubmitAppointment">
                     
 

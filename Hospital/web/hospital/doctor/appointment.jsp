@@ -94,15 +94,13 @@
        
         %>
          
-    
-    
-    
+
 <nav class="navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search">
         <div class="container"><a class="navbar-brand" href="#"><i class="fas fa-hospital" style="font-size: 25px;"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="appointment_list.jsp" style="font-family: Montserrat, sans-serif;"><strong>Appointment List</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Montserrat, sans-serif;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="appointment_list.jsp" style="font-family: Montserrat, sans-serif;">Appointment List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Montserrat, sans-serif;"><b>Current Appointment</b></a></li>
                 </ul>
             </div>
             <div class="dropdown menu_links" style="font-family: Montserrat, sans-serif;"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"><%out.println("Doctor ("+username+")");%>  </a>

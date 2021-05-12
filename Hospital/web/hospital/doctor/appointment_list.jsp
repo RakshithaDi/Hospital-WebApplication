@@ -96,7 +96,7 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="appointment_list.jsp" style="font-family: Montserrat, sans-serif;"><strong>Appointment List</strong></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="font-family: Montserrat, sans-serif;">Home</a></li>
+                    
                 </ul>
             </div>
             <div class="dropdown menu_links" style="font-family: Montserrat, sans-serif;"><a class="dropdown-toggle" aria-expanded="false" data-toggle="dropdown" style="margin-right: 10px;color: rgb(0,0,0,0.75);border-color: rgba(0,0,0,0);"><%out.println("Doctor ("+username+")");%>  </a>
@@ -186,7 +186,7 @@
             <li class="list-inline-item"><a href="#" style="font-size: 15px;">Terms</a></li>
             <li class="list-inline-item"><a href="#" style="font-size: 15px;">Privacy Policy</a></li>
         </ul>
-        <p class="copyright">Company Name © 2021</p>
+        <p class="copyright">Central Hospitals © 2021</p>
     </footer>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>

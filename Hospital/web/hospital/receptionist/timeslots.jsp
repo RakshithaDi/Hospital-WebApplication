@@ -82,8 +82,8 @@
                              
                                 <thead>
                                     <tr>
+                                        <th>Doctor ID</th>
                                         <th>Doctor Name</th>
-                                        <th style="width: 188px;">Doctor ID</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,7 +95,6 @@
                                     </tr>
                                      <%}%>
                                 </tbody>
-                              
                             </table> 
                         </div>
                     </div>
