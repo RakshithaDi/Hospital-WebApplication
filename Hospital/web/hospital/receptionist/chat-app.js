@@ -16,7 +16,7 @@ const messaging = firebase.messaging();
 // subsequent calls to getToken will return from cache.
 messaging.getToken({ vapidKey: 'BElGrptkGJHYy6XBiWXVCW3mKJ8a3E0cUuR4n6sS4yErlFNbayvfhhT3WSXrIATbOx1xr7U5DrCDYNCFNyX4Aa4' }).then((currentToken) => {
     if (currentToken) {
-        //db.collection("notifications").doc("receptionists").collection("clients").doc().set({toket: currentToken})  
+        db.collection("notifications").doc("receptionists").collection("clients").doc(currentToken).set({token: currentToken})  
     } else {
       // Show permission request UI
       console.log('No registration token available. Request permission to generate one.');
