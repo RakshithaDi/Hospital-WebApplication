@@ -55,7 +55,7 @@ function loadmessage(email){
             textcont2.setAttribute("class","row d-xl-flex justify-content-xl-start")
             textcont2.setAttribute("style","margin-bottom: 5px;margin-top: 5px;")
                           
-            if(sender == "s"){
+            if(sender == "f"){
                 textcont.innerHTML = "<div class='col-auto d-xl-flex my-auto' style='background: #bebebe;color: rgb(255,255,255);border-radius: 38px;border-width: 1px;border-color: rgb(128,128,128);'><span style='font-family: Cabin, sans-serif;color: rgb(0,0,0);'>" + doc.data().text + "</span></div>";
                 chat_main.append(textcont);
             }
@@ -133,7 +133,7 @@ function newmessage(mcount,email){
             textcont2.setAttribute("class","row d-xl-flex justify-content-xl-start")
             textcont2.setAttribute("style","margin-bottom: 5px;margin-top: 5px;")
                           
-            if(sender == "s"){
+            if(sender == "f"){
                 textcont.innerHTML = "<div class='col-auto d-xl-flex my-auto' style='background: #bebebe;color: rgb(255,255,255);border-radius: 38px;border-width: 1px;border-color: rgb(128,128,128);'><span style='font-family: Cabin, sans-serif;color: rgb(0,0,0);'>" + doc.data().text + "</span></div>";
                 chat_main.append(textcont);
             }

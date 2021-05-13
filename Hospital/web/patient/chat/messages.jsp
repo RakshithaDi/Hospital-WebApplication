@@ -132,8 +132,9 @@
             
            
     <script src="chat-patient.js"></script>
-    <script>initChat(<%=email%>,<%=plog.getFname()%> <%=plog.getLname()%>)</script>
-    <script src="../notify.js"></script>
+    <script>initChat('<%=email%>','<%=plog.getFname()%> <%=plog.getLname()%>')</script>
+    <!-- <script>initChat('1234','asdf')</script> -->
+    <!-- <script src="../notify.js"></script> -->
     <script>//notify('test email')</script>
     <%}%>
 </body>
