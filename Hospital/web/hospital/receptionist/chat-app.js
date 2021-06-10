@@ -199,11 +199,6 @@ function notify(email){
     db.collection("notifications").doc('chat-rec').onSnapshot(function(doc) {
         if(doc.data().unread == 'yes'){
             loadlist();
-            if(!alert('You have new messages')){
-                db.collection("notifications").doc('chat-rec').update({
-                    unread: 'no',
-                })
-            }
         }
     });
 }

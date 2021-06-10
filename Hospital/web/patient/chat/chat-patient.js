@@ -81,7 +81,7 @@ function loadmessage(email){
     });
     var element = document.getElementById("chatcont");
     element.scrollTop = element.scrollHeight;
-    notify(selected);       
+    //notify(selected);       
 }
 
 function sendmessage(){

@@ -190,7 +190,7 @@ public class Login extends HttpServlet {
                 out.println("You have succesfully logged!!");
                 HttpSession session = request.getSession();
                 session.setAttribute("username",username);
-                response.sendRedirect("hospital/receptionist/messages.html");
+                response.sendRedirect("hospital/receptionist/messages.jsp");
             }
             else
             {
