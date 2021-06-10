@@ -34,14 +34,10 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 
-<body style="background: #dddddd;">
-
-
-    <%
+ <%
           
-        //HttpSession se = request.getSession();
-       // session.setMaxInactiveInterval(1800); //Expires after 30 seconds inactivity
-        response.setHeader("Cache-Control","no-cache");
+        
+       response.setHeader("Cache-Control","no-cache");
         response.setHeader("Cache-Control","no-store");
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
@@ -50,11 +46,11 @@
         {
             response.sendRedirect("../auth/login.html");
         }
-       
         
         
         %>
 
+<body style="background: #dddddd;">
     <nav class="navbar navbar-light navbar-expand-md d-flex d-xl-flex align-items-center align-content-center align-self-center mx-auto justify-content-xl-center align-items-xl-center navigation-clean-search" style="background: rgb(255,255,255);">
         <div class="container"><a class="navbar-brand" href="#"><i class="fas fa-hospital" style="font-size: 25px;"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
